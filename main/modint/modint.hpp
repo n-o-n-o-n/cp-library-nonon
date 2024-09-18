@@ -45,7 +45,7 @@ struct modint {
     }
     modint& operator-=(const modint &r) {
         x -= r.x;
-        if (x >= m()) x -= m();
+        if (x >= m()) x += m();
         return *this;
     }
     modint& operator*=(const modint &r) {
