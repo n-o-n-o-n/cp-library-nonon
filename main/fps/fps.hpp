@@ -49,7 +49,7 @@ struct Formal_Power_Series : vector<mint> {
     }
     FPS &operator%=(const FPS &f) {
         *this -= div(f) * f;
-        this->shirink();
+        this->shrink();
         return *this;
     }
     FPS div(const FPS &f) const {
@@ -103,7 +103,7 @@ struct Formal_Power_Series : vector<mint> {
         for (int i = 0; i < n; i++) res[i] = (*this)[i] * f[i];
         return res;
     }
-    void shirink() {
+    void shrink() {
         while (this->size() && this->back() == 0) {
             this->pop_back();
         }
