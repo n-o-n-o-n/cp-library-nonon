@@ -2,16 +2,18 @@
 #include <vector>
 using namespace std;
 
-template<typename S, auto op, auto e, typename F, auto mapping, auto composition, auto id>
+template<typename Monoid, typename Operator, auto mapping>
 struct lazy_segtree {
+    using S = Monoid::S;
+    using F = Operator::F;
     lazy_segtree() : lazy_segtree(0) {}
-    lazy_segtree(int _n) : lazy_segtree(vector<S>(_n, e())) {}
+    lazy_segtree(int _n) : lazy_segtree(vector<S>(_n, Monoid::e())) {}
     lazy_segtree(const vector<S> &v) : n(v.size()) {
         log = 1;
         while ((1 << log) < n) log++;
         sz = 1 << log;
-        d = vector<S>(2 * sz, e());
-        lz = vector<F>(sz, id());
+        d = vector<S>(2 * sz, Monoid::e());
+        lz = vector<F>(sz, Operator::id());
         for (int i = 0; i < n; i++) d[i + sz] = v[i];
         for (int i = sz - 1; i >= 1; i--) update(i);
     }
@@ -64,14 +66,14 @@ struct lazy_segtree {
             if (((l >> i) << i) != l) push(l >> i);
             if (((r >> i) << i) != r) push((r - 1) >> i);
         }
-        S pl = e(), pr = e();
+        S pl = Monoid::e(), pr = Monoid::e();
         while (l < r) {
-            if (l & 1) pl = op(pl, d[l++]);
-            if (r & 1) pr = op(d[--r], pr);
+            if (l & 1) pl = Monoid::op(pl, d[l++]);
+            if (r & 1) pr = Monoid::op(d[--r], pr);
             l >>= 1;
             r >>= 1;
         }
-        return op(pl, pr);
+        return Monoid::op(pl, pr);
     }
     S all_prod() const { return d[1]; }
 private:
@@ -79,16 +81,16 @@ private:
     vector<S> d;
     vector<F> lz;
     void update(int p) {
-        d[p] = op(d[2 * p], d[2 * p + 1]);
+        d[p] = Monoid::op(d[2 * p], d[2 * p + 1]);
     }
     void all_apply(int p, const F &f) {
         d[p] = mapping(f, d[p]);
-        if (p < sz) lz[p] = composition(f, lz[p]);
+        if (p < sz) lz[p] = Operator::comp(f, lz[p]);
     }
     void push(int p) {
         all_apply(2 * p, lz[p]);
         all_apply(2 * p + 1, lz[p]);
-        lz[p] = id();
+        lz[p] = Operator::id();
     }
     void inner_push(int p) {
         for (int i = log; i >= 1; i--) push(p >> i);
