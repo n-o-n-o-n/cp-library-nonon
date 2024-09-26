@@ -17,3 +17,6 @@ S T(int n)
 
 # Reference
 - https://github.com/n-o-n-o-n/cp-library-nonon
+
+# verify
+- https://atcoder.jp/contests/APG4b/submissions/37675382
