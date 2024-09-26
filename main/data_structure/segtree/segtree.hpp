@@ -5,7 +5,7 @@ using namespace std;
 
 template <typename Monoid>
 struct segtree {
-    using S = Monoid::S;
+    using S = typename Monoid::S;
     segtree() : segtree(0) {}
     segtree(int _n) : segtree(vector<S>(_n, Monoid::e())) {}
     segtree(const vector<S> &v) : n(v.size()) {

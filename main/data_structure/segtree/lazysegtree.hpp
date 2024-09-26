@@ -4,8 +4,8 @@ using namespace std;
 
 template<typename Monoid, typename Operator, auto mapping>
 struct lazy_segtree {
-    using S = Monoid::S;
-    using F = Operator::F;
+    using S = typename Monoid::S;
+    using F = typename Operator::F;
     lazy_segtree() : lazy_segtree(0) {}
     lazy_segtree(int _n) : lazy_segtree(vector<S>(_n, Monoid::e())) {}
     lazy_segtree(const vector<S> &v) : n(v.size()) {
@@ -92,10 +92,10 @@ private:
         all_apply(2 * p + 1, lz[p]);
         lz[p] = Operator::id();
     }
-    void inner_push(int p) {
-        for (int i = log; i >= 1; i--) push(p >> i);
-    }
     void inner_update(int p) {
         for (int i = 1; i <= log; i++) update(p >> i);
+    }
+    void inner_push(int p) {
+        for (int i = log; i >= 1; i--) push(p >> i);
     }
 };

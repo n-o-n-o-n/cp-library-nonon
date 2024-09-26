@@ -6,7 +6,7 @@ using namespace std;
 
 template<typename Monoid>
 struct sparse_table {
-    using S = Monoid::S;
+    using S = typename Monoid::S;
     sparse_table(int _n) : n(_n), b(0), d(1, vector<S>(_n, Monoid::e())) {}
     sparse_table(const vector<S> &v) : d(1, v) { build(); }
     void set(int p, S x) {
