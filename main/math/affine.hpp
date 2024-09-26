@@ -6,10 +6,10 @@ struct affine {
     mint a, b;
     affine() : a(1), b(0) {}
     affine(const mint &_a, const mint &_b) : a(_a), b(_b) {}
-    mint operator()(const mint &x) {
+    mint operator()(const mint &x) const {
         return a * x + b;
     }
-    affine operator()(const affine &f) {
+    affine operator()(const affine &f) const {
         mint c = a * f.a;
         mint d = a * f.b + b;
         return affine(c, d);
