@@ -1,13 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 
+#include "../main/monoid/utility.hpp"
 #include "../main/data_structure/segtree/segtree.hpp"
 
 #include <iostream>
 #include <vector>
 using namespace std;
-
-int op(int a, int b) { return min(a, b); }
-int e() { return 1 << 30; }
 
 int main() {
     ios::sync_with_stdio(false);
@@ -15,7 +13,7 @@ int main() {
 
     int N, Q;
     cin >> N >> Q;
-    segtree<int, op, e> seg(N);
+    segtree<min_monoid<int>> seg(N);
     for (int i = 0; i < N; i++) {
         int A;
         cin >> A;

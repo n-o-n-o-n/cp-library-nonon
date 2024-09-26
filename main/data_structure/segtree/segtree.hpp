@@ -3,15 +3,16 @@
 #include <cassert>
 using namespace std;
 
-template<typename S, auto op, auto e>
+template <typename Monoid>
 struct segtree {
+    using S = Monoid::S;
     segtree() : segtree(0) {}
-    segtree(int _n) : segtree(vector<S>(_n, e())) {}
+    segtree(int _n) : segtree(vector<S>(_n, Monoid::e())) {}
     segtree(const vector<S> &v) : n(v.size()) {
         log = 1;
         while ((1 << log) < n) log++;
         sz = 1 << log;
-        d = vector<S>(2 * sz, e());
+        d = vector<S>(2 * sz, Monoid::e());
         for (int i = 0; i < n; i++) d[i + sz] = v[i];
         for (int i = sz - 1; i >= 1; i--) update(i);
     }
@@ -29,20 +30,20 @@ struct segtree {
         assert(0 <= l && l <= r && r <= n);
         l += sz;
         r += sz;
-        S pl = e(), pr = e();
+        S pl = Monoid::e(), pr = Monoid::e();
         while (l < r) {
-            if (l & 1) pl = op(pl, d[l++]);
-            if (r & 1) pr = op(d[--r], pr);
+            if (l & 1) pl = Monoid::op(pl, d[l++]);
+            if (r & 1) pr = Monoid::op(d[--r], pr);
             l >>= 1;
             r >>= 1;
         }
-        return op(pl, pr);
+        return Monoid::op(pl, pr);
     }
     S all_prod() const { return d[1]; }
 private:
     int n, log, sz;
     vector<S> d;
     void update(int p) {
-        d[p] = op(d[2 * p], d[2 * p + 1]);
+        d[p] = Monoid::op(d[2 * p], d[2 * p + 1]);
     }
 };

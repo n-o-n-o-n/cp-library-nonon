@@ -1,14 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 
 #include "../main/modint/modint.hpp"
-#include "../main/math/affine.hpp"
+#include "../main/monoid/affine.hpp"
 #include "../main/data_structure/segtree/segtree.hpp"
 
 using mint = modint<998244353>;
-using S = affine<mint>;
-
-S op(S f, S g) { return g(f); }
-S e() { return S(); }
 
 #include <iostream>
 using namespace std;
@@ -18,11 +14,11 @@ int main() {
     cin.tie(nullptr);
     int N, Q;
     cin >> N >> Q;
-    segtree<S, op, e> seg(N);
+    segtree<affine<mint>> seg(N);
     for (int i = 0; i < N; i++) {
         int a, b;
         cin >> a >> b;
-        seg.set(i, S(a, b));
+        seg.set(i, affine<mint>(a, b));
     }
     while (Q--) {
         int t;
@@ -30,11 +26,11 @@ int main() {
         if (t == 0) {
             int p, a, b;
             cin >> p >> a >> b;
-            seg.set(p, S(a, b));
+            seg.set(p, affine<mint>(a, b));
         } else {
             int l, r, x;
             cin >> l >> r >> x;
-            S f = seg.prod(l, r);
+            affine<mint> f = seg.prod(l, r);
             cout << f(x).val() << '\n';
         }
     }
