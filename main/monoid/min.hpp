@@ -9,5 +9,5 @@ struct min_monoid {
     static S op(const S &a, const S &b) {
         return min(a, b);
     }
-    static S e() { return numeric_limits<T>::max(); }
+    static S e() { return numeric_limits<S>::max(); }
 };

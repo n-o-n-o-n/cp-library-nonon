@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 
-#include "../main/monoid/utility.hpp"
+#include "../main/monoid/min.hpp"
 #include "../main/data_structure/segtree/segtree.hpp"
 
 #include <iostream>
