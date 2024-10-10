@@ -7,6 +7,7 @@ using namespace std;
 template<typename Monoid>
 struct disjoint_sparse_table {
     using S = typename Monoid::S;
+    disjoint_sparse_table() = default;
     disjoint_sparse_table(int _n) : n(_n), b(0), d(1, vector<S>(_n, Monoid::e())) {}
     disjoint_sparse_table(const vector<S> &v) : n(v.size()), b(0), d(1, v) { build(); }
     void set(int p, S x) {
