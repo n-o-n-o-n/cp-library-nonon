@@ -8,15 +8,8 @@ struct lazy_segtree {
     using F = typename Operator::F;
     lazy_segtree() : lazy_segtree(0) {}
     lazy_segtree(int _n) : lazy_segtree(vector<S>(_n, Monoid::e())) {}
-    lazy_segtree(const vector<S> &v) : n(v.size()) {
-        log = 1;
-        while ((1 << log) < n) log++;
-        sz = 1 << log;
-        d = vector<S>(2 * sz, Monoid::e());
-        lz = vector<F>(sz, Operator::id());
-        for (int i = 0; i < n; i++) d[i + sz] = v[i];
-        for (int i = sz - 1; i >= 1; i--) update(i);
-    }
+    lazy_segtree(const vector<S> &v) { init(v); }
+    void set(const vector<S> &v) { init(v); }
     void set(int p, const S &x) {
         assert(0 <= p && p < n);
         p += sz;
@@ -80,6 +73,16 @@ private:
     int n, log, sz;
     vector<S> d;
     vector<F> lz;
+    void init(const vector<S> &v) {
+        n = v.size();
+        log = 1;
+        while ((1 << log) < n) log++;
+        sz = 1 << log;
+        d = vector<S>(2 * sz, Monoid::e());
+        lz = vector<F>(sz, Operator::id());
+        for (int i = 0; i < n; i++) d[i + sz] = v[i];
+        for (int i = sz - 1; i >= 1; i--) update(i);
+    }
     void update(int p) {
         d[p] = Monoid::op(d[2 * p], d[2 * p + 1]);
     }
