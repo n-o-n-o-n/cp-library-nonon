@@ -21,6 +21,14 @@ heavy_light_decomposition<Monoid, Operator, mapping> G(int n, bool e)
 - `pathupdate` の場合は遅延セグ木と同様に `Operator`, `mapping` を定義する必要がある
 - 計算量は $O(n)$
 
+## add_edge
+```
+void add_edge(int u, int v, S w)
+```
+- 頂点 `u` と頂点 `v` を結ぶ重み `w` の辺を追加する
+- 重みがいらないときは `add_edge(u, v)` でよい
+- 計算量は $O(1)$
+
 ## set
 ```
 void set(int u, S w)
