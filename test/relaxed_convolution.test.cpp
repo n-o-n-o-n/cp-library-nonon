@@ -14,7 +14,7 @@ int main() {
     cin.tie(nullptr);
     int N, M;
     cin >> N >> M;
-    vector<int> A(N + M), B(N +M);
+    vector<int> A(N + M), B(N + M);
     for (int i = 0; i < N; i++) cin >> A[i];
     for (int i = 0; i < M; i++) cin >> B[i];
     relaxed_convolution<mint> f(N + M);
