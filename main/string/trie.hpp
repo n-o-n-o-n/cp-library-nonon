@@ -5,7 +5,18 @@ using namespace std;
 
 template<int size, char base>
 struct trie {
-    trie() : idx(0), par(1, -1), chr(1, -1), cnt(1, 0), last(0), child(1, e()), tail(1) { child[0].fill(-1); }
+    trie() : idx(0), par(1, -1), chr(1, -1), cnt(1, 0), last(0), child(1, e()), tail(1) {}
+    vector<int> track(const string &s) const {
+        int n = s.size(), pos = 0;
+        vector<int> res(n, -1);
+        for (int i = 0; i < n; i++) {
+            int c = s[i] - base;
+            if (child[pos][c] == -1) break;
+            pos = child[pos][c];
+            res[i] = pos;
+        }
+        return res;
+    }
     vector<int> insert(const string &s) {
         int n = s.size(), pos = 0;
         for (int i = 0; i < n; i++) {
@@ -85,16 +96,5 @@ private:
         array<int, size> x;
         x.fill(-1);
         return x;
-    }
-    vector<int> track(const string &s) const {
-        int n = s.size(), pos = 0;
-        vector<int> res(n, -1);
-        for (int i = 0; i < n; i++) {
-            int c = s[i] - base;
-            if (child[pos][c] == -1) break;
-            pos = child[pos][c];
-            res[i] = pos;
-        }
-        return res;
     }
 };

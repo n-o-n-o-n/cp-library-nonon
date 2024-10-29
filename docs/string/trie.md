@@ -9,6 +9,15 @@ trie<size, base> T
 - 文字の種類数 $\sigma = $ `size`，一文字目の文字コード `base` を渡す必要がある
     - 例えば，英小文字からなる文字列を扱うときは `trie<26, 'a'>` となる
 
+## track
+```
+vector<int> track(string s)
+```
+- 文字列 `s` が通るノードの index の列
+- 存在しない場合は `-1` が入る
+- 計算量は $O(\lvert s \rvert)$
+
+
 ## insert
 ```
 vector<int> insert(string s)
