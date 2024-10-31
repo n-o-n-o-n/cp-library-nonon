@@ -57,6 +57,7 @@ private:
         if (n + 1 < sz) return;
         n = max(n + 1, 2 * sz);
         pow.resize(n);
+        inv_pow.resize(n);
         for (int i = sz; i < n; i++) {
             for (int j = 0; j < 3; j++) {
                 pow[i][j] = (pow[i - 1][j] * base) % mod[j];
