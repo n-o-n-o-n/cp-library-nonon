@@ -101,5 +101,5 @@ struct modint {
     }
 private:
     unsigned int x;
-    static constexpr int m() { return MOD; }
+    static constexpr unsigned int m() { return MOD; }
 };
