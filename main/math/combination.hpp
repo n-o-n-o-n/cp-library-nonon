@@ -49,7 +49,7 @@ private:
         assert(n < bound);
         int sz = inner_fac.size();
         if (n < sz) return;
-        n = clamp(n, 2 * sz, bound);
+        n = clamp(n, 2 * sz, min(bound, mint::mod() - 1));
         inner_fac.resize(n + 1);
         inner_finv.resize(n + 1);
         for (int i = sz; i <= n; i++) {
