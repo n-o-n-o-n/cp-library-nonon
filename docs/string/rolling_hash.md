@@ -1,8 +1,8 @@
 # Rolling Hash
 
-文字列に対する一致判定をハッシュを用いて行うライブラリ．$10^9$ より少し大きい素数 $3$ つで判定している．
+文字列に対する一致判定をハッシュを用いて行うライブラリ. $10^9$ より少し大きい素数 $3$ つで判定している.
 
-更新の有無に応じて `rolling_hash_static.hpp` と `rolling_hash_dynamic.hpp` を使い分ける．
+更新の有無に応じて `rolling_hash_static.hpp` と `rolling_hash_dynamic.hpp` を使い分ける.
 
 ## Constructor
 ```
