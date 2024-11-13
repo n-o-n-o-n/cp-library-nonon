@@ -2,3 +2,4 @@
 *.exe
 *.toml
 test/*
+docs/template.md
