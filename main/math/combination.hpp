@@ -1,10 +1,11 @@
 #pragma once
 #include <cassert>
 #include <vector>
+using namespace std;
 
 template<typename mint>
 struct combination {
-    combination(int n = 0) : inner_fac(1, 1), inner_finv(1, 1) { init(n); }
+    combination(int n = 0) { init(n); }
     mint fac(int n) {
         init(n);
         return inner_fac[n];
@@ -25,7 +26,7 @@ struct combination {
             return sgn * C(k - n - 1, k);
         }
         if (n < k) return 0;
-        if (n < bound) {
+        if (n < min(1 << 25, mint::mod() - 1)) {
             init(n);
             return inner_fac[n] * inner_finv[n - k] * inner_finv[k];
         }
@@ -36,20 +37,18 @@ struct combination {
     }
     mint P(int n, int k) {
         if (n < 0 || k < 0 || n < k) return 0;
-        return inner_fac[n] * inner_fac[n - k];
+        return inner_fac[n] * inner_finv[n - k];
     }
     mint catalan(int n) {
         init(2 * n);
         return inner_fac[2 * n] * inner_finv[n] * inner_finv[n + 1];
     }
 private:
-    const int bound = 1 << 25;
-    vector<mint> inner_fac, inner_finv;
-    void init(int n) {
-        assert(n < bound);
+    static vector<mint> inner_fac, inner_finv;
+    static void init(int n) {
         int sz = inner_fac.size();
         if (n < sz) return;
-        n = clamp(n, 2 * sz, min(bound, mint::mod() - 1));
+        n = clamp(n, 2 * sz, min(1 << 25, mint::mod() - 1));
         inner_fac.resize(n + 1);
         inner_finv.resize(n + 1);
         for (int i = sz; i <= n; i++) {
@@ -61,3 +60,7 @@ private:
         }
     }
 };
+template<typename mint>
+vector<mint> combination<mint>::inner_fac(1, 1);
+template<typename mint>
+vector<mint> combination<mint>::inner_finv(1, 1);

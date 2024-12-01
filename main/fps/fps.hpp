@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "../math/combination.hpp"
 #include "../convolution/ntt.hpp"
 using namespace std;
 
@@ -130,7 +131,7 @@ struct Formal_Power_Series : vector<mint> {
         FPS res(n + 1);
         res[0] = 0;
         for (int i = 0; i < n; i++) {
-            res[i + 1] = (*this)[i] / (i + 1);
+            res[i + 1] = (*this)[i] * C.inv(i + 1);
         }
         return res;
     }
@@ -167,23 +168,14 @@ struct Formal_Power_Series : vector<mint> {
             return res;
         }
         assert((*this)[0] == 0);
-        vector<mint>inv;
-        inv.reserve(deg + 1);
-        inv.push_back(0);
-        inv.push_back(1);
         auto inplace_diff = [](FPS &f) -> void {
             if (f.empty()) return;
             f.erase(f.begin());
             for (int i = 0; i < int(f.size()); i++) f[i] *= i + 1;
         };
         auto inplace_integral = [&](FPS &f) -> void {
-            constexpr int mod = mint::mod();
-            while (inv.size() <= f.size()) {
-                int i = inv.size();
-                inv.push_back(-inv[mod % i] * (mod / i));
-            }
             f.insert(f.begin(), 0);
-            for (int i = 1; i < int(f.size()); i++) f[i] *= inv[i];
+            for (int i = 1; i < int(f.size()); i++) f[i] *= C.inv(i);
         };
         FPS b = {1, 1 < n ? (*this)[1] : 0};
         FPS c = {1}, z1, z2 = {1, 1};
@@ -248,8 +240,25 @@ struct Formal_Power_Series : vector<mint> {
         res <<= p * k;
         return res;
     }
+    FPS taylor_shift(mint c) const {
+        int n = this->size();
+        FPS f = *this;
+        for (int i = 0; i < n; i++) f[i] *= C.fac(i);
+        reverse(f.begin(), f.end());
+        FPS g(n);
+        mint pw = 1;
+        for (int i = 0; i < n; i++) {
+            g[i] = pw * C.finv(i);
+            pw *= c;
+        }
+        f = convolution(f, g, n);
+        reverse(f.begin(), f.end());
+        for (int i = 0; i < n; i++) f[i] *= C.finv(i);
+        return f;
+    }
 private:
-    FPS convolution(FPS f, FPS g, int deg = -1) {
+    static combination<mint> C;
+    static FPS convolution(FPS f, FPS g, int deg = -1) {
         int n = f.size(), m = g.size();
         if (n == 0 || m == 0) return FPS{};
         int sz = 1;
