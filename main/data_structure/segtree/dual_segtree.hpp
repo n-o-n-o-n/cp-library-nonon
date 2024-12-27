@@ -9,6 +9,14 @@ struct dual_segtree {
     dual_segtree() : dual_segtree(0) {}
     dual_segtree(int _n) : dual_segtree(vector<S>(_n)) {}
     dual_segtree(const vector<S> &v) { init(v); }
+    void init(const vector<S> &v) {
+        n = v.size();
+        log = 1;
+        while ((1 << log) < n) log++;
+        sz = 1 << log;
+        d = v;
+        lz = vector<F>(sz, Operator::id());
+    }
     void set(int p, const S &x) {
         assert(0 <= p && p < n);
         p += sz;
@@ -35,14 +43,6 @@ private:
     int n, log, sz;
     vector<S> d;
     vector<F> lz;
-    void init(const vector<S> &v) {
-        n = v.size();
-        log = 1;
-        while ((1 << log) < n) log++;
-        sz = 1 << log;
-        d = v;
-        lz = vector<F>(sz, Operator::id());
-    }
     void all_apply(int p, const F &f) {
         if (p < sz) {
             lz[p] = Operator::comp(f, lz[p]);
