@@ -20,12 +20,7 @@ struct combination {
         return inner_finv[n] * inner_fac[n - 1];
     }
     mint C(int n, int k) {
-        if (k < 0) return 0;
-        if (n < 0) {
-            int sgn = (k & 1 ? -1 : 1);
-            return sgn * C(k - n - 1, k);
-        }
-        if (n < k) return 0;
+        if (n < 0 || k < 0 || n < k) return 0;
         if (n < min(1 << 25, mint::mod() - 1)) {
             init(n);
             return inner_fac[n] * inner_finv[n - k] * inner_finv[k];
@@ -35,6 +30,14 @@ struct combination {
         for (int i = 0; i < k; i++) res *= n - i;
         return res;
     }
+    mint multi_C(const vector<int> &v) {
+        int n = 0;
+        for (int c : v) n += c;
+        init(n);
+        mint res = inner_fac[n];
+        for (int c : v) res *= inner_finv[c];
+        return res;
+    }
     mint P(int n, int k) {
         if (n < 0 || k < 0 || n < k) return 0;
         return inner_fac[n] * inner_finv[n - k];
@@ -42,6 +45,10 @@ struct combination {
     mint catalan(int n) {
         init(2 * n);
         return inner_fac[2 * n] * inner_finv[n] * inner_finv[n + 1];
+    }
+    mint grid_path(int n, int m) {
+        init(n + m);
+        return inner_fac[n + m] * inner_finv[n] * inner_finv[m];
     }
 private:
     static vector<mint> inner_fac, inner_finv;
