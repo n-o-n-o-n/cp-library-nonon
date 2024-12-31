@@ -26,7 +26,7 @@ pair<int, int> randpair(int low, int hi, bool strict = false) {
     return make_pair(L, R);
 }
 
-pair<long long, long long> randpair_ll(long long low, long long hi, bool strict = false) {
+pair<long long, long long> randpair_64(long long low, long long hi, bool strict = false) {
     assert(low + strict <= hi);
     long long L = randint_64(low, hi - strict);
     long long R = randint_64(L + strict, hi);
