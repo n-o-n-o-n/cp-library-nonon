@@ -1,50 +1,27 @@
 #pragma once
+#include <cassert>
 #include <vector>
 using namespace std;
 
-template<typename D>
-struct heavy_light_decomposition {
-    template<template<typename> class SegTree, typename Monoid>
-    static Monoid deduce_monoid(SegTree<Monoid>*) {
-        return Monoid{};
-    }
-    using Monoid = decltype(deduce_monoid(static_cast<D*>(nullptr)));
+template<template<typename> class SegTree, typename Monoid>
+struct hld_template {
     using S = typename Monoid::S;
-    heavy_light_decomposition() = default;
-    heavy_light_decomposition(int _n, bool _e, int r = 0) : n(_n), root(r), edge(_e), built(false), seg(n) {
+    hld_template() = default;
+    hld_template(int _n, bool _e, int _r) : n(_n), r(_r), edge(_e), built(false), seg(_n) {
         edges.reserve(n - 1);
+        if (n <= 1) build();
     }
     void add_edge(int u, int v, const S &w = Monoid::e()) {
-        edges.emplace_back(u, v, w);
-    }
-    vector<tuple<int, int, bool>> path_decompose(int u, int v) {
-        build();
+        assert(!built);
         assert(0 <= u && u < n);
         assert(0 <= v && v < n);
-        int hu = head[u], hv = head[v];
-        vector<tuple<int, int, bool>> res;
-        while (hu != hv) {
-            bool flip = false;
-            if (in[hu] > in[hv]) {
-                swap(u, v);
-                swap(hu, hv);
-                flip = true;
-            }
-            res.emplace_back(in[hv], in[v] + 1, flip);
-            v = par[hv];
-            hu = head[u];
-            hv = head[v];
-        }
-        bool flip = false;
-        if (in[u] > in[v]) {
-            swap(u, v);
-            flip = true;
-        }
-        res.emplace_back(in[u] + edge, in[v] + 1, flip);
-        return res;
+        edges.emplace_back(u, v, w);
+        if ((int)edges.size() == n - 1) build();
     }
     int lca(int u, int v) {
-        build();
+        assert(built);
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
         while (true) {
             if (in[u] > in[v]) swap(u, v);
             if (head[u] == head[v]) return u;
@@ -53,31 +30,47 @@ struct heavy_light_decomposition {
         return -1;
     }
     void set(int u, const S &w) {
-        build();
+        assert(built);
+        assert(0 <= u && u < n);
         seg.set(idx(u), w);
     }
     void set(int u, int v, const S &w) {
-        build();
+        assert(built);
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
         seg.set(idx(u, v), w);
     }
     template<typename F>
     void apply(int u, int v, const F &f) {
-        build();
+        assert(built);
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
         for (const auto &[l, r, _] : path_decompose(u, v)) {
             seg.apply(l, r, f);
         }
     }
+    template<typename F>
+    void subtree_apply(int u, const F &f) {
+        assert(built);
+        assert(0 <= u && u < n);
+        seg.apply(in[u] + edge, out[u], f);
+    }
     S get(int u) {
-        build();
+        assert(built);
+        assert(0 <= u && u < n);
         return seg.get(idx(u));
     }
     S get(int u, int v) {
-        build();
+        assert(built);
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
         return seg.get(idx(u, v));
     }
     template<typename L>
     S prod(int u, int v, const L &rev) {
-        build();
+        assert(built);
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
         S pl = Monoid::e(), pr = Monoid::e();
         bool flip = false;
         for (const auto &[l, r, flag] : path_decompose(u, v)) {
@@ -90,20 +83,24 @@ struct heavy_light_decomposition {
         pr = Monoid::op(rev(pl), pr);
         return flip ? rev(pr) : pr;
     }
-    S prod(int u, int v) {
-        return prod(u, v, [&](const S &w){ return w; });
+    S subtree_prod(int u) {
+        assert(built);
+        assert(0 <= u && u < n);
+        return seg.prod(in[u] + edge, out[u]);
     }
 private:
-    int n, root, id;
+    int n, r, id;
     bool edge, built;
-    D seg;
+    SegTree<Monoid> seg;
     vector<vector<int>> g;
     vector<int> sub, depth, par, in, out, head, heavy;
     vector<tuple<int, int, S>> edges;
     int idx(int u) {
+        assert(built);
         return in[u];
     }
-    int idx(int u, int v) {
+    int idx(int u, int v) const {
+        assert(built);
         return max(in[u], in[v]);
     }
     void dfs(int u, int p) {
@@ -133,7 +130,6 @@ private:
         out[u] = id;
     }
     void build() {
-        if (built) return;
         g = vector<vector<int>>(n);
         sub = vector<int>(n);
         depth = vector<int>(n);
@@ -147,13 +143,39 @@ private:
             g[v].push_back(u);
         }
         id = 0;
-        dfs(root, root);
-        decompose(root, root);
+        dfs(r, r);
+        decompose(r, r);
+        built = true;
         if (edge) {
             for (const auto &[u, v, w] : edges) {
                 seg.set(idx(u, v), w);
             }
         }
-        built = true;
+    }
+    vector<tuple<int, int, bool>> path_decompose(int u, int v) {
+        assert(built);
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
+        int hu = head[u], hv = head[v];
+        vector<tuple<int, int, bool>> res;
+        while (hu != hv) {
+            bool flip = false;
+            if (in[hu] > in[hv]) {
+                swap(u, v);
+                swap(hu, hv);
+                flip = true;
+            }
+            res.emplace_back(in[hv], in[v] + 1, flip);
+            v = par[hv];
+            hu = head[u];
+            hv = head[v];
+        }
+        bool flip = false;
+        if (in[u] > in[v]) {
+            swap(u, v);
+            flip = true;
+        }
+        res.emplace_back(in[u] + edge, in[v] + 1, flip);
+        return res;
     }
 };
