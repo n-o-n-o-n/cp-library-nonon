@@ -6,8 +6,8 @@ using namespace std;
 
 template<typename OpMonoid>
 struct heavy_light_decomposition {
-    using S = OpMonoid::S;
-    using F = OpMonoid::F;
+    using S = typename OpMonoid::S;
+    using F = typename OpMonoid::F;
     heavy_light_decomposition() = default;
     heavy_light_decomposition(int n, bool e, int r = 0) : g(n, e, r) {}
     void add_edge(int u, int v, const S &w = OpMonoid::e()) {
