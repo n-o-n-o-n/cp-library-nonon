@@ -4,8 +4,9 @@
 #include "segtree/dual_segtree.hpp"
 using namespace std;
 
-template<typename S, typename T = int>
+template<typename Monoid, typename T = int>
 struct rectangle_add_point_get {
+    using S = typename Monoid::S;
     rectangle_add_point_get(int n = 0, int q = 0) {
         xl.reserve(n);
         yl.reserve(n);
@@ -75,16 +76,21 @@ struct rectangle_add_point_get {
 private:
     vector<T> xl, yl, xr, yr, xq, yq, xs, ys;
     vector<S> w;
-    struct Operator {
-        using F = S;
+    struct OpMonoid {
+        using S = typename Monoid::S;
+        static S e() {
+            return Monoid::e();
+        }
+        using F = typename Monoid::S;
         static F comp(F f, F g) {
             return f + g;
         }
         static F id() {
             return 0;
         }
+        static S mapping(F f, S x) {
+            return f + x;
+        }
     };
-    dual_segtree<S, Operator, [](S f, S x){
-        return f + x;
-    }> d;
+    dual_segtree<OpMonoid> d;
 };

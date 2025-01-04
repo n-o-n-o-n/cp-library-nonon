@@ -3,11 +3,12 @@
 #include <vector>
 using namespace std;
 
-template<typename S, typename Operator, auto mapping>
+template<typename OpMonoid>
 struct dual_segtree {
-    using F = Operator::F;
+    using S = typename OpMonoid::S;
+    using F = typename OpMonoid::F;
     dual_segtree() : dual_segtree(0) {}
-    dual_segtree(int _n) : dual_segtree(vector<S>(_n)) {}
+    dual_segtree(int _n) : dual_segtree(vector<S>(_n, OpMonoid::e())) {}
     dual_segtree(const vector<S> &v) { init(v); }
     void init(const vector<S> &v) {
         n = v.size();
@@ -15,7 +16,7 @@ struct dual_segtree {
         while ((1 << log) < n) log++;
         sz = 1 << log;
         d = v;
-        lz = vector<F>(sz, Operator::id());
+        lz = vector<F>(sz, OpMonoid::id());
     }
     void set(int p, const S &x) {
         assert(0 <= p && p < n);
@@ -45,15 +46,15 @@ private:
     vector<F> lz;
     void all_apply(int p, const F &f) {
         if (p < sz) {
-            lz[p] = Operator::comp(f, lz[p]);
+            lz[p] = OpMonoid::comp(f, lz[p]);
         } else {
-            d[p - sz] = mapping(f, d[p - sz]);
+            d[p - sz] = OpMonoid::mapping(f, d[p - sz]);
         }
     }
     void push(int p) {
         all_apply(2 * p, lz[p]);
         all_apply(2 * p + 1, lz[p]);
-        lz[p] = Operator::id();
+        lz[p] = OpMonoid::id();
     }
     void inner_push(int p) {
         for (int i = log; i >= 1; i--) push(p >> i);
