@@ -6,7 +6,7 @@ using namespace std;
 
 template<typename T>
 struct binary_trie {
-    binary_trie() : log(numeric_limits<T>::digits), all(0), cnt(1, 0), child(1, e()) {}
+    binary_trie(int _log = numeric_limits<T>::digits) : log(_log), all(0), sub(1, 0), child(1, e()) {}
     int size() const { return all; }
     vector<int> track(T x) const {
         int pos = 0;
@@ -26,8 +26,8 @@ struct binary_trie {
             int c = x >> i & 1;
             int nxt = child[pos][c];
             if (nxt == -1) {
-                nxt = cnt.size();
-                cnt.push_back(0);
+                nxt = sub.size();
+                sub.push_back(0);
                 child.push_back(e());
             }
             child[pos][c] = nxt;
@@ -35,8 +35,8 @@ struct binary_trie {
         }
         vector<int> tr = track(x);
         int p = tr.back();
-        if (cnt[p] == 0) {
-            for (int i : tr) cnt[i]++;
+        if (sub[p] == 0) {
+            for (int i : tr) sub[i]++;
             all++;
         }
         return tr;
@@ -44,13 +44,13 @@ struct binary_trie {
     void erase(T x) {
         vector<int> tr = track(x);
         int p = tr.back();
-        if (p == -1 || cnt[p] == 0) return;
-        for (int i : tr) cnt[i]--;
+        if (p == -1 || sub[p] == 0) return;
+        for (int i : tr) sub[i]--;
         all--;
     }
     bool constains(T x) const {
         int p = track(x).back();
-        return (p != -1) && (cnt[p] > 0);
+        return (p != -1) && (sub[p] > 0);
     }
     T kth_smallest(int k, T xor_val = 0) const {
         assert(0 <= k && k < size());
@@ -61,11 +61,11 @@ struct binary_trie {
             int c = xor_val >> i & 1;
             int nxt = child[pos][c];
             if (nxt != -1) {
-                if (0 <= k && k < cnt[nxt]) {
+                if (0 <= k && k < sub[nxt]) {
                     pos = nxt;
                     continue;
                 }
-                k -= cnt[nxt];
+                k -= sub[nxt];
             }
             pos = child[pos][1 - c];
             res++;
@@ -93,7 +93,7 @@ struct binary_trie {
             int c = xor_val >> i & 1;
             int nxt = child[pos][c];
             if (nxt == -1) return res << i;
-            if (cnt[nxt] < (T(1) << i)) {
+            if (sub[nxt] < (T(1) << i)) {
                 pos = nxt;
                 continue;
             }
@@ -105,7 +105,7 @@ struct binary_trie {
     }
 private:
     int log, all;
-    vector<int> cnt;
+    vector<int> sub;
     vector<array<int, 2>> child;
     constexpr array<int, 2> e() {
         return {-1, -1};
