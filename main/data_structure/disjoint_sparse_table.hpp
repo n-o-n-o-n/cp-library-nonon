@@ -12,8 +12,12 @@ struct disjoint_sparse_table {
     disjoint_sparse_table(const vector<S> &v) : n(v.size()), b(0), d(1, v) { build(); }
     void set(int p, S x) {
         assert(0 <= p && p < n);
-        assert(d[0][p] == Monoid::e());
+        assert(b == 0);
         d[0][p] = x;
+    }
+    S get(int p) {
+        assert(0 <= p && p < n);
+        return d[0][p];
     }
     S prod(int l, int r) {
         assert(0 <= l && l <= r && r <=n);
