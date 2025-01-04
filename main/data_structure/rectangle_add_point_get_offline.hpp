@@ -6,20 +6,6 @@ using namespace std;
 
 template<typename S, typename T = int>
 struct rectangle_add_point_get {
-    vector<T> xl, yl, xr, yr, xq, yq, xs, ys;
-    vector<S> w;
-    struct Operator {
-        using F = S;
-        static F comp(F f, F g) {
-            return f + g;
-        }
-        static F id() {
-            return 0;
-        }
-    };
-    dual_segtree<S, Operator, [](S f, S x){
-        return f + x;
-    }> d;
     rectangle_add_point_get(int n = 0, int q = 0) {
         xl.reserve(n);
         yl.reserve(n);
@@ -86,4 +72,19 @@ struct rectangle_add_point_get {
         }
         return res;
     }
+private:
+    vector<T> xl, yl, xr, yr, xq, yq, xs, ys;
+    vector<S> w;
+    struct Operator {
+        using F = S;
+        static F comp(F f, F g) {
+            return f + g;
+        }
+        static F id() {
+            return 0;
+        }
+    };
+    dual_segtree<S, Operator, [](S f, S x){
+        return f + x;
+    }> d;
 };
