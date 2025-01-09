@@ -5,7 +5,7 @@ using namespace std;
 
 struct MO {
     MO(int _n, int _q) : n(_n), q(_q) { querys.reserve(q); }
-    void add(int l, int r) { querys.emplace_back(l, r); }
+    void add_query(int l, int r) { querys.emplace_back(l, r); }
     template<typename EXL, typename EXR, typename SHL, typename SHR, typename O>
     void run(const EXL &exl, const EXR &exr, const SHL &shl, const SHR &shr, const O &out) {
         const int b = clamp(int(sqrtl(q * 0.66)), 1, n);
@@ -26,6 +26,10 @@ struct MO {
             while (r > ri) shr(--r);
             out(i);
         }
+    }
+    template<typename EX, typename SH, typename O>
+    void run(const EX &ex, const SH &sh, const O &out) {
+        run(ex, ex, sh, sh, out);
     }
 private:
     int n, q;
