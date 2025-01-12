@@ -9,7 +9,7 @@ struct sparse_table {
     using S = typename Monoid::S;
     sparse_table() = default;
     sparse_table(int _n) : n(_n), b(0), d(1, vector<S>(_n, Monoid::e())) {}
-    sparse_table(const vector<S> &v) : d(1, v) { build(); }
+    sparse_table(const vector<S> &v) : n(v.size()), b(0), d(1, v) { build(); }
     void set(int p, S x) {
         assert(0 <= p && p < n);
         assert(d[0][p] == Monoid::e());
