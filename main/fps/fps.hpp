@@ -131,7 +131,7 @@ struct Formal_Power_Series : vector<mint> {
         FPS res(n + 1);
         res[0] = 0;
         for (int i = 0; i < n; i++) {
-            res[i + 1] = (*this)[i] * mod_inv<mint>(i + 1);
+            res[i + 1] = (*this)[i] * combination::mod_inv<mint>(i + 1);
         }
         return res;
     }
@@ -175,7 +175,7 @@ struct Formal_Power_Series : vector<mint> {
         };
         auto inplace_integral = [&](FPS &f) -> void {
             f.insert(f.begin(), 0);
-            for (int i = 1; i < int(f.size()); i++) f[i] *= mod_inv<mint>(i);
+            for (int i = 1; i < int(f.size()); i++) f[i] *= combination::mod_inv<mint>(i);
         };
         FPS b = {1, 1 < n ? (*this)[1] : 0};
         FPS c = {1}, z1, z2 = {1, 1};
@@ -243,17 +243,17 @@ struct Formal_Power_Series : vector<mint> {
     FPS taylor_shift(mint c) const {
         int n = this->size();
         FPS f = *this;
-        for (int i = 0; i < n; i++) f[i] *= fac<mint>(i);
+        for (int i = 0; i < n; i++) f[i] *= combination::fac<mint>(i);
         reverse(f.begin(), f.end());
         FPS g(n);
         mint pw = 1;
         for (int i = 0; i < n; i++) {
-            g[i] = pw * finv<mint>(i);
+            g[i] = pw * combination::finv<mint>(i);
             pw *= c;
         }
         f = convolution(f, g, n);
         reverse(f.begin(), f.end());
-        for (int i = 0; i < n; i++) f[i] *= finv<mint>(i);
+        for (int i = 0; i < n; i++) f[i] *= combination::finv<mint>(i);
         return f;
     }
 private:

@@ -13,10 +13,10 @@ struct prefix_binomial_sum {
         mint res = table[tn][tk];
         tn *= b;
         tk *= b;
-        while (tk < k) res = res + nCk<mint>(tn, ++tk);
-        while (tk > k) res = res - nCk<mint>(tn, tk--);
-        while (tn < n) res = 2 * res - nCk<mint>(tn++, tk);
-        while (tn > n) res = (res + nCk<mint>(--tn, tk)) * inv2;
+        while (tk < k) res = res + combination::nCk<mint>(tn, ++tk);
+        while (tk > k) res = res - combination::nCk<mint>(tn, tk--);
+        while (tn < n) res = 2 * res - combination::nCk<mint>(tn++, tk);
+        while (tn > n) res = (res + combination::nCk<mint>(--tn, tk)) * inv2;
         return res;
     }
 private:
@@ -33,7 +33,7 @@ private:
             table[i][0] = 1;
             mint cur = 1;
             for (int j = 1; j <= n * b; j++) {
-                cur += nCk<mint>(b * i, j);
+                cur += combination::nCk<mint>(b * i, j);
                 if (j % b == 0) {
                     table[i][j / b] = cur;
                 }

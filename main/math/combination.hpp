@@ -3,8 +3,10 @@
 #include <vector>
 using namespace std;
 
+namespace combination {
+
 template<typename mint>
-struct combination {
+struct C {
     static vector<mint> fac, finv;
     static void init(int n) {
         int sz = fac.size();
@@ -22,18 +24,18 @@ struct combination {
     }
 };
 template<typename mint>
-vector<mint> combination<mint>::fac(1, 1);
+vector<mint> C<mint>::fac(1, 1);
 template<typename mint>
-vector<mint> combination<mint>::finv(1, 1);
+vector<mint> C<mint>::finv(1, 1);
 template<typename mint>
 mint fac(int n) {
-    combination<mint>::init(n);
-    return combination<mint>::fac[n];
+    C<mint>::init(n);
+    return C<mint>::fac[n];
 }
 template<typename mint>
 mint finv(int n) {
-    combination<mint>::init(n);
-    return combination<mint>::finv[n];
+    C<mint>::init(n);
+    return C<mint>::finv[n];
 }
 template<typename mint>
 mint mod_inv(int n) {
@@ -66,3 +68,5 @@ template<typename mint>
 mint grid_path(int n, int m) {
     return nCk<mint>(n + m, n);
 }
+
+} // namespace combination
