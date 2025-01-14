@@ -6,7 +6,7 @@ using namespace std;
 
 template<typename Monoid>
 struct heavy_light_decomposition {
-    using S = Monoid::S;
+    using S = typename Monoid::S;
     heavy_light_decomposition() = default;
     heavy_light_decomposition(int n, bool e, int r = 0) : g(n, e, r) {}
     void add_edge(int u, int v, const S &w = Monoid::e()) {
