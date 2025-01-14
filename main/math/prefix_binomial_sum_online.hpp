@@ -13,17 +13,16 @@ struct prefix_binomial_sum {
         mint res = table[tn][tk];
         tn *= b;
         tk *= b;
-        while (tk < k) res = res + C.C(tn, ++tk);
-        while (tk > k) res = res - C.C(tn, tk--);
-        while (tn < n) res = 2 * res - C.C(tn++, tk);
-        while (tn > n) res = (res + C.C(--tn, tk)) * inv2;
+        while (tk < k) res = res + nCk<mint>(tn, ++tk);
+        while (tk > k) res = res - nCk<mint>(tn, tk--);
+        while (tn < n) res = 2 * res - nCk<mint>(tn++, tk);
+        while (tn > n) res = (res + nCk<mint>(--tn, tk)) * inv2;
         return res;
     }
 private:
     int size, b;
     mint inv2;
     vector<vector<mint>> table;
-    static combination<mint> C;
     void build() {
         size += b;
         inv2 = mint::raw(2).inv();
@@ -34,7 +33,7 @@ private:
             table[i][0] = 1;
             mint cur = 1;
             for (int j = 1; j <= n * b; j++) {
-                cur += C.C(b * i, j);
+                cur += nCk<mint>(b * i, j);
                 if (j % b == 0) {
                     table[i][j / b] = cur;
                 }

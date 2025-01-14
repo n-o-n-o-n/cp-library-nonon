@@ -7,15 +7,14 @@ using namespace std;
 template<typename mint>
 vector<mint> stirling2(int n, int k) {
     using FPS = Formal_Power_Series<mint>;
-    combination<mint> C;
     FPS f(n - k + 1);
     for (int i = 0; i <= n - k; i++) {
-        f[i] = C.finv(i + 1);
+        f[i] = finv<mint>(i + 1);
     }
-    f = f.pow(k) * C.finv(k);
+    f = f.pow(k) * finv<mint>(k);
     vector<mint> res(n + 1);
     for (int i = k; i <= n; i++) {
-        res[i] = f[i - k] * C.fac(i);
+        res[i] = f[i - k] * fac<mint>(i);
     }
     return res;
 }
