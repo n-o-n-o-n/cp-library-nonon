@@ -48,9 +48,7 @@
 - `vector<pair<int, int>> random_tree(int n)`
     - `n` 頂点の重みなし無向木を生成する
     - `prufer_code` から復元するので生成に偏りがあるかも
-
 - `vector<pair<int, int>> random_graph(int n, int m)`
     - `n` 頂点 `m` 辺の無向グラフを生成する
-
 - `vector<pair<int, int>> random_connected_graph(int n, int m)`
     - `n` 頂点 `m` 辺の連結無向グラフを生成する
