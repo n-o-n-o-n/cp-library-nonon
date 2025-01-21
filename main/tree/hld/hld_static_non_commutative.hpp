@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../../data_structure/disjoint_sparse_table.hpp"
+#include "../../data_structure/sparse_table/disjoint_sparse_table.hpp"
 #include "hld_template.hpp"
 using namespace std;
 

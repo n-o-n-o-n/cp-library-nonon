@@ -7,36 +7,36 @@ using namespace std;
 
 struct static_tree {
     static_tree() = default;
-    static_tree(int _n, int r = 0) : n(_n), root(r), e(0), g(_n), built(false) {
-        if (n <= 1) build();
-    }
+    static_tree(int _n, int r = 0) : n(_n), root(r), g(_n), built(false) {}
     void add_edge(int u, int v) {
         assert(!built);
         assert(0 <= u && u < n);
         assert(0 <= v && v < n);
         g[u].push_back(v);
         g[v].push_back(u);
-        e++;
-        if (e == n - 1) build();
     }
     vector<int> &operator[](int u) {
         return g[u];
     }
-    int depth(int u) const {
+    int depth(int u) {
+        build();
         return d[u];
     }
-    int lca(int u, int v, int r = -1) const {
+    int lca(int u, int v, int r = -1) {
+        build();
         if (r == -1) {
             auto [l, r] = minmax({in[u], in[v]});
             return st.prod(l, r + 1).second;
         }
         return lca(u, v) ^ lca(v, r) ^ lca(r, u);
     }
-    int dist(int u, int v) const {
+    int dist(int u, int v) {
+        build();
         int w = lca(u, v);
         return d[u] + d[v] - 2 * d[w];
     }
-    int jump(int u, int v, int k) const {
+    int jump(int u, int v, int k) {
+        build();
         int w = lca(u, v);
         if (d[u] + d[v] - 2 * d[w] < k) return -1;
         if (d[u] - d[w] < k) {
@@ -58,7 +58,7 @@ private:
             return make_pair(1 << 30, -1);
         }
     };
-    int n, root, e;
+    int n, root;
     vector<vector<int>> g, list;
     bool built;
     vector<int> d, ord, in;
