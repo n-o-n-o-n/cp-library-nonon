@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
-#include "../modint/montgomery_modint.hpp"
+#include "../../modint/montgomery_modint.hpp"
 #include "primality_test.hpp"
-#include "../../random_generator/utility.hpp"
+#include "../../../random_generator/utility.hpp"
 using namespace std;
 
 long long rho(long long n) {

@@ -1,5 +1,5 @@
 #pragma once
-#include "../fps/fps.hpp"
+#include "../../fps/fps.hpp"
 
 template<typename mint>
 vector<mint> partition(int n) {

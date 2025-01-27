@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../modint/montgomery_modint.hpp"
+#include "../../modint/montgomery_modint.hpp"
 using namespace std;
 
 bool miller_rabin(long long m, const vector<long long> ps) {

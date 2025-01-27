@@ -1,7 +1,7 @@
 #pragma once
-#include "../modint/montgomery_modint.hpp"
+#include "../../modint/montgomery_modint.hpp"
 #include "prime_factor.hpp"
-#include "../../random_generator/utility.hpp"
+#include "../../../random_generator/utility.hpp"
 using namespace std;
 
 long long primitive_root(long long m) {

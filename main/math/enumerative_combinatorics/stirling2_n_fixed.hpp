@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "../math/combination.hpp"
-#include "../convolution/convolution.hpp"
+#include "combination.hpp"
+#include "../../convolution/convolution.hpp"
 using namespace std;
 
 template<typename mint>

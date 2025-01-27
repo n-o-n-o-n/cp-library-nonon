@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "../modint/modint.hpp"
-#include "../fps/fps.hpp"
+#include "../../modint/modint.hpp"
+#include "../../fps/fps.hpp"
 using namespace std;
 
 
