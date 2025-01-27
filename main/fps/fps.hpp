@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../math/combination.hpp"
+#include "../math/enumerative_combinatorics/combination.hpp"
 #include "../convolution/ntt.hpp"
 using namespace std;
 
