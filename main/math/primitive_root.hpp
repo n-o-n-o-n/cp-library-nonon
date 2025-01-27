@@ -14,17 +14,12 @@ long long primitive_root(long long m) {
     auto ps = prime_factor(m - 1);
     using mint = montgomery_modint;
     mint::set_mod(m);
-    while (true) {
-        long long x = randint_64(1, m - 1);
-        mint a = x;
-        bool ok = true;
+    mint a = randint_64(1, m - 1);
+    while ([&]{
         for (auto p : ps) {
-            if (a.pow((m - 1) / p) == 1) {
-                ok = false;
-                break;
-            }
+            if (a.pow((m - 1) / p) == 1) return true;
         }
-        if (ok) return x;
-    }
-    return -1;
+        return false;
+    }()) a = randint_64(1, m - 1);
+    return a.val();
 }
