@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-#include "../cp-library-nonon/main/convolution/ntt.hpp"
+#include "ntt.hpp"
 
 template<typename mint>
 struct relaxed_convolution {
