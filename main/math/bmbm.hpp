@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
-#include "../cp-library-nonon/main/fps/fps.hpp"
-#include "../cp-library-nonon/main/math/berlekamp_massey.hpp"
-#include "../cp-library-nonon/main/math/bostan_mori.hpp"
+#include "../fps/fps.hpp"
+#include "berlekamp_massey.hpp"
+#include "bostan_mori.hpp"
 using namespace std;
 
 template<typename mint>
