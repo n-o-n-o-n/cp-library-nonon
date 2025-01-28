@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "../math/number_theory/primitive_root.hpp"
 using namespace std;
 
 template<typename mint>
@@ -44,6 +45,7 @@ private:
     static void init() {
         if (log > 0) return;
         int mod = mint::mod();
+        root = primitive_root(mod);
         int tmp = mod - 1;
         log = 1;
         while (tmp % 2 == 0) {
@@ -65,4 +67,4 @@ vector<mint>Number_Theoretic_Transform<mint>::dw_inv = vector<mint>();
 template<typename mint>
 int Number_Theoretic_Transform<mint>::log = 0;
 template<typename mint>
-mint Number_Theoretic_Transform<mint>::root = 3;
+mint Number_Theoretic_Transform<mint>::root = -1;
