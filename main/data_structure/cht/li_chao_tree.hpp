@@ -80,26 +80,22 @@ private:
         built = true;
     }
     void update(line f, int p, int l, int r) {
-        while (true) {
-            auto &g = d[p];
-            int m = (l + r) / 2;
-            bool pl = f(xs[l]) < g(xs[l]);
-            bool pm = f(xs[m]) < g(xs[m]);
-            bool pr = f(xs[r]) < g(xs[r]);
-            if (!pl && !pr) break;
-            if (pl && pr) {
-                g = f;
-                break;
-            }
-            if (pm) swap(f, g);
-            if (l + 1 == r) break;
-            if (pl ^ pm) {
-                p = 2 * p;
-                r = m;
-            } else {
-                p = 2 * p + 1;
-                l = m;
-            }
+        auto &g = d[p];
+        int m = (l + r) / 2;
+        bool pl = f(xs[l]) < g(xs[l]);
+        bool pm = f(xs[m]) < g(xs[m]);
+        bool pr = f(xs[r]) < g(xs[r]);
+        if (!pl && !pr) return;
+        if (pl && pr) {
+            g = f;
+            return;
+        }
+        if (pm) swap(f, g);
+        if (l + 1 == r) return;
+        if (pl ^ pm) {
+            update(f, 2 * p, l, m);
+        } else {
+            update(f, 2 * p + 1, m, r);
         }
     }
 };
