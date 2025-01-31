@@ -4,13 +4,13 @@
 #include "hld_template.hpp"
 using namespace std;
 
-template<typename OpMonoid>
+template<typename ActMonoid>
 struct heavy_light_decomposition {
-    using S = typename OpMonoid::S;
-    using F = typename OpMonoid::F;
+    using S = typename ActMonoid::S;
+    using F = typename ActMonoid::F;
     heavy_light_decomposition() = default;
     heavy_light_decomposition(int n, bool e, int r = 0) : g(n, e, r) {}
-    void add_edge(int u, int v, const S &w = OpMonoid::e()) {
+    void add_edge(int u, int v, const S &w = ActMonoid::e()) {
         g.add_edge(u, v, w);
     }
     int lca(int u, int v) {
@@ -43,5 +43,5 @@ struct heavy_light_decomposition {
         return g.subtree_prod(u);
     }
 private:
-    hld_template<lazy_segtree, OpMonoid> g;
+    hld_template<lazy_segtree, ActMonoid> g;
 };

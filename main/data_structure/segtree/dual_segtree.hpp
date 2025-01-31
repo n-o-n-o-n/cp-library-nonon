@@ -3,12 +3,12 @@
 #include <vector>
 using namespace std;
 
-template<typename OpMonoid>
+template<typename ActSet>
 struct dual_segtree {
-    using S = typename OpMonoid::S;
-    using F = typename OpMonoid::F;
+    using S = typename ActSet::S;
+    using F = typename ActSet::F;
     dual_segtree() : dual_segtree(0) {}
-    dual_segtree(int _n) : dual_segtree(vector<S>(_n, OpMonoid::e())) {}
+    dual_segtree(int _n) : dual_segtree(vector<S>(_n, ActSet::e())) {}
     dual_segtree(const vector<S> &v) { init(v); }
     void init(const vector<S> &v) {
         n = v.size();
@@ -16,7 +16,7 @@ struct dual_segtree {
         while ((1 << log) < n) log++;
         sz = 1 << log;
         d = v;
-        lz = vector<F>(sz, OpMonoid::id());
+        lz = vector<F>(sz, ActSet::id());
     }
     void set(int p, const S &x) {
         assert(0 <= p && p < n);
@@ -46,15 +46,15 @@ private:
     vector<F> lz;
     void all_apply(int p, const F &f) {
         if (p < sz) {
-            lz[p] = OpMonoid::comp(f, lz[p]);
+            lz[p] = ActSet::comp(f, lz[p]);
         } else {
-            d[p - sz] = OpMonoid::mapping(f, d[p - sz]);
+            d[p - sz] = ActSet::mapping(f, d[p - sz]);
         }
     }
     void push(int p) {
         all_apply(2 * p, lz[p]);
         all_apply(2 * p + 1, lz[p]);
-        lz[p] = OpMonoid::id();
+        lz[p] = ActSet::id();
     }
     void inner_push(int p) {
         for (int i = log; i >= 1; i--) push(p >> i);

@@ -4,13 +4,13 @@
 #include "hld_template.hpp"
 using namespace std;
 
-template<typename OpMonoid>
+template<typename ActMonoid>
 struct heavy_light_decomposition {
-    using inner_S = typename OpMonoid::S;
-    using inner_F = typename OpMonoid::F;
+    using inner_S = typename ActMonoid::S;
+    using inner_F = typename ActMonoid::F;
     heavy_light_decomposition() = default;
     heavy_light_decomposition(int n, bool e, int r = 0) : g(n, e, r) {}
-    void add_edge(int u, int v, const inner_S &w = OpMonoid::e()) {
+    void add_edge(int u, int v, const inner_S &w = ActMonoid::e()) {
         g.add_edge(u, v, make_pair(w, w));
     }
     int lca(int u, int v) {
@@ -40,24 +40,24 @@ struct heavy_light_decomposition {
         }).first;
     }
 private:
-    struct pair_OpMonoid {
+    struct pair_ActMonoid {
         using S = pair<inner_S, inner_S>;
         static S op(const S &a, const S &b) {
-            return make_pair(OpMonoid::op(a.first, b.first), OpMonoid::op(b.second, a.second));
+            return make_pair(ActMonoid::op(a.first, b.first), ActMonoid::op(b.second, a.second));
         }
         static S e() {
-            return make_pair(OpMonoid::e(), OpMonoid::e());
+            return make_pair(ActMonoid::e(), ActMonoid::e());
         }
         using F = inner_F;
         static F comp(const F &f, const F &g) {
-            return OpMonoid::comp(f, g);
+            return ActMonoid::comp(f, g);
         }
         static F id() {
-            return OpMonoid::id();
+            return ActMonoid::id();
         }
         static S mapping(const F &f, const S &x) {
-            return make_pair(OpMonoid::mapping(f, x.first), OpMonoid::mapping(f, x.second));
+            return make_pair(ActMonoid::mapping(f, x.first), ActMonoid::mapping(f, x.second));
         }
     };
-    hld_template<lazy_segtree, pair_OpMonoid> g;
+    hld_template<lazy_segtree, pair_ActMonoid> g;
 };
