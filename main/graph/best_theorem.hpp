@@ -6,12 +6,8 @@
 using namespace std;
 
 template<typename mint>
-mint best_theorem(const vector<vector<int>> &g) {
-    int n = g.size();
-    vector<vector<int>> a(n, vector<int>(n));
-    for (int u = 0; u < n; u++) {
-        for (int v : g[u]) a[u][v]++;
-    }
+mint best_theorem_adjacency(const vector<vector<int>> &a) {
+    int n = a.size();
     vector<int> idx;
     idx.reserve(n);
     mint res = 1;
@@ -32,11 +28,21 @@ mint best_theorem(const vector<vector<int>> &g) {
     }
     n = idx.size();
     if (n == 0) return 1;
-    vector<vector<int>> h(n);
+    vector<vector<int>> b(n, vector<int>(n));
     for (int u = 0; u < n; u++) {
         for (int v = 0; v < n; v++) {
-            while (a[idx[u]][idx[v]]--) h[u].push_back(v);
+            b[u][v] = a[idx[u]][idx[v]];
         }
     }
-    return res * matrix_tree_theorem<mint>(h);
+    return res * matrix_tree_theorem_adjacency<mint>(b);
+}
+
+template<typename mint>
+mint best_theorem(const vector<vector<int>> &g) {
+    int n = g.size();
+    vector<vector<int>> a(n, vector<int>(n));
+    for (int u = 0; u < n; u++) {
+        for (int v : g[u]) a[u][v]++;
+    }
+    return best_theorem_adjacency<mint>(a);
 }
