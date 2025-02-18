@@ -4,13 +4,13 @@
 
 ## Constructor
 ```
-binary_trie<T> BT
+binary_trie<T> BT(int d)
 ```
 - `binary_trie` を作る
 - 整数型 `T` を定義する必要がある
-    - 以降 `T` の二進数での桁数を $d$ とする
-        - `T` $=$ `int` の場合は $d=31$
-        - `T` $=$ `long long` の場合は $d=63$
+- `d` は指定しなければ `T` の二進数での桁数上限
+    - `T` $=$ `int` の場合は $d=31$
+    - `T` $=$ `long long` の場合は $d=63$
 
 ## track
 ```

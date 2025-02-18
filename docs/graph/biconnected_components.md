@@ -6,13 +6,13 @@
 ```
 Biconnected_Component G(int n)
 ```
-- `n` 頂点のグラフを構築する
+- $n$ 頂点のグラフを構築する
 
 ## function
 ```
 void add_edge(int u, int v)
 ```
-- 頂点 `u` と頂点 `v` を結ぶ辺を追加する
+- 頂点 $u$ と頂点 $v$ を結ぶ辺を追加する
 - 自己ループは許されていないことに注意
 
 ```

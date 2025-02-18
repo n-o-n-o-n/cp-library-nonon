@@ -1,12 +1,12 @@
 # Lazy Segtree
 
-セグ木. 
+遅延セグ木. 
 
 ## Constructor
 ```
 segtree<Monoid, Opeartor, mapping> seg(int n)
 ```
-- 長さ `n` の遅延セグ木を作る
+- 長さ $n$ の遅延セグ木を作る
 - モノイド, 演算子, 作用を定義する必要がある
     - モノイドの内部で型 `S`, 二項演算 `op`, 単位元 `e` を定義する必要がある
     - 演算子の内部で型 `F`, 合成 `comp`, 恒等写像 `id` を定義する必要がある
@@ -24,7 +24,7 @@ lazy_segtree<Monoid, Operator, mapping> seg(vector<S> v)
 ```
 void set(int p, S x)
 ```
-- `p` 番目の要素を `x` に変更する
+- $p$ 番目の要素を $x$ に変更する
 - 計算量は $O(\log n)$
 
 ```
@@ -37,7 +37,7 @@ void set(vector<S> v)
 ```
 void apply(int l, int r, F f)
 ```
-- 開区間 $[l, r)$ に対して `f` を作用させる
+- 開区間 $[l, r)$ に対して $f$ を作用させる
 - 計算量は $O(\log n)$
 
 ## prod

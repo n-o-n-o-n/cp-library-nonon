@@ -17,8 +17,8 @@ rage_tree<Monoid, T> rt
 ```
 void add_point(T x, T y, S w)
 ```
-- 点 $($ `x` $,$ `y` $)$ に重み `w` の点を追加する
-    - `w` を指定しない場合はモノイドの単位元が入る
+- 点 $(x,y)$ に重み $w$ の点を追加する
+    - $w$ を指定しない場合はモノイドの単位元が入る
 - `add_point` が呼ばれる時点で `set`, `get`, `prod` のいずれも呼ばれていない必要がある
 - 計算量は $O(1)$
 
@@ -26,7 +26,7 @@ void add_point(T x, T y, S w)
 ```
 void set(T x, T y, S w)
 ```
-- 点 $($ `x` $,$ `y` $)$ の重みを `w` に変更する
+- 点 $(x,y)$ の重みを $w$ に変更する
     - この点は `add_point` で追加されている必要がある
 - 計算量は $O((\log n)^2)$
 
@@ -34,7 +34,7 @@ void set(T x, T y, S w)
 ```
 void get(T x, T y)
 ```
-- 点 $($ `x` $,$ `y` $)$ の重みを返す
+- 点 $(x,y)$ の重みを返す
 - この点が `add_point` で追加されていない場合はモノイドの単位元が返る
 - 計算量は $O(\log n)$
 
@@ -42,7 +42,7 @@ void get(T x, T y)
 ```
 S prod(T xl, T yl, T xr, T yr)
 ```
-- 矩形領域 $[$ `xl` $,$ `xr` $)\times[$ `yl` $,$ `yr` $)$ に対する総積を計算する
+- 矩形領域 $[xl,xr)\times[yl,yr)$ に対する総積を計算する
 - 計算量は $O((\log n)^2)$
 
 # verify

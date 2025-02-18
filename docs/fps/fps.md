@@ -45,7 +45,7 @@ FPS >>
 
 FPS(mint x)
 ```
-- `FPS(mint)` は `f` に `x` を代入した結果を返す
+- `FPS(mint)` は $f$ に $x$ を代入した結果を返す
 
 ## dot
 ```
