@@ -69,6 +69,68 @@ struct lazy_segtree {
         return ActMonoid::op(pl, pr);
     }
     S all_prod() const { return d[1]; }
+    template<typename G>
+    int max_right(int l, const G &g) const {
+        assert(0 <= l && l <= n);
+        assert(g(ActMonoid::e()));
+        if (l == n) return n;
+        l += sz;
+        inner_push(l);
+        S p = ActMonoid::e();
+        do {
+            while (!(l & 1)) l >>= 1;
+            S np = ActMonoid::op(p, d[l]);
+            if (!g(np)) {
+                while (l < sz) {
+                    l <<= 1;
+                    np = ActMonoid::op(p, d[l]);
+                    if (g(np)) {
+                        p = np;
+                        l++;
+                    }
+                }
+                return l - sz;
+            }
+            p = np;
+            l++;
+        } while ((l & -l) != l);
+        return n;
+    }
+    template<typename G>
+    int max_right(const G &g) const {
+        return max_right(0, g);
+    }
+    template<typename G>
+    int min_left(int r, const G &g) const {
+        assert(0 <= r && r <= n);
+        assert(g(ActMonoid::e()));
+        if (r == 0) return 0;
+        r += sz;
+        inner_push(r - 1);
+        S p = ActMonoid::e();
+        do {
+            r--;
+            while (r > 1 && r & 1) r >>= 1;
+            S np = ActMonoid::op(d[r], p);
+            if (!g(np)) {
+                while (r < sz) {
+                    (r <<= 1)++;
+                    np = ActMonoid::op(d[r], p);
+                    if (g(np)) {
+                        p = np;
+                        r--;
+                    }
+                }
+                return r + 1 - sz;
+            }
+            p = np;
+        } while ((r & -r) != r);
+        return 0;
+    }
+    template<typename G>
+    int min_left(const G &g) const {
+        return min_left(n, g);
+    }
 private:
     int n, log, sz;
     vector<S> d;
