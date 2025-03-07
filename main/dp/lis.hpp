@@ -6,6 +6,7 @@ using namespace std;
 
 template<typename S>
 vector<int> longest_increasing_subsequence(const vector<S> &v, bool strict = true) {
+    if (v.empty()) return {};
     vector<int> a = compress(v);
     int n = v.size();
     vector<int> dp(n, 1 << 30), idx(n, -1);
