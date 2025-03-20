@@ -40,65 +40,67 @@ struct segtree {
         return Monoid::op(pl, pr);
     }
     S all_prod() const { return d[1]; }
-    template<typename F>
-    int max_right(int l, const F &f) const {
-        assert(0 <= l && l <= n);
-        assert(f(Monoid::e()));
-        if (l == n) return n;
+    template<typename C>
+    int max_right(int l, const C &check, int r = -1) const {
+        if (r == -1) r = n;
+        assert(0 <= l && l <= r && r <= n);
+        assert(check(Monoid::e()));
+        if (l == r) return l;
         l += sz;
         S p = Monoid::e();
         do {
             while (!(l & 1)) l >>= 1;
             S np = Monoid::op(p, d[l]);
-            if (!f(np)) {
+            if (!check(np)) {
                 while (l < sz) {
                     l <<= 1;
                     np = Monoid::op(p, d[l]);
-                    if (f(np)) {
+                    if (check(np)) {
                         p = np;
                         l++;
                     }
                 }
-                return l - sz;
+                return min(l - sz, r);
             }
             p = np;
             l++;
         } while ((l & -l) != l);
-        return n;
+        return r;
     }
-    template<typename F>
-    int max_right(const F &f) const {
-        return max_right(0, f);
+    template<typename C>
+    int max_right(const C &check) const {
+        return max_right(0, check);
     }
-    template<typename F>
-    int min_left(int r, const F &f) const {
-        assert(0 <= r && r <= n);
-        assert(f(Monoid::e()));
-        if (r == 0) return 0;
+    template<typename C>
+    int min_left(int r, const C &check, int l = -1) const {
+        if (l == -1) l = 0;
+        assert(0 <= l && l <= r && r <= n);
+        assert(check(Monoid::e()));
+        if (r == l) return r;
         r += sz;
         S p = Monoid::e();
         do {
             r--;
             while (r > 1 && r & 1) r >>= 1;
             S np = Monoid::op(d[r], p);
-            if (!f(np)) {
+            if (!check(np)) {
                 while (r < sz) {
                     (r <<= 1)++;
                     np = Monoid::op(d[r], p);
-                    if (f(np)) {
+                    if (check(np)) {
                         p = np;
                         r--;
                     }
                 }
-                return r + 1 - sz;
+                return max(l, r + 1 - sz);
             }
             p = np;
         } while ((r & -r) != r);
-        return 0;
+        return l;
     }
-    template<typename F>
-    int min_left(const F &f) const {
-        return min_left(n, f);
+    template<typename C>
+    int min_left(const C &check) const {
+        return min_left(n, check);
     }
 private:
     int n, log, sz;
