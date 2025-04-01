@@ -7,7 +7,7 @@ template<typename T1, typename T2 = long long, typename Compare = less<T1>>
 struct top_k_set {
     top_k_set(int _k) : k(_k), lower_sum(0) {}
     void insert(T1 x) {
-        if ((int)lower.size() < k || Compare()(x, *prev(lower.end()))) {
+        if (k > 0 && ((int)lower.size() < k || Compare()(x, *prev(lower.end())))) {
             lower_sum += x;
             lower.insert(x);
         } else {
@@ -32,7 +32,6 @@ struct top_k_set {
         return *prev(lower.end());
     }
     T2 sum() const {
-        assert((int)lower.size() == k);
         return lower_sum;
     }
 private:

@@ -20,7 +20,6 @@ struct dual_segtree {
     }
     void set(int p, const S &x) {
         assert(0 <= p && p < n);
-        p += sz;
         d[p] = x;
     }
     void apply(int l, int r, const F &f) {
