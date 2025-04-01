@@ -30,11 +30,13 @@ vector<mint> C<mint>::finv(1, 1);
 template<typename mint>
 mint fac(int n) {
     C<mint>::init(n);
+    if (n < 0) return 0;
     return C<mint>::fac[n];
 }
 template<typename mint>
 mint finv(int n) {
     C<mint>::init(n);
+    if (n < 0) return 0;
     return C<mint>::finv[n];
 }
 template<typename mint>

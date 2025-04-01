@@ -5,7 +5,8 @@
 #include "../../../random_generator/utility.hpp"
 using namespace std;
 
-long long rho(long long n) {
+template<typename T>
+T rho(T n) {
     for (int p : {2, 3, 5, 7}) {
         if (n % p == 0) return p;
     }
@@ -15,7 +16,7 @@ long long rho(long long n) {
         mint u = randint_64(2, n - 1);
         mint v = u;
         mint c = randint_64(1, n - 1);
-        long long d = 1;
+        T d = 1;
         while (d == 1) {
             u = u * u + c;
             v = v * v + c;
@@ -27,13 +28,15 @@ long long rho(long long n) {
     return -1;
 }
 
-vector<long long> prime_factor(long long n) {
+template<typename T>
+vector<T> prime_factor(T n) {
     if (n <= 1) return {};
     if (is_prime(n)) return {n};
-    vector<long long> res;
-    long long d = rho(n);
+    vector<T> res;
+    T d = rho(n);
     auto a = prime_factor(d);
     auto b = prime_factor(n / d);
     merge(a.begin(), a.end(), b.begin(), b.end(), back_inserter(res));
+    res.erase(unique(res.begin(), res.end()), res.end());
     return res;
 }
