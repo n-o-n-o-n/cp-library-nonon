@@ -4,6 +4,8 @@
 #include <string>
 using namespace std;
 
+
+// lcp[i] = lcp(S[ sa[i-1] : N ], S[ sa[i] : N ])
 template<typename S>
 vector<int> lcp_array(const vector<S> &v, const vector<int> &sa) {
     int n = v.size();

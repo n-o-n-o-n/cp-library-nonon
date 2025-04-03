@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <cassert>
 #include <vector>
 using namespace std;
@@ -71,29 +72,64 @@ struct hld_template {
         assert(built);
         assert(0 <= u && u < n);
         assert(0 <= v && v < n);
-        S pl = Monoid::e(), pr = Monoid::e();
-        bool flip = false;
-        for (const auto &[l, r, flag] : path_decompose(u, v)) {
-            if (flag) {
-                flip = !flip;
-                swap(pl, pr);
-            }
-            pr = Monoid::op(seg.prod(l, r), pr);
+        S p = Monoid::e();
+        for (auto [l, r, flag] : path_decompose(u, v)) {
+            S sub_p = seg.prod(l, r);
+            p = Monoid::op(p, flag ? rev(sub_p) : sub_p);
         }
-        pr = Monoid::op(rev(pl), pr);
-        return flip ? rev(pr) : pr;
+        return p;
     }
     S subtree_prod(int u) {
         assert(built);
         assert(0 <= u && u < n);
         return seg.prod(in[u] + edge, out[u]);
     }
+    template<typename C, typename L>
+    int binary_search(int u, int v, const C &check, const L &rev) {
+        assert(built);
+        assert(check(Monoid::e()));
+        assert(0 <= u && u < n);
+        assert(0 <= v && v < n);
+        S p = Monoid::e();
+        for (auto [l, r, flag] : path_decompose(u, v)) {
+            if (flag) {
+                S np = Monoid::op(p, rev(seg.prod(l, r)));
+                if (!check(np)) {
+                    if (!check(Monoid::op(p, rev(seg.get(r - 1))))) {
+                        return u;
+                    }
+                    return inv[
+                        seg.min_left(r, [&](const S &x) {
+                            return check(Monoid::op(p, rev(x)));
+                        })
+                    ];
+                }
+                p = np;
+                u = inv[l];
+            } else {
+                S np = Monoid::op(p, seg.prod(l, r));
+                if (!check(np)) {
+                    if (!check(Monoid::op(p, seg.get(l)))) {
+                        return u;
+                    }
+                    return inv[
+                        seg.max_right(l, [&](const S &x) {
+                            return check(Monoid::op(p, x));
+                        }) - 1
+                    ];
+                }
+                p = np;
+                u = inv[r - 1];
+            }
+        }
+        return v;
+    }
 private:
     int n, r, id;
     bool edge, built;
     SegTree<Monoid> seg;
     vector<vector<int>> g;
-    vector<int> sub, depth, par, in, out, head, heavy;
+    vector<int> sub, depth, par, in, inv, out, head, heavy;
     vector<tuple<int, int, S>> edges;
     int idx(int u) {
         assert(built);
@@ -121,6 +157,7 @@ private:
     void decompose(int u, int h) {
         head[u] = h;
         in[u] = id++;
+        inv[in[u]] = u;
         if (heavy[u] != -1) decompose(heavy[u], h);
         for (int v : g[u]) {
             if (v != par[u] && v != heavy[u]) {
@@ -135,6 +172,7 @@ private:
         depth = vector<int>(n);
         par = vector<int>(n, -1);
         in = vector<int>(n);
+        inv = vector<int>(n);
         out = vector<int>(n);
         head = vector<int>(n);
         heavy = vector<int>(n, -1);
@@ -157,25 +195,39 @@ private:
         assert(0 <= u && u < n);
         assert(0 <= v && v < n);
         int hu = head[u], hv = head[v];
-        vector<tuple<int, int, bool>> res;
+        vector<tuple<int, int>> resl, resr;
+        bool flip = true;
         while (hu != hv) {
-            bool flip = false;
+            bool flag = false;
             if (in[hu] > in[hv]) {
                 swap(u, v);
                 swap(hu, hv);
-                flip = true;
+                flag = true;
             }
-            res.emplace_back(in[hv], in[v] + 1, flip);
+            if (flag) {
+                flip = !flip;
+                swap(resl, resr);
+            }
+            resl.emplace_back(in[hv], in[v] + 1);
             v = par[hv];
             hu = head[u];
             hv = head[v];
         }
-        bool flip = false;
+        bool flag = false;
         if (in[u] > in[v]) {
             swap(u, v);
-            flip = true;
+            flag = true;
         }
-        res.emplace_back(in[u] + edge, in[v] + 1, flip);
+        if (flag) {
+            flip = !flip;
+            swap(resl, resr);
+        }
+        resl.emplace_back(in[u] + edge, in[v] + 1);
+        if (flip) swap(resl, resr);
+        reverse(resr.begin(), resr.end());
+        vector<tuple<int, int, bool>> res;
+        for (auto [l, r] : resl) res.emplace_back(l, r, true);
+        for (auto [l, r] : resr) res.emplace_back(l, r, false);
         return res;
     }
 };

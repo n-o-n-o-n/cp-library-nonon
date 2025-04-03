@@ -39,6 +39,14 @@ struct heavy_light_decomposition {
             return make_pair(x.second, x.first);
         }).first;
     }
+    template<typename C>
+    int binary_search(int u, int v, const C &check) {
+        return g.binary_search(u, v, [&](const pair<inner_S, inner_S> &x) {
+            return check(x.first);
+        }, [&](const pair<inner_S, inner_S> &x) {
+            return make_pair(x.second, x.first)
+        });
+    }
 private:
     struct pair_ActMonoid {
         using S = pair<inner_S, inner_S>;

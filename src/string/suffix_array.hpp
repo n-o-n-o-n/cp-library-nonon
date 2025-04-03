@@ -4,6 +4,8 @@
 #include <vector>
 using namespace std;
 
+// S[ sa[i-1] : N] < S[ sa[i] : N]
+// O(N log N)
 template<typename S>
 vector<int> suffix_array(const vector<S> &v) {
     int n = v.size();

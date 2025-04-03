@@ -42,6 +42,12 @@ struct heavy_light_decomposition {
     S subtree_prod(int u) {
         return g.subtree_prod(u);
     }
+    template<typename C>
+    int binary_search(int u, int v, const C &check) {
+        return g.binary_search(u, v, check, [](const S &x) {
+            return x;
+        });
+    }
 private:
     hld_template<lazy_segtree, ActMonoid> g;
 };

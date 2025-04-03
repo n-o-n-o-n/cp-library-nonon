@@ -8,4 +8,7 @@ struct add_monoid {
         return a + b;
     }
     static S e() { return 0; }
+    static S inv(const S &x) {
+        return -x;
+    }
 };

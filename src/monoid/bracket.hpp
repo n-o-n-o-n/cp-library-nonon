@@ -13,4 +13,5 @@ struct Bracket {
     static S L() { return make_pair(1, 0); }
     static S R() { return make_pair(-1, -1); }
     static S map(char c) { return c == '(' ? L() : R(); }
+    static char flip(char c) { return c == '(' ? ')' : '('; }
 };
