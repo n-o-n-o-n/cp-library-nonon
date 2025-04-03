@@ -4,7 +4,7 @@
 #include <set>
 #include <vector>
 #include "utility.hpp"
-#include "../main/tree/prufer_code.hpp"
+#include "../src/tree/prufer_code.hpp"
 using namespace std;
 
 vector<pair<int, int>> random_tree(int n) {
