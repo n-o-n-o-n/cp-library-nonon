@@ -60,3 +60,9 @@ vector<int> random_permutaion(int n, int val = 0) {
     shuffle(res.begin(), res.end(), rng);
     return res;
 }
+
+string random_string(int n, char a, char z) {
+    string s(n, a);
+    for (auto &c : s) c = randint(a, z);
+    return s;
+}

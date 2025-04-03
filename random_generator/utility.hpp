@@ -19,6 +19,11 @@ long long randint_64(long long low, long long hi) {
     return dist(rng_64);
 }
 
+double randdouble(double low, double hi) {
+    uniform_real_distribution<double> dist(low, hi);
+    return dist(rng);
+}
+
 pair<int, int> randpair(int low, int hi, bool strict = false) {
     assert(low + strict <= hi);
     int L = randint(low, hi - strict);
