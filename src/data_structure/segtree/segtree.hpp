@@ -5,14 +5,15 @@ using namespace std;
 
 template <typename Monoid>
 struct segtree {
-    using S = typename Monoid::S;
+    using M = Monoid;
+    using S = typename M::S;
     segtree() : segtree(0) {}
-    segtree(int _n) : segtree(vector<S>(_n, Monoid::e())) {}
+    segtree(int _n) : segtree(vector<S>(_n, M::e())) {}
     segtree(const vector<S> &v) : n(v.size()) {
         log = 1;
         while ((1 << log) < n) log++;
         sz = 1 << log;
-        d = vector<S>(2 * sz, Monoid::e());
+        d = vector<S>(2 * sz, M::e());
         for (int i = 0; i < n; i++) d[i + sz] = v[i];
         for (int i = sz - 1; i >= 1; i--) update(i);
     }
@@ -30,31 +31,31 @@ struct segtree {
         assert(0 <= l && l <= r && r <= n);
         l += sz;
         r += sz;
-        S pl = Monoid::e(), pr = Monoid::e();
+        S pl = M::e(), pr = M::e();
         while (l < r) {
-            if (l & 1) pl = Monoid::op(pl, d[l++]);
-            if (r & 1) pr = Monoid::op(d[--r], pr);
+            if (l & 1) pl = M::op(pl, d[l++]);
+            if (r & 1) pr = M::op(d[--r], pr);
             l >>= 1;
             r >>= 1;
         }
-        return Monoid::op(pl, pr);
+        return M::op(pl, pr);
     }
     S all_prod() const { return d[1]; }
     template<typename C>
     int max_right(int l, const C &check, int r = -1) const {
         if (r == -1) r = n;
         assert(0 <= l && l <= r && r <= n);
-        assert(check(Monoid::e()));
+        assert(check(M::e()));
         if (l == r) return l;
         l += sz;
-        S p = Monoid::e();
+        S p = M::e();
         do {
             while (!(l & 1)) l >>= 1;
-            S np = Monoid::op(p, d[l]);
+            S np = M::op(p, d[l]);
             if (!check(np)) {
                 while (l < sz) {
                     l <<= 1;
-                    np = Monoid::op(p, d[l]);
+                    np = M::op(p, d[l]);
                     if (check(np)) {
                         p = np;
                         l++;
@@ -75,18 +76,18 @@ struct segtree {
     int min_left(int r, const C &check, int l = -1) const {
         if (l == -1) l = 0;
         assert(0 <= l && l <= r && r <= n);
-        assert(check(Monoid::e()));
+        assert(check(M::e()));
         if (r == l) return r;
         r += sz;
-        S p = Monoid::e();
+        S p = M::e();
         do {
             r--;
             while (r > 1 && r & 1) r >>= 1;
-            S np = Monoid::op(d[r], p);
+            S np = M::op(d[r], p);
             if (!check(np)) {
                 while (r < sz) {
                     (r <<= 1)++;
-                    np = Monoid::op(d[r], p);
+                    np = M::op(d[r], p);
                     if (check(np)) {
                         p = np;
                         r--;
@@ -106,6 +107,6 @@ private:
     int n, log, sz;
     vector<S> d;
     void update(int p) {
-        d[p] = Monoid::op(d[2 * p], d[2 * p + 1]);
+        d[p] = M::op(d[2 * p], d[2 * p + 1]);
     }
 };

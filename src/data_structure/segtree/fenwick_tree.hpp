@@ -6,7 +6,17 @@ using namespace std;
 template<typename T>
 struct fenwick_tree {
     fenwick_tree() = default;
-    fenwick_tree(int _n) : n(_n), d(_n, 0), v(_n, 0) {}
+    fenwick_tree(int _n) : fenwick_tree(vector<T>(_n, 0)) {}
+    fenwick_tree(const vector<T> &_v) : n(_v.size()) {
+        d = vector<T>(n, 0);
+        v = vector<T>(n, 0);
+        for (int i = 1; i <= n; i++) {
+            v[i - 1] = _v[i - 1];
+            d[i - 1] += v[i - 1];
+            int j = i + (i & -i);
+            if (j <= n) d[j - 1] += d[i - 1];
+        }
+    }
     void add(int p, T x) {
         assert(0 <= p && p < n);
         v[p] += x;

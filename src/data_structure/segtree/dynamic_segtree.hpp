@@ -5,7 +5,8 @@ using namespace std;
 
 template<typename Monoid, typename T = int>
 struct dynamic_segtree {
-    using S = Monoid::S;
+    using M = Monoid;
+    using S = M::S;
     dynamic_segtree(T _n) : n(_n), root(make_unique<node>()) {
         log = 1;
         while ((T(1) << log) < n) log++;
@@ -24,18 +25,18 @@ struct dynamic_segtree {
         return prod(root, 0, sz, l, r);
     }
     S all_prod() const {
-        return root ? root->prod : Monoid::e();
+        return root ? root->prod : M::e();
     }
 private:
     struct node {
         S x;
         unique_ptr<node> l, r;
-        node() : node(Monoid::e()) {}
+        node() : node(M::e()) {}
         node(S _x) : x(_x), l(nullptr), r(nullptr) {}
         void update() {
-            S pl = l ? l->x : Monoid::e();
-            S pr = r ? r->x : Monoid::e();
-            x = Monoid::op(pl, pr);
+            S pl = l ? l->x : M::e();
+            S pr = r ? r->x : M::e();
+            x = M::op(pl, pr);
         }
     };
     T n, sz;
@@ -57,17 +58,17 @@ private:
         t->update();
     }
     S get(const unique_ptr<node> &t, T l, T r, T p) const {
-        if (!t) return Monoid::e();
+        if (!t) return M::e();
         if (l + 1 == r) return t->x;
         T m = (l + r) / 2;
         return p < m ? get(t->l, l, m, p) : get(t->r, m, r, p);
     }
     S prod(const unique_ptr<node> &t, T l, T r, T ql, T qr) const {
-        if (!t || r <= ql || qr <= l) return Monoid::e();
+        if (!t || r <= ql || qr <= l) return M::e();
         if (ql <= l && r <= qr) return t->x;
         T m = (l + r) / 2;
-        S pl = t->l ? prod(t->l, l, m, ql, qr) : Monoid::e();
-        S pr = t->r ? prod(t->r, m, r, ql, qr) : Monoid::e();
-        return Monoid::op(pl, pr);
+        S pl = t->l ? prod(t->l, l, m, ql, qr) : M::e();
+        S pr = t->r ? prod(t->r, m, r, ql, qr) : M::e();
+        return M::op(pl, pr);
     }
 };

@@ -6,11 +6,35 @@
 using namespace std;
 
 struct bit_segtree {
+    struct M {
+        using S = int;
+        static S op(S a, S b) {
+            return a + b;
+        }
+        static S e() {
+            return 0;
+        }
+    };
     bit_segtree() : bit_segtree(0) {}
     bit_segtree(int _n) : n(_n) {
+    }
+    template<typename T>
+    bit_segtree(const vector<T> &v) : n(v.size()) {
         sz = (n + 63) / 64;
         d = vector<unsigned long long>(sz, 0);
-        fw = fenwick_tree<int>(sz);
+        for (int p = 0; p < n; p++) {
+            if (v[p]) {
+                int i = p >> 6, j = p & 63;
+                d[i] |= 1ULL << j;
+            }
+        }
+        fw = fenwick_tree<int>([&]{
+            vector<int> ppc(sz);
+            for (int i = 0; i < sz; i++) {
+                ppc[i] = __builtin_popcountll(d[i]);
+            }
+            return ppc;
+        }());
     }
     void set(int p) {
         assert(0 <= p && p < n);
@@ -28,6 +52,10 @@ struct bit_segtree {
             update(i);
         }
     }
+    void set(int p, bool x) {
+        assert(0 <= p && p < n);
+        x ? set(p) : reset(p);
+    }
     void flip(int p) {
         assert(0 <= p && p < n);
         int i = p >> 6, j = p & 63;
@@ -37,6 +65,9 @@ struct bit_segtree {
     bool test(int p) const {
         assert(0 <= p && p < n);
         return d[p >> 6] >> (p & 63) & 1;
+    }
+    bool get(int p) const {
+        return test(p);
     }
     int count(int l, int r) const {
         assert(0 <= l && l <= r && r <= n);
@@ -50,6 +81,9 @@ struct bit_segtree {
         res -= __builtin_popcountll(d[il] & ((1ULL << jl) - 1));
         res += __builtin_popcountll(d[ir] & ((1ULL << jr) - 1));
         return res;
+    }
+    int prod(int l, int r) const {
+        return count(l, r);
     }
     bool all(int l, int r) const {
         assert(0 <= l && l <= r && r <= n);
