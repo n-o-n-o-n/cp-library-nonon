@@ -42,11 +42,10 @@ struct segtree {
     }
     S all_prod() const { return d[1]; }
     template<typename C>
-    int max_right(int l, const C &check, int r = -1) const {
-        if (r == -1) r = n;
-        assert(0 <= l && l <= r && r <= n);
+    int max_right(int l, const C &check) const {
+        assert(0 <= l && l <= n);
         assert(check(M::e()));
-        if (l == r) return l;
+        if (l == n) return l;
         l += sz;
         S p = M::e();
         do {
@@ -61,23 +60,22 @@ struct segtree {
                         l++;
                     }
                 }
-                return min(l - sz, r);
+                return l - sz;
             }
             p = np;
             l++;
         } while ((l & -l) != l);
-        return r;
+        return n;
     }
     template<typename C>
     int max_right(const C &check) const {
         return max_right(0, check);
     }
     template<typename C>
-    int min_left(int r, const C &check, int l = -1) const {
-        if (l == -1) l = 0;
-        assert(0 <= l && l <= r && r <= n);
+    int min_left(int r, const C &check) const {
+        assert(0 <= r && r <= n);
         assert(check(M::e()));
-        if (r == l) return r;
+        if (r == 0) return r;
         r += sz;
         S p = M::e();
         do {
@@ -93,11 +91,11 @@ struct segtree {
                         r--;
                     }
                 }
-                return max(l, r + 1 - sz);
+                return r + 1 - sz;
             }
             p = np;
         } while ((r & -r) != r);
-        return l;
+        return 0;
     }
     template<typename C>
     int min_left(const C &check) const {
