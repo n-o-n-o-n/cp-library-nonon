@@ -25,7 +25,7 @@ struct dynamic_segtree {
         return prod(root, 0, sz, l, r);
     }
     S all_prod() const {
-        return root ? root->prod : M::e();
+        return root ? root->x : M::e();
     }
 private:
     struct node {
