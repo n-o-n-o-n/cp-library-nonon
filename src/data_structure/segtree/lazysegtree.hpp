@@ -72,11 +72,10 @@ struct lazy_segtree {
     }
     S all_prod() const { return d[1]; }
     template<typename C>
-    int max_right(int l, const C &check, int r = -1) {
-        if (r == -1) r = n;
-        assert(0 <= l && l <= r && r <= n);
+    int max_right(int l, const C &check) {
+        assert(0 <= l && l <= n);
         assert(check(M::e()));
-        if (l == r) return l;
+        if (l == n) return l;
         l += sz;
         inner_push(l);
         S p = M::e();
@@ -92,23 +91,22 @@ struct lazy_segtree {
                         l++;
                     }
                 }
-                return min(r, l - sz);
+                return l - sz;
             }
             p = np;
             l++;
         } while ((l & -l) != l);
-        return r;
+        return n;
     }
     template<typename C>
     int max_right(const C &check) {
         return max_right(0, check);
     }
     template<typename C>
-    int min_left(int r, const C &check, int l = -1) {
-        if (l == -1) l = 0;
-        assert(0 <= l && l <= r && r <= n);
+    int min_left(int r, int l, const C &check) {
+        assert(0 <= r && r <= n);
         assert(check(M::e()));
-        if (l == r) return l;
+        if (r == 0) return l;
         r += sz;
         inner_push(r - 1);
         S p = M::e();
@@ -126,11 +124,11 @@ struct lazy_segtree {
                         r--;
                     }
                 }
-                return max(l, r + 1 - sz);
+                return r + 1 - sz;
             }
             p = np;
         } while ((r & -r) != r);
-        return l;
+        return 0;
     }
     template<typename C>
     int min_left(const C &check) {
