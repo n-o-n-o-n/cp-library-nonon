@@ -74,8 +74,12 @@ struct hld_template {
         assert(0 <= v && v < n);
         S p = Monoid::e();
         for (auto [l, r, flag] : path_decompose(u, v)) {
+            cout << l << ' ' << r << ' ' << flag << endl;
             S sub_p = seg.prod(l, r);
+            auto q = flag ? rev(sub_p) : sub_p;
+            cout << q.first.a.val() << ' ' << q.first.b.val() << endl;
             p = Monoid::op(p, flag ? rev(sub_p) : sub_p);
+            cout << p.first.a.val() << ' ' << p.first.b.val() << endl;
         }
         return p;
     }
