@@ -1,8 +1,8 @@
 #pragma once
+#include <random>
 #include <vector>
 #include "../../modint/montgomery_modint.hpp"
 #include "primality_test.hpp"
-#include "../../../random_generator/utility.hpp"
 using namespace std;
 
 template<typename T>
@@ -10,6 +10,12 @@ T rho(T n) {
     for (int p : {2, 3, 5, 7}) {
         if (n % p == 0) return p;
     }
+    auto randint_64 = [&](T low, T hi) -> T {
+        random_device seed;
+        mt19937_64 rng(seed());
+        uniform_int_distribution<T> dist(low, hi);
+        return dist(rng);
+    };
     using mint = montgomery_modint;
     mint::set_mod(n);
     while (true) {

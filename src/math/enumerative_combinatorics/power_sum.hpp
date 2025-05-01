@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-#include "../main/fps/fps.hpp"
+#include "../../fps/fps.hpp"
 
 template<typename mint>
 vector<mint> power_sum(int k, long long n) {
