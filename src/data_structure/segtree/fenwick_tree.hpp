@@ -28,9 +28,26 @@ struct fenwick_tree {
         assert(0 <= p && p < n);
         add(p, x - v[p]);
     }
+    T get(int p) const {
+        assert(0 <= p && p < n);
+        return v[p];
+    }
     T sum(int l, int r) const {
         assert(0 <= l && l <= r && r <= n);
         return sum(r) - sum(l);
+    }
+    // max{ r | sum(r) < x }
+    int lower_bound(T x) const {
+        int r = 0, p = 1;
+        while ((p << 1) <= n) p <<= 1;
+        while (p > 0) {
+            if (r + p <= n && d[r + p - 1] < x) {
+                r += p;
+                x -= d[r - 1];
+            }
+            p >>= 1;
+        }
+        return r;
     }
 private:
     int n;
