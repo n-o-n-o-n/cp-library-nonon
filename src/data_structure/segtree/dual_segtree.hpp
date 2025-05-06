@@ -48,7 +48,7 @@ private:
         if (p < sz) {
             lz[p] = M::comp(f, lz[p]);
         } else {
-            d[p - sz] = M::mapping(f, d[p - sz]);
+            d[p - sz] = M::map(f, d[p - sz]);
         }
     }
     void push(int p) {

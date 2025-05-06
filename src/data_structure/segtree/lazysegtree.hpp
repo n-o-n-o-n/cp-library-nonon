@@ -23,7 +23,7 @@ struct lazy_segtree {
         assert(0 <= p && p < n);
         p += sz;
         inner_push(p);
-        d[p] = M::mapping(f, d[p]);
+        d[p] = M::map(f, d[p]);
         inner_update(p);
     }
     void apply(int l, int r, const F &f) {
@@ -152,7 +152,7 @@ private:
         d[p] = M::op(d[2 * p], d[2 * p + 1]);
     }
     void all_apply(int p, const F &f) {
-        d[p] = M::mapping(f, d[p]);
+        d[p] = M::map(f, d[p]);
         if (p < sz) lz[p] = M::comp(f, lz[p]);
     }
     void push(int p) {
