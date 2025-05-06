@@ -69,3 +69,10 @@ bool none(int l, int r)
 - 開区間 $[l, r)$ 内の要素が全て $0$ であるかをチェックする
 - 計算量は $O(\log n)$
 
+## lower_bound
+```
+int lower_bound(int x)
+```
+- $x < \text{count}(0, r)$ を満たす最大の $r$ を返す
+- 存在しない場合は $n$ が返る
+- 計算量は $O(\log n)$

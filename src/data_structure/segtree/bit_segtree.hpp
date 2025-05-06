@@ -2,72 +2,54 @@
 #include <cassert>
 #include <numeric>
 #include <vector>
-#include "fenwick_tree.hpp"
 using namespace std;
 
 struct bit_segtree {
-    struct M {
-        using S = int;
-        static S op(S a, S b) {
-            return a + b;
-        }
-        static S e() {
-            return 0;
-        }
-    };
     bit_segtree() : bit_segtree(0) {}
-    bit_segtree(int _n) : n(_n) {
-    }
+    bit_segtree(int _n) : bit_segtree(vector<int>(_n, 0)) {}
     template<typename T>
-    bit_segtree(const vector<T> &v) : n(v.size()) {
-        sz = (n + 63) / 64;
-        d = vector<unsigned long long>(sz, 0);
+    bit_segtree(const vector<T> &_v) : n(_v.size()) {
+        sz = (n + 63) >> 6;
+        bit = vector<unsigned long long>(sz, 0);
+        d = v = vector<int>(sz, 0);
         for (int p = 0; p < n; p++) {
-            if (v[p]) {
+            if (_v[p]) {
                 int i = p >> 6, j = p & 63;
-                d[i] |= 1ULL << j;
+                bit[i] |= 1ULL << j;
             }
         }
-        fw = fenwick_tree<int>([&]{
-            vector<int> ppc(sz);
-            for (int i = 0; i < sz; i++) {
-                ppc[i] = __builtin_popcountll(d[i]);
-            }
-            return ppc;
-        }());
+        for (int i = 1; i <= sz; i++) {
+            v[i - 1] = __builtin_popcountll(bit[i - 1]);
+            d[i - 1] += v[i - 1];
+            int j = i + (i & -i);
+            if (j <= sz) d[j - 1] += d[i - 1];
+        }
     }
     void set(int p) {
         assert(0 <= p && p < n);
         int i = p >> 6, j = p & 63;
-        if ((d[i] >> j & 1) == 0) {
-            d[i] |= 1ULL << j;
-            update(i);
+        if ((bit[i] >> j & 1) == 0) {
+            bit[i] |= 1ULL << j;
+            fw_update(i);
         }
     }
     void reset(int p) {
         assert(0 <= p && p < n);
         int i = p >> 6, j = p & 63;
-        if (d[i] >> j & 1) {
-            d[i] &= ~(1uLL << j);
-            update(i);
+        if (bit[i] >> j & 1) {
+            bit[i] &= ~(1uLL << j);
+            fw_update(i);
         }
-    }
-    void set(int p, bool x) {
-        assert(0 <= p && p < n);
-        x ? set(p) : reset(p);
     }
     void flip(int p) {
         assert(0 <= p && p < n);
         int i = p >> 6, j = p & 63;
-        d[i] ^= 1ULL << j;
-        update(i);
+        bit[i] ^= 1ULL << j;
+        fw_update(i);
     }
     bool test(int p) const {
         assert(0 <= p && p < n);
-        return d[p >> 6] >> (p & 63) & 1;
-    }
-    bool get(int p) const {
-        return test(p);
+        return bit[p >> 6] >> (p & 63) & 1;
     }
     int count(int l, int r) const {
         assert(0 <= l && l <= r && r <= n);
@@ -75,15 +57,12 @@ struct bit_segtree {
         int il = l >> 6, jl = l & 63;
         int ir = r >> 6, jr = r & 63;
         if (il == ir) {
-            return __builtin_popcountll((d[il] >> jl) & ((1ULL << (jr - jl)) - 1));
+            return __builtin_popcountll((bit[il] >> jl) & ((1ULL << (jr - jl)) - 1));
         }
-        int res = fw.sum(il, ir);
-        res -= __builtin_popcountll(d[il] & ((1ULL << jl) - 1));
-        res += __builtin_popcountll(d[ir] & ((1ULL << jr) - 1));
+        int res = fw_sum(ir) - fw_sum(il);
+        res -= __builtin_popcountll(bit[il] & ((1ULL << jl) - 1));
+        res += __builtin_popcountll(bit[ir] & ((1ULL << jr) - 1));
         return res;
-    }
-    int prod(int l, int r) const {
-        return count(l, r);
     }
     bool all(int l, int r) const {
         assert(0 <= l && l <= r && r <= n);
@@ -97,11 +76,45 @@ struct bit_segtree {
         assert(0 <= l && l <= r && r <= n);
         return count(l, r) == 0;
     }
+    int lower_bound(int x) const {
+        int p = fw_lower_bound(x);
+        if (p == sz) return n;
+        int l = 0, r = 64;
+        while (r - l > 1) {
+            int m = (l + r) >> 1;
+            (__builtin_popcountll(bit[p] & ((1ULL << m) - 1)) < x ? l : r) = m;
+        }
+        return (p << 6) ^ l;
+    }
 private:
     int n, sz;
-    vector<unsigned long long> d;
-    fenwick_tree<int> fw;
-    void update(int p) {
-        fw.update(p, __builtin_popcountll(d[p]));
+    vector<unsigned long long> bit;
+    vector<int> d, v;
+    void fw_update(int p) {
+        int x = __builtin_popcountll(bit[p]) - v[p];
+        v[p] += x;
+        for (p++; p <= sz; p += p & -p) {
+            d[p - 1] += x;
+        }
+    }
+    int fw_sum(int p) const {
+        int res = 0;
+        while (p > 0) {
+            res += d[p - 1];
+            p -= p & -p;
+        }
+        return res;
+    }
+    int fw_lower_bound(int &x) const {
+        int r = 0, p = 1;
+        while ((p << 1) <= sz) p <<= 1;
+        while (p > 0) {
+            if (r + p <= sz && d[r + p - 1] < x) {
+                r += p;
+                x -= d[r - 1];
+            }
+            p >>= 1;
+        }
+        return r;
     }
 };
