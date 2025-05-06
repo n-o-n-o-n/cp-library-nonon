@@ -45,7 +45,7 @@ bool test(int p)
 ```
 int count(int l, int r)
 ```
-- 開区間 $[l, r)$ に対する総和を計算する
+- 半開区間 $[l, r)$ に対する総和を計算する
 - 計算量は $O(\log n)$
 
 ## all
@@ -73,6 +73,6 @@ bool none(int l, int r)
 ```
 int lower_bound(int x)
 ```
-- $x < \text{count}(0, r)$ を満たす最大の $r$ を返す
-- 存在しない場合は $n$ が返る
+- $\text{count}(0, r) < x$ なる最大の $r$ を返す
+- $\text{count}(0, n) < x$ のときは $n$ が返る
 - 計算量は $O(\log n)$

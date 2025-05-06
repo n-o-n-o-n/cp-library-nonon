@@ -48,20 +48,18 @@ S all_prod()
 
 ## max_right
 ```
-int max_right(int l, const C &check, int r)
+int max_right(int l, const C &check)
 ```
 - 右側へのセグ木上の二分探索を行う
-- $check(\prod_{l \leq i \lt k})$ なる $k$ の最大値を $r^\prime$ として $\min(r, r^\prime)$ が返る
-- $check(e)$ が `true` である必要がある
-- $r$ は指定しなければ $n$
+- $\text{check}(\text{prod}(l, r))$ が `true` となる $r$ の最大値が返る
+- $\text{check}(e)$ が `true` である必要がある
 - 計算量は $O(\log n)$
 
 ## min_left
 ```
-int min_left(int r, const C &check, int l)
+int min_left(int r, const C &check)
 ```
 - 左側へのセグ木上の二分探索を行う
-- $check(\prod_{k \leq i \lt r})$ なる $k$ の最小値を $l^\prime$ として $\max(l, l^\prime)$ が返る
-- $check(e)$ が `true` である必要がある
-- $l$ は指定しなければ $0$
+- $\text{check}(\text{prod}(l, r))$ が `true` となる $l$ の最小値が返る
+- $\text{check}(e)$ が `true` である必要がある
 - 計算量は $O(\log n)$
