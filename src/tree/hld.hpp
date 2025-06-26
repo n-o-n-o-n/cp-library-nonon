@@ -4,7 +4,6 @@
 #include <vector>
 using namespace std;
 
-// 書きかけ
 template<typename SegTree, bool edge, bool commutative>
 struct heavy_light_decomposition {
     using M = typename SegTree::M;
@@ -20,7 +19,7 @@ struct heavy_light_decomposition {
         assert(0 <= v && v < n);
         assert(u != v);
         edges.emplace_back(u, v, w);
-        if ((int)edges.size() + 1 == n) build();
+        if (ssize(edges) + 1 == n) build();
     }
     int lca(int u, int v) {
         assert(built);
