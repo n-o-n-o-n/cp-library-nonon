@@ -24,7 +24,7 @@ struct ActMonoid {
     static F id() {
         return 0;
     }
-    static S mapping(F f, S x) {
+    static S map(F f, S x) {
         x.first += f;
         return x;
     }
