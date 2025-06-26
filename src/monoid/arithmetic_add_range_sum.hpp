@@ -2,6 +2,9 @@
 #include <limits>
 using namespace std;
 
+// apply(l, r, F(a, b)): for i in [l, r); v[i] += a * i + b
+// If you want to apply it for i in [0, k); v[i + l] += a * i + b,
+// you should use apply(l, r, F(a, b - a * l))
 template<typename T>
 struct arithmetic_add_range_sum {
     static constexpr int inf = numeric_limits<int>::max() / 2;
@@ -34,7 +37,7 @@ struct arithmetic_add_range_sum {
     static F id() {
         return F();
     }
-    static S mapping(const F &f, const S &x) {
+    static S map(const F &f, const S &x) {
         S y;
         y.sm = x.sm + (f.a * (x.l + x.r - 1) + f.b * 2) * (x.r - x.l) / 2;
         y.l = x.l;
