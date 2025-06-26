@@ -57,11 +57,11 @@ struct bit_segtree {
         int il = l >> 6, jl = l & 63;
         int ir = r >> 6, jr = r & 63;
         if (il == ir) {
-            return __builtin_popcountll((bit[il] >> jl) & ((1ULL << (jr - jl)) - 1));
+            return __builtin_popcountll((bit[il] >> jl) & mask(jr - jl));
         }
         int res = fw_sum(ir) - fw_sum(il);
-        res -= __builtin_popcountll(bit[il] & ((1ULL << jl) - 1));
-        res += __builtin_popcountll(bit[ir] & ((1ULL << jr) - 1));
+        res -= __builtin_popcountll(bit[il] & mask(jl));
+        res += __builtin_popcountll(bit[ir] & mask(jr));
         return res;
     }
     bool all(int l, int r) const {
@@ -82,7 +82,7 @@ struct bit_segtree {
         int l = 0, r = 64;
         while (r - l > 1) {
             int m = (l + r) >> 1;
-            (__builtin_popcountll(bit[p] & ((1ULL << m) - 1)) < x ? l : r) = m;
+            (__builtin_popcountll(bit[p] & mask(m)) < x ? l : r) = m;
         }
         return (p << 6) ^ l;
     }
@@ -90,6 +90,9 @@ private:
     int n, sz;
     vector<unsigned long long> bit;
     vector<int> d, v;
+    static constexpr unsigned long long mask(int m) {
+        return (1ULL << m) - 1;
+    }
     void fw_update(int p) {
         int x = __builtin_popcountll(bit[p]) - v[p];
         v[p] += x;
