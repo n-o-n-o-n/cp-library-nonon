@@ -1,12 +1,22 @@
 #pragma once
+#include <cassert>
 #include <vector>
 using namespace std;
 
 struct dsu {
     dsu(int n) : p(n, -1) {}
-    int leader(int u) { return p[u] < 0 ? u : leader(p[u]); }
-    bool same(int u, int v) { return leader(u) == leader(v); }
+    int leader(int u) const {
+        assert(0 <= u && u < ssize(p));
+        return p[u] < 0 ? u : leader(p[u]);
+    }
+    bool same(int u, int v) const {
+        assert(0 <= u && u < ssize(p));
+        assert(0 <= v && v < ssize(p));
+        return leader(u) == leader(v);
+    }
     void merge(int u, int v) {
+        assert(0 <= u && u < ssize(p));
+        assert(0 <= v && v < ssize(p));
         u = leader(u);
         v = leader(v);
         if (u == v) return;
@@ -14,8 +24,11 @@ struct dsu {
         p[u] += p[v];
         p[v] = u;
     }
-    int size(int u) { return -p[leader(u)]; }
-    vector<vector<int>> groups() {
+    int size(int u) const {
+        assert(0 <= u && u < ssize(p));
+        return -p[leader(u)];
+    }
+    vector<vector<int>> groups() const {
         int n = p.size();
         vector<vector<int>> V(n);
         for (int i = 0; i < n; i++) {
