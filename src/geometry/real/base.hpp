@@ -1,6 +1,7 @@
 #pragma once
 #include <cassert>
 #include <cmath>
+#include <iostream>
 #include <numeric>
 using namespace std;
 
@@ -14,12 +15,12 @@ constexpr Real eps = 1e-12;
 constexpr Real PI = acosl(-1);
 constexpr Real INF_REAL = numeric_limits<Real>::max();
 
-bool is_same(Real a, Real b) {
+bool equal_eps(Real a, Real b) {
     return abs(a - b) < eps;
 }
 
 int sgn(Real a) {
-    return is_same(a, 0) ? 0 : a > 0 ? 1 : -1;
+    return equal_eps(a, 0) ? 0 : a > 0 ? 1 : -1;
 }
 
 struct Point {
@@ -43,7 +44,7 @@ struct Point {
         return *this;
     }
     Point &operator/=(const Real &r) {
-        assert(!is_same(r, 0));
+        assert(!equal_eps(r, 0));
         x /= r;
         y /= r;
         return *this;
@@ -54,10 +55,10 @@ struct Point {
     Point operator/(const Real &r) const { return Point(*this) /= r; }
     Point operator-() const { return Point() - *this; }
     bool operator==(const Point &p) const {
-        return is_same(x, p.x) && is_same(y, p.y);
+        return equal_eps(x, p.x) && equal_eps(y, p.y);
     }
     bool operator!=(const Point &p) const {
-        return !is_same(x, p.x) || !is_same(y, p.y);
+        return !equal_eps(x, p.x) || !equal_eps(y, p.y);
     }
     Point rotate(Real rad) const {
         Real c = cosl(rad), s = sinl(rad);
@@ -65,11 +66,18 @@ struct Point {
         Real ty = x * s + y * c;
         return Point(tx, ty);
     }
+    Point unit() const {
+        return (*this) / metric();
+    }
     Real Re() const { return x; }
     Real Im() const { return y; }
     Real norm() const { return x * x + y * y; }
-    Real abs() const { return sqrtl(norm()); }
+    Real metric() const { return sqrtl(norm()); }
     Real arg() const { return atan2l(y, x); }
+    Real arg(Point q1, Point q2) const {
+        q1 -= *this, q2 -= *this;
+        return abs(q1.arg() - q2.arg());
+    }
     friend Point operator*(Real r, const Point &p) {
         return p * r;
     }
@@ -89,11 +97,18 @@ Real cross(const Point &p, const Point &q) {
 Real norm(const Point &p) {
     return p.norm();
 }
-Real abs(const Point &p) {
-    return p.abs();
+Real metric(const Point &p) {
+    return p.metric();
+}
+Real metric(const Point &p, const Point &q) {
+    return metric(p - q);
 }
 Real arg(const Point &p) {
     return p.arg();
+}
+
+bool equal_point(const Point &p, const Point &q) {
+    return equal_eps(p.x, q.x) && equal_eps(p.y, q.y);
 }
 
 constexpr Point INF_POINT = Point(INF_REAL, INF_REAL);
@@ -107,6 +122,13 @@ int ccw(const Point &a, const Point &b, const Point &c) {
     if (dot(p, q) < eps) return 2; // c, a, b の順で一直線
     if (norm(p) < norm(q)) return -2; // a, b, c の順で一直線
     return 0; // a, c, b の順で一直線
+}
+
+istream &operator>>(istream &is, Point& p) {
+    Real x, y;
+    is >> x >> y;
+    p = Point(x, y);
+    return is;
 }
 
 } // namespace geometry

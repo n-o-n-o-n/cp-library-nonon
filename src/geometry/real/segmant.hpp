@@ -19,8 +19,8 @@ struct Segment {
         return INF_POINT;
     }
     Real dist(const Point &r) const {
-        if (dot(q - p, r - p) < eps) return (r - p).abs();
-        if (dot(p - q, r - q) < eps) return (r - q).abs();
+        if (dot(q - p, r - p) < eps) return (r - p).metric();
+        if (dot(p - q, r - q) < eps) return (r - q).metric();
         return l.dist(r);
     }
     Real dist(const Segment &s) const {

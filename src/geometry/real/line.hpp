@@ -13,23 +13,23 @@ struct Line {
     constexpr Line(const Point &p, const Point &q) : a(q.y - p.y), b(p.x - q.x), c(p.x * q.y - p.y * q.x) {}
     constexpr Line(Real _a, const Point &p) : a(_a), b(-1), c(_a * p.x - p.y) {}
     bool online(const Point &p) const {
-        return is_same(a * p.x + b * p.y, c);
+        return equal_eps(a * p.x + b * p.y, c);
     }
     Real get_x(Real y) const {
-        if (is_same(a, 0)) return INF_REAL;
+        if (equal_eps(a, 0)) return INF_REAL;
         return (c - b * y) / a;
     }
     Real get_y(Real x) const {
-        if (is_same(b, 0)) return INF_REAL;
+        if (equal_eps(b, 0)) return INF_REAL;
         return (c - a * x) / b;
     }
     Line perpendicular(const Point &p) const {
-        if (is_same(a, 0)) return Line(1, 0, p.x);
-        if (is_same(0, b)) return Line(0, 1, p.y);
+        if (equal_eps(a, 0)) return Line(1, 0, p.x);
+        if (equal_eps(0, b)) return Line(0, 1, p.y);
         return Line(b / a, p);
     }
     Point crossppoint(const Line &l) const {
-        if (is_same(a * l.b, l.a * b)) return INF_POINT;
+        if (equal_eps(a * l.b, l.a * b)) return INF_POINT;
         Real d = a * l.b - l.a * b;
         return Point(l.b * c - b * l.c, l.c * a - c * l.a) / d;
     }
@@ -40,15 +40,22 @@ struct Line {
         Point q = projection(p);
         return 2 * q - p;
     }
+    Point unit() const {
+        if (equal_eps(b, 0)) {
+            return Point(0, 1);
+        }
+        Point p(0, get_y(0)), q(1, get_y(1));
+        return (p - q) / metric(p - q);
+    }
     bool is_orthogonal(const Line &l) const {
-        return is_same(a * l.a + b * l.b, 0);
+        return equal_eps(a * l.a + b * l.b, 0);
     }
     bool is_parallel(const Line &l) const {
-        return is_same(a * l.b, l.a * b);
+        return equal_eps(a * l.b, l.a * b);
     }
     Real dist(const Point &p) const {
         Point q = projection(p);
-        return abs(p - q);
+        return metric(p - q);
     }
 };
 

@@ -18,7 +18,7 @@ struct Polygon : vector<Point> {
             // need std::
             if (Im(a) > Im(b)) std::swap(a, b);
             if (sgn(Im(a)) <= 0 && 0 < sgn(Im(b)) && sgn(cross(a, b)) < 0) in = !in;
-            if (is_same(cross(a, b), 0) && sgn(dot(a, b)) <= 0) return 1;
+            if (equal_eps(cross(a, b), 0) && sgn(dot(a, b)) <= 0) return 1;
         }
         return in ? 2 : 0;
     }
@@ -31,6 +31,28 @@ struct Polygon : vector<Point> {
             S += cross(a, b);
         }
         return S * 0.5;
+    }
+    tuple<Real, Point, Point> diam() const {
+        int n = this->size();
+        int ii = 0, jj = 0;
+        for (int i = 1; i < n; i++) {
+            if ((*this)[i].y > (*this)[ii].y) ii = i;
+            if ((*this)[i].y < (*this)[jj].y) jj = i;
+        }
+        Real res = metric((*this)[ii] - (*this)[jj]);
+        int i = ii, j = jj;
+        Point resp, resq;
+        do {
+            Point p = (*this)[i + 1 == n ? 0 : i + 1] - (*this)[i];
+            Point q = (*this)[j + 1 == n ? 0 : j + 1] - (*this)[j];
+            if (cross(p, q) > eps) j = (j + 1 == n ? 0 : j + 1);
+            else i = (i + 1 == n ? 0 : i + 1);
+            if (metric((*this)[i] - (*this)[j]) > res) {
+                res = metric((*this)[i] - (*this)[j]);
+                resp = (*this)[i], resq = (*this)[j];
+            }
+        } while (i != ii || j != jj);
+        return make_tuple(res, resp, resq);
     }
     bool is_convex() const {
         int n = this->size();
@@ -47,7 +69,7 @@ struct Polygon : vector<Point> {
         int idx = 0, n = this->size();
         for (int i = 0; i < n; i++) {
             Real x = (*this)[i].x, y = (*this)[i].y;
-            if (y < y_min || (is_same(y, y_min) && x < x_min)) {
+            if (y < y_min || (equal_eps(y, y_min) && x < x_min)) {
                 x_min = x;
                 y_min = y;
                 idx = i;
