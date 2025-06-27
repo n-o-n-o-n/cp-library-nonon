@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "base.hpp"
-#include "line.hpp"
+#include "segmant.hpp"
+#include "polygon.hpp"
 using namespace std;
 
 namespace geometry {
@@ -30,6 +30,13 @@ struct circle {
         Point e = l.unit();
         Real t = sqrtl(r * r - d * d);
         return {q - t * e, q + t * e};
+    }
+    vector<Point> crosspoints(const Segment &s) const {
+        vector<Point> res;
+        for (Point p : crosspoints(s.l)) {
+            if (s.on_segment(p)) res.push_back(p);
+        }
+        return res;
     }
     vector<Point> crosspoints(const circle &c) const {
         int t = count_common_tangent(c);
@@ -74,6 +81,42 @@ struct circle {
             }
         }
         return res;
+    }
+    Real area_of_intersection(const Polygon &g) const {
+        auto f = [&] (Point a, Point b) -> Real {
+            Real res = 0;
+            auto ps = circle(Point(0, 0), r).crosspoints(Segment(a, b));
+            if (a.norm() < r * r - eps && b.norm() < r * r - eps) {
+                res += cross(a, b);
+            } else if (a.norm() < r * r - eps) {
+                assert(ps.size());
+                res += cross(a, ps[0]);
+                res += r * r * angle(Point(0, 0), ps[0], b);
+            } else if (b.norm() < r * r - eps) {
+                assert(ps.size());
+                res += r * r * angle(Point(0, 0), a, ps[0]);
+                res += cross(ps[0], b);
+            } else {
+                if (ps.empty()) {
+                    res += r * r * angle(Point(0, 0), a, b);
+                } else {
+                    Point pa = ps.front(), pb = ps.back();
+                    if (norm(a - pa) > norm(a - pb)) swap(pa, pb);
+                    res += r * r * angle(Point(0, 0), a, pa);
+                    res += cross(pa, pb);
+                    res += r * r * angle(Point(0, 0), pb, b);
+                }
+            }
+            return res;
+        };
+        int n = g.size();
+        Real S = 0;
+        for (int i = 0; i < n; i++) {
+            Point a = g[i] - p;
+            Point b = g[i == n - 1 ? 0 : i + 1] - p;
+            if (abs(ccw(p, a, b)) == 1) S += f(a, b);
+        }
+        return 0.5 * S;
     }
 };
 

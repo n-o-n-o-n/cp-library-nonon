@@ -106,6 +106,10 @@ Real metric(const Point &p, const Point &q) {
 Real arg(const Point &p) {
     return p.arg();
 }
+Real angle(Point o, Point p, Point q) {
+    p -= o, q -= o;
+    return atan2l(cross(p, q), dot(p, q));
+}
 
 bool equal_point(const Point &p, const Point &q) {
     return equal_eps(p.x, q.x) && equal_eps(p.y, q.y);
