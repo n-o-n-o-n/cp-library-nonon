@@ -7,9 +7,31 @@
 #include "../src/tree/prufer_code.hpp"
 using namespace std;
 
-vector<pair<int, int>> random_tree(int n) {
+namespace rng {
+
+vector<pair<int, int>> random_tree(int n, bool corner = false) {
     if (n == 1) return {};
     if (n == 2) return {make_pair(0, 1)};
+    if (corner) {
+        // ウニ
+        if (randint(1, 3) == 1) {
+            int r = randint(0, n - 1);
+            vector<pair<int, int>> res;
+            for (int i = 0; i < n; i++) {
+                if (r != i) res.push_back(minmax(r, i));
+            }
+            return res;
+        }
+        // パス
+        if (randint(1, 3) == 1) {
+            auto p = random_permutaion(n, 0);
+            vector<pair<int, int>> res;
+            for (int i = 1; i < n; i++) {
+                res.emplace_back(minmax(p[i - 1], p[i]));
+            }
+            return res;
+        }
+    }
     vector<int> p(n - 2);
     for (int &e : p) e = randint(0, n - 1);
     auto t = prufer_code_expansion(p);
@@ -65,4 +87,6 @@ vector<pair<int, int>> random_connected_graph(int n, int m) {
         edges.emplace(u, v);
     }
     return vector<pair<int, int>>(edges.begin(), edges.end());
+}
+
 }

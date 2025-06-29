@@ -3,8 +3,15 @@
 #include <cassert>
 #include <vector>
 #include "utility.hpp"
-#include "../main/misc/even_distribution_array.hpp"
+#include "../src/misc/even_distribution_array.hpp"
 using namespace std;
+
+namespace rng {
+
+template<typename T>
+void shuffle(vector<T> &v) {
+    shuffle(v.begin(), v.end(), eng);
+}
 
 vector<int> random_sequence(int n, int low, int hi) {
     vector<int> res(n);
@@ -65,4 +72,6 @@ string random_string(int n, char a, char z) {
     string s(n, a);
     for (auto &c : s) c = randint(a, z);
     return s;
+}
+
 }
