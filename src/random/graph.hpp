@@ -4,7 +4,7 @@
 #include <set>
 #include <vector>
 #include "utility.hpp"
-#include "../src/tree/prufer_code.hpp"
+#include "../tree/prufer_code.hpp"
 using namespace std;
 
 namespace rng {
@@ -52,7 +52,7 @@ vector<pair<int, int>> random_graph(int n, int m) {
                 edges.emplace_back(i, j);
             }
         }
-        shuffle(edges.begin(), edges.end(), rng);
+        shuffle(edges);
         return vector<pair<int, int>>(edges.begin(), edges.begin() + m);
     }
     set<pair<int, int>> edges;
@@ -75,7 +75,7 @@ vector<pair<int, int>> random_connected_graph(int n, int m) {
                 if (!used[i][j]) edges.emplace_back(i, j);
             }
         }
-        shuffle(edges.begin(), edges.end(), rng);
+        shuffle(edges);
         m -= n - 1;
         while ((int)edges.size() > m) edges.pop_back();
         for (auto p : t) edges.push_back(p);

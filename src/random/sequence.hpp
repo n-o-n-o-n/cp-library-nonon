@@ -3,7 +3,7 @@
 #include <cassert>
 #include <vector>
 #include "utility.hpp"
-#include "../src/misc/even_distribution_array.hpp"
+#include "../misc/even_distribution_array.hpp"
 using namespace std;
 
 namespace rng {
@@ -64,7 +64,7 @@ vector<long long> random_decreasing_sequence_64(int n, long long low, long long 
 vector<int> random_permutaion(int n, int val = 0) {
     vector<int> res(n);
     iota(res.begin(), res.end(), val);
-    shuffle(res.begin(), res.end(), rng);
+    shuffle(res.begin(), res.end(), eng);
     return res;
 }
 
