@@ -6,7 +6,6 @@
 #include <vector>
 using namespace std;
 
-// 書きかけ
 template<typename T>
 struct interval_set {
     interval_set() {
@@ -111,7 +110,7 @@ struct interval_set {
         auto it = key(k);
         return it->l <= k && k < it->r ? make_pair(it->l, it->r) : make_pair(-inf, -inf);
     }
-    vector<pair<T, T>> ranges() const {
+    vector<pair<T, T>> intervals() const {
         vector<pair<T, T>> res;
         res.reserve(s.size());
         for (auto [l, r] : s) {
@@ -119,8 +118,13 @@ struct interval_set {
         }
         return res;
     }
+    void clear() {
+        s = set<node>();
+        s.emplace(-inf, -inf);
+        s.emplace(inf, inf);
+    }
     void debug() const {
-        for (auto [l, r] : ranges()) {
+        for (auto [l, r] : intervals()) {
             cout << '(' << l << ',' << r << ')';
         }
         cout << endl;
