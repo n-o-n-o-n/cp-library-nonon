@@ -4,13 +4,14 @@
 #include "merge_and_unique.hpp"
 using namespace std;
 
-template<typename T>
-vector<int> compress(const vector<T> &v) {
-    int n = v.size();
-    auto b = merge_and_unique(v);
-    vector<int> res(n);
-    for (int i = 0; i < n; i++) {
-        res[i] = lower_bound(b.begin(), b.end(), v[i]) - b.begin();
-    }
-    return res;
+template<typename T, typename... Ts>
+int compress(vector<T> &a, Ts &...z) {
+    auto zip = merge_and_unique(a, z...);
+    auto f = [&] (vector<T> &v) -> void {
+        for (T &e : v) {
+            e = lower_bound(zip.begin(), zip.end(), e) - zip.begin();
+        }
+    };
+    (f(a), ..., f(z));
+    return (int)zip.size();
 }
