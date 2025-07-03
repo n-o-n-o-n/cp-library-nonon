@@ -87,7 +87,7 @@ struct interval_map {
     // return (left, right, val) s.t. left <= k < right
     tuple<T, T, S> get(T k) const {
         auto it = key(k);
-        return it->l <= k && k < it->r ? node(k, k + 1, e) : make_tuple(it->l, it->r, it->x);
+        return it->l <= k && k < it->r ? make_tuple(it->l, it->r, it->x) : make_tuple(k, k + 1, e);
     }
     // val at k
     S operator[](T k) const {
@@ -97,6 +97,20 @@ struct interval_map {
     tuple<T, T, S> mex(T k) const {
         auto it = key(k);
         return make_tuple(it->l, it->r, it->x);
+    }
+    vector<tuple<T, T, S>> intervals() const {
+        vector<tuple<T, T, S>> res;
+        res.reserve(s.size());
+        for (auto [l, r, x] : s) {
+            if (abs(l) != inf && abs(r) != inf) res.emplace_back(l, r, x);
+        }
+        return res;
+    }
+    void debug() const {
+        for (auto [l, r, x] : intervals()) {
+            cout << '(' << l << ',' << r << ',' << x << ')';
+        }
+        cout << endl;
     }
 private:
     static constexpr T inf = numeric_limits<T>::max();
