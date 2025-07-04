@@ -51,6 +51,10 @@ struct fast_read {
         }
         ptr++;
     }
+    template<typename T>
+    void operator()(vector<T> &v) {
+        for (auto &e : v) (*this)(e);
+    }
     template<typename... Ts> requires(sizeof...(Ts) != 1)
     void operator() (Ts &... xs) {
         ((*this)(xs), ...);
@@ -155,6 +159,14 @@ struct fast_write {
             s.remove_prefix(n);
         }
         flush<0>();
+    }
+    template<typename T>
+    void operator()(vector<T> v) {
+        int n = v.size();
+        for (int i = 0; i < n; i++) {
+            (*this)(v[i]);
+            if (i < n - 1) (*this)(' ');
+        }
     }
     template<typename T, typename... Ts>
     void operator()(T &&x, Ts &&...xs) {
