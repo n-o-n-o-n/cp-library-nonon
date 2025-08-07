@@ -2,6 +2,7 @@
 #include <utility>
 using namespace std;
 
+// find x, y s.t. ax + by = gcd(a, b) and return gcd(a, b)
 template<typename T>
 T extended_gcd(T a, T b, T &x, T &y) {
     T g = a;
