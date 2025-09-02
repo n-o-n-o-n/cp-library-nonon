@@ -180,7 +180,7 @@ struct Formal_Power_Series : vector<mint> {
         FPS b = {1, 1 < n ? (*this)[1] : 0};
         FPS c = {1}, z1, z2 = {1, 1};
         for (int d = 2; d < deg; d <<= 1) {
-            FPS  y = b;
+            FPS y = b;
             y.resize(d << 1);
             y.ntt();
             z1 = z2;

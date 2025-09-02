@@ -3,9 +3,6 @@
 #include <vector>
 using namespace std;
 
-#include <bits/stdc++.h>
-using namespace std;
-
 struct bipartite_matching {
     int n, m;
     bipartite_matching(int _n, int _m) : n(_n), m(_m), g(_n), match(_m, -1), used(_n) {}

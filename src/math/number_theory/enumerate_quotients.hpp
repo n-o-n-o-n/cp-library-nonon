@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 
+// for all m in [l, r), floor(n/m) = q
 template<typename T>
 vector<tuple<T, T, T>> enumerate_quotients(T n) {
     vector<tuple<T, T, T>> res;

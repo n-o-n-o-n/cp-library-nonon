@@ -1,8 +1,10 @@
 #pragma once
+#include <algorithm>
 #include <array>
 #include <cstring>
 #include <filesystem>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // https://judge.yosupo.jp/submission/212769

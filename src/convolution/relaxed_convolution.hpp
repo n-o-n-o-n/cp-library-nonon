@@ -17,7 +17,7 @@ struct relaxed_convolution {
         assert(i <= n);
         a[i] = x;
         b[i] = y;
-        c[i] += a[i] * b[0] + (i > 0 ? b[i] * a[0]: mint(0));
+        c[i] += a[i] * b[0] + (i > 0 ? b[i] * a[0] : mint(0));
         i++;
         if (i > n) return c[i - 1];
         for(int d = 1, k = 0; d <= i; d <<= 1, k++) {
