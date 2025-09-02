@@ -1,14 +1,14 @@
 #pragma once
 #include <cassert>
 #include <vector>
-#include "rectangle_sum.hpp"
+#include "static_point_add_rectangle_sum.hpp"
 
 template<typename Abelian_Group, typename T = int>
-struct point_add_rectangle_sum {
+struct dynamic_point_add_rectangle_sum {
     using M = Abelian_Group;
     using S = typename M::S;
-    point_add_rectangle_sum() : point_add_rectangle_sum(0, 0) {}
-    point_add_rectangle_sum(int n, int q) {
+    dynamic_point_add_rectangle_sum() : dynamic_point_add_rectangle_sum(0, 0) {}
+    dynamic_point_add_rectangle_sum(int n, int q) {
         types.reserve(n + q);
         update_querys.reserve(n);
         sum_querys.reserve(q);
@@ -39,7 +39,7 @@ struct point_add_rectangle_sum {
             for (int i = l; i < r; i++) {
                 (types[i] ? tq : tn)++;
             }
-            rectangle_sum<Abelian_Group, T> rs(tn, tq);
+            static_point_add_rectangle_sum<Abelian_Group, T> rs(tn, tq);
             for (int i = l; i < m; i++) {
                 if (!types[i]) {
                     auto [x, y, w] = update_querys[inv[i]];
@@ -55,8 +55,7 @@ struct point_add_rectangle_sum {
             auto sub = rs.solve();
             for (int i = m, j = 0; i < r; i++) {
                 if (types[i]) {
-                    assert(inv[i] != -1);
-                    res[inv[i]] += sub[j++];
+                    res[inv[i]] = M::op(res[inv[i]], sub[j++]);
                 }
             }
         };

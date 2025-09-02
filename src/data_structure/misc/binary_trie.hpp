@@ -48,6 +48,7 @@ struct binary_trie {
         for (int i : tr) sub[i]--;
         all--;
     }
+    // return (x in S ? true : false);
     bool constains(T x) const {
         int p = track(x).back();
         return (p != -1) && (sub[p] > 0);
@@ -100,6 +101,54 @@ struct binary_trie {
             res++;
             if (child[pos][1 - c] == -1) return res << i;
             pos = child[pos][1 - c];
+        }
+        return res;
+    }
+    // retrun #{y in S | y xor xor_val <= x}
+    int lower_count(T x, T xor_val = 0) const {
+        int pos = 0;
+        int res = 0;
+        for (int i = log - 1; i >= 0; i--) {
+            if (pos == -1) break;
+            int cx = (x >> i) & 1;
+            int cxor = (xor_val >> i) & 1;
+            int nxt0 = child[pos][cxor];
+            int nxt1 = child[pos][1 - cxor];
+            if (cx == 1) {
+                if (nxt0 != -1) {
+                    res += sub[nxt0];
+                }
+                pos = nxt1;
+            } else {
+                pos = nxt0;
+            }
+        }
+        if (pos != -1) {
+            res += sub[pos];
+        }
+        return res;
+    }
+    // return #{y in S | y xor xor_val >= x}
+    int upper_count(T x, T xor_val = 0) const {
+        int res = 0;
+        int pos = 0;
+        for (int i = log - 1; i >= 0; i--) {
+            if (pos == -1) break;
+            int cx = (x >> i) & 1;
+            int cxor = (xor_val >> i) & 1;
+            int nxt0 = child[pos][cxor];
+            int nxt1 = child[pos][1 - cxor];
+            if (cx == 0) {
+                if (nxt1 != -1) {
+                    res += sub[nxt1];
+                }
+                pos = nxt0;
+            } else {
+                pos = nxt1;
+            }
+        }
+        if (pos != -1) {
+            res += sub[pos];
         }
         return res;
     }

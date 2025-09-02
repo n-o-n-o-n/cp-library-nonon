@@ -8,11 +8,11 @@
 using namespace std;
 
 template<typename Abelian_Group, typename T = int>
-struct rectangle_sum {
+struct static_point_add_rectangle_sum {
     using M = Abelian_Group;
     using S = typename M::S;
-    rectangle_sum() = default;
-    rectangle_sum(int n, int q) {
+    static_point_add_rectangle_sum() = default;
+    static_point_add_rectangle_sum(int n, int q) {
         xs.reserve(n);
         ys.reserve(n);
         ws.reserve(n);
