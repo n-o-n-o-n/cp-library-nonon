@@ -84,6 +84,7 @@ struct lazy_segtree {
             S np = M::op(p, d[l]);
             if (!check(np)) {
                 while (l < sz) {
+                    push(l);
                     l <<= 1;
                     np = M::op(p, d[l]);
                     if (check(np)) {
@@ -103,10 +104,10 @@ struct lazy_segtree {
         return max_right(0, check);
     }
     template<typename C>
-    int min_left(int r, int l, const C &check) {
+    int min_left(int r, const C &check) {
         assert(0 <= r && r <= n);
         assert(check(M::e()));
-        if (r == 0) return l;
+        if (r == 0) return 0;
         r += sz;
         inner_push(r - 1);
         S p = M::e();

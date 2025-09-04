@@ -11,4 +11,7 @@ struct add_monoid {
     static S inv(const S &x) {
         return -x;
     }
+    static S pow(const S &x, long long k) {
+        return x * k;
+    }
 };
