@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <cassert>
+#include <stack>
 #include <vector>
 using namespace std;
 #include "../data_structure/segtree/static_rmq.hpp"
@@ -51,6 +52,37 @@ struct static_tree {
         return *prev(upper_bound(list[k].begin(), list[k].end(), u, [&](int i, int j) {
             return in[i] < in[j];
         }));
+    }
+    vector<pair<int, int>> auxiliary_tree(vector<int> vs) const {
+        if (vs.empty()) return {};
+        sort(vs.begin(), vs.end(), [&] (int u, int v) {
+            return in[u] < in[v];
+        });
+        vs.erase(unique(vs.begin(), vs.end()), vs.end());
+        vector<pair<int, int>> res;
+        stack<int> st;
+        st.push(vs[0]);
+        for (int i = 1; i < ssize(vs); i++) {
+            int w = lca(vs[i - 1], vs[i]);
+            if (w != vs[i - 1]) {
+                int u = st.top();
+                st.pop();
+                while (st.size() && d[w] < d[st.top()]) {
+                    res.emplace_back(u, st.top());
+                    u = st.top();
+                    st.pop();
+                }
+                res.emplace_back(u, w);
+                if (st.empty() || st.top() != w) st.push(w);
+            }
+            st.push(vs[i]);
+        }
+        while (st.size() > 1) {
+            int u = st.top();
+            st.pop();
+            res.emplace_back(u, st.top());
+        }
+        return res;
     }
 private:
     struct Monoid {
