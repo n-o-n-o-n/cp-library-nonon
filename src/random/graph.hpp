@@ -4,6 +4,7 @@
 #include <set>
 #include <vector>
 #include "utility.hpp"
+#include "sequence.hpp"
 #include "../tree/prufer_code.hpp"
 using namespace std;
 
