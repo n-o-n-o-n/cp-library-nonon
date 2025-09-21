@@ -40,4 +40,4 @@ pair<long long, long long> randpair_64(long long low, long long hi, bool strict 
     return make_pair(L, R);
 }
 
-}
+} // namespace rng

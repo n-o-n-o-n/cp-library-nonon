@@ -74,4 +74,4 @@ string random_string(int n, char a, char z) {
     return s;
 }
 
-}
+} // namespace rng

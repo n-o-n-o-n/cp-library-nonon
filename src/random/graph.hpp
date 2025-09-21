@@ -90,4 +90,4 @@ vector<pair<int, int>> random_connected_graph(int n, int m) {
     return vector<pair<int, int>>(edges.begin(), edges.end());
 }
 
-}
+} // namespace rng
