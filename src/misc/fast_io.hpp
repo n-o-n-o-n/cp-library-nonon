@@ -162,6 +162,12 @@ struct fast_write {
         }
         flush<0>();
     }
+    void operator()(string s) {
+        (*this)(string_view(s));
+    }
+    void operator()(const char* s) {
+        (*this)(string_view(s));
+    }
     template<typename T>
     void operator()(vector<T> v) {
         int n = v.size();
@@ -170,10 +176,10 @@ struct fast_write {
             if (i < n - 1) (*this)(' ');
         }
     }
-    template<typename T, typename... Ts>
-    void operator()(T &&x, Ts &&...xs) {
-        (*this)(forward<T>(x));
-        (*this)(forward<Ts>(xs)...);
+    template<typename... Ts>
+    requires(sizeof...(Ts) != 1)
+    void operator()(Ts &&...xs) {
+        ((*this)(forward<Ts>(xs)), ...);
     }
     template<char End = '\n', char Sep = ' ', typename T, typename... Ts>
     void ln(T &&x, Ts &&...xs) {
