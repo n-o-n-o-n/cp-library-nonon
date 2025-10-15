@@ -15,11 +15,11 @@ long long primitive_root(long long m) {
     using mint = montgomery_modint;
     mint::set_mod(m);
     mint a = rng::randint_64(1, m - 1);
-    while ([&]{
+    while ([&] {
         for (auto p : ps) {
             if (a.pow((m - 1) / p) == 1) return true;
         }
         return false;
-    }()) a = rng::randint_64(1, m - 1);
+    } ()) a = rng::randint_64(1, m - 1);
     return a.val();
 }
