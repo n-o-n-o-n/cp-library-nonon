@@ -4,7 +4,7 @@
 using namespace std;
 
 template<typename mint>
-vector<mint> fps_exp(const vector<pair<int, mint>> &f_sub, int n) {
+vector<mint> fps_exp_sparse(const vector<pair<int, mint>> &f_sub, int n) {
     vector<mint> g(n), inv(n);
     if (f_sub.empty()) {
         g[0] = 1;

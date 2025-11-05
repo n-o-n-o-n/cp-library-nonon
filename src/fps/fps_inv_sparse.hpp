@@ -4,7 +4,7 @@
 using namespace std;
 
 template<typename mint>
-vector<mint> fps_inv(const vector<pair<int, mint>> &f_sub, int n) {
+vector<mint> fps_inv_sparse(const vector<pair<int, mint>> &f_sub, int n) {
     assert(f_sub.size() && f_sub[0].first == 0 && f_sub[0].second != 0);
     mint cef = f_sub[0].second.inv();
     vector<mint> g(n);

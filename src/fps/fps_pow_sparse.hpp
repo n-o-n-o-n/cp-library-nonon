@@ -4,7 +4,7 @@
 using namespace std;
 
 template<typename mint>
-vector<mint> fps_pow(const vector<pair<int, mint>> &f_sub, int n, long long k) {
+vector<mint> fps_pow_sparse(const vector<pair<int, mint>> &f_sub, int n, long long k) {
     vector<mint> g(n);
     if(f_sub.empty()) {
         if (k == 0) g[0] = mint::raw(1);
@@ -15,7 +15,7 @@ vector<mint> fps_pow(const vector<pair<int, mint>> &f_sub, int n, long long k) {
         if(k > (n - 1) / a0) return g;
         vector<pair<int, mint>> g_sub = f_sub;
         for (auto &[a,c] : g_sub) a -= a0;
-        auto h = fps_pow(g_sub, n - k * a0, k);
+        auto h = fps_pow_sparse(g_sub, n - k * a0, k);
         for (int i = 0; i < n - k * a0; i++) {
             g[i + k * a0] = h[i];
         }

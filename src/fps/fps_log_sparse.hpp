@@ -4,7 +4,7 @@
 using namespace std;
 
 template<typename mint>
-vector<mint> fps_log(const vector<pair<int, mint>> &f_sub, int n) {
+vector<mint> fps_log_sparse(const vector<pair<int, mint>> &f_sub, int n) {
     assert(f_sub.size() && f_sub[0] == make_pair(0, mint::raw(1)));
     const int mod = mint::mod();
     vector<mint> g(n), inv(n);

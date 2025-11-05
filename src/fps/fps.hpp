@@ -62,6 +62,9 @@ struct Formal_Power_Series : vector<mint> {
     fps operator-(const mint &r) const { return fps(*this) -= r; }
     fps operator*(const mint &r) const { return fps(*this) *= r; }
     fps operator/(const mint &r) const { return fps(*this) /= r; }
+    friend fps operator+(const mint &r, const fps &f) { return f + r; }
+    friend fps operator-(const mint &r, const fps &f) { return (-f) + r; }
+    friend fps operator*(const mint &r, const fps &f) { return f * r; }
     fps operator+(const fps &f) const { return fps(*this) += f; }
     fps operator-(const fps &f) const { return fps(*this) -= f; }
     fps operator*(const fps &f) const { return fps(*this) *= f; }
