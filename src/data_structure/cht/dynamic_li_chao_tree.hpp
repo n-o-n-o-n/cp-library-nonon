@@ -61,7 +61,7 @@ private:
     }
     void update(int p, line f, T l, T r) {
         auto &g = d[p].f;
-        T m = midpoint(l, r);
+        T m = l + (r - l) / 2;
         T xl = l + x_min, xm = m + x_min, xr = r + x_min;
         bool pl = f(xl) < g(xl);
         bool pm = f(xm) < g(xm);
@@ -88,7 +88,7 @@ private:
             return;
         }
         if (l + 1 == r) return;
-        T m = midpoint(l, r);
+        T m = l + (r - l) / 2;
         if (l < xr && xl < m) {
             if (d[p].l == -1) d[p].l = new_node();
             add_segment(d[p].l, f, l, m, xl, xr);
@@ -103,7 +103,7 @@ private:
         auto &t = d[p];
         T val = t.f(x + x_min);
         if (l + 1 == r) return val;
-        T m = midpoint(l, r);
+        T m = l + (r - l) / 2;
         return min(val, x < m ? get_min(t.l, l, m, x) : get_min(t.r, m, r, x));
     }
 };

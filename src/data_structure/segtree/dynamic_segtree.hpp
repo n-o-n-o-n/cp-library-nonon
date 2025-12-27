@@ -7,7 +7,7 @@ template<typename Monoid, typename T = int>
 struct dynamic_segtree {
     using M = Monoid;
     using S = M::S;
-    dynamic_segtree(T _n) : n(_n), root(make_unique<node>()) {
+    dynamic_segtree(T _n = 0) : n(_n), root(make_unique<node>()) {
         log = 1;
         while ((T(1) << log) < n) log++;
         sz = T(1) << log;

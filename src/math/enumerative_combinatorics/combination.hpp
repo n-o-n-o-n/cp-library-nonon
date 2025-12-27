@@ -46,7 +46,11 @@ mint mod_inv(int n) {
 }
 template<typename mint>
 mint nCk(int n, int k) {
-    if (n < 0 || n < k || k < 0) return 0;
+    if (n < 0) {
+        n = -n;
+        return nCk<mint>(n + k - 1, n - 1);
+    }
+    if (n < k || k < 0) return 0;
     return fac<mint>(n) * finv<mint>(n - k) * finv<mint>(k);
 }
 template<typename mint>

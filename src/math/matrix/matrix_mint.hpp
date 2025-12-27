@@ -132,4 +132,24 @@ struct matrix : vector<vector<mint>> {
         }
         return res;
     }
+    int rank() const {
+        matrix a = *this;
+        int h = a.size(), w = a[0].size();
+        int r = 0;
+        for (int j = 0; j < w && r < h; j++) {
+            int i = r;
+            while (i < h && a[i][j] == 0) i++;
+            if (i == h) continue;
+            swap(a[r], a[i]);
+            mint inv = a[r][j].inv();
+            for (i = r + 1; i < h; i++) {
+                mint cef = a[i][j] * inv;
+                for (int k = j; k < w; k++) {
+                    a[i][k] -= a[r][k] * cef;
+                }
+            }
+            r++;
+        }
+        return r;
+    }
 };

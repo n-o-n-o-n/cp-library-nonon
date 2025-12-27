@@ -11,6 +11,7 @@ struct Formal_Power_Series : vector<mint> {
     using NTT = Number_Theoretic_Transform<mint>;
     void ntt() { NTT::ntt(*this); }
     void intt() { NTT::intt(*this); }
+    Formal_Power_Series(const vector<mint> &v) : vector<mint>(v) {}
     fps &operator+=(const mint &r) {
         if (this->empty()) this->resize(1);
         (*this)[0] += r;
