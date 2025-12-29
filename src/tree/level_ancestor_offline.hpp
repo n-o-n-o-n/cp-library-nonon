@@ -1,4 +1,5 @@
 #pragma once
+#include <cassert>
 #include <utility>
 #include <vector>
 using namespace std;
@@ -16,7 +17,7 @@ struct level_ancestor {
         assert(0 <= u && u < int(g.size()));
         querys[u].emplace_back(k, q++);
     }
-    vector<int> build(int root = 0) {
+    vector<int> solve(int root = 0) {
         vector<int> ans(q);
         vector<int> path;
         auto dfs = [&](const auto &dfs, int u, int p) -> void {
