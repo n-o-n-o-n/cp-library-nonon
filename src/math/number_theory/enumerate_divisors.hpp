@@ -4,12 +4,12 @@
 #include "factorise.hpp"
 
 template<typename T>
-vector<T> enumerate_divisors(T n) {
-    auto f = factorise(n);
-    int m = f.size();
+vector<T> enumerate_divisors(T m) {
+    auto f = factorise(m);
+    int n = f.size();
     vector<T> res;
-    auto rec = [&](const auto &rec, int i, T x) -> void {
-        if (i == m) {
+    auto rec = [&] (const auto &rec, int i, T x) -> void {
+        if (i == n) {
             res.push_back(x);
             return;
         }

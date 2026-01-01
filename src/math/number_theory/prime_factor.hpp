@@ -1,7 +1,8 @@
 #pragma once
-#include <random>
+#include <numeric>
 #include <vector>
-#include "../../modint/montgomery_modint.hpp"
+#include "../../modint/dynamic_montgomery_modint.hpp"
+#include "../../random/xor_shift.hpp"
 #include "primality_test.hpp"
 using namespace std;
 
@@ -10,23 +11,18 @@ T rho(T n) {
     for (int p : {2, 3, 5, 7}) {
         if (n % p == 0) return p;
     }
-    auto randint_64 = [&](T low, T hi) -> T {
-        random_device seed;
-        mt19937_64 rng(seed());
-        uniform_int_distribution<T> dist(low, hi);
-        return dist(rng);
-    };
-    using mint = montgomery_modint;
+    using mint = dynamic_montgomery_modint;
     mint::set_mod(n);
+    xor_shift<T> eng(n);
     while (true) {
-        mint u = randint_64(2, n - 1);
+        mint u = eng(2, n - 1);
         mint v = u;
-        mint c = randint_64(1, n - 1);
+        mint c = eng(1, n - 1);
         T d = 1;
         while (d == 1) {
-            u = u * u + c;
-            v = v * v + c;
-            v = v * v + c;
+            u = u * u - c;
+            v = v * v - c;
+            v = v * v - c;
             d = gcd((u - v).val(), n);
         }
         if (d < n) return d;

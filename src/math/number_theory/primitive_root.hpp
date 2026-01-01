@@ -1,10 +1,11 @@
 #pragma once
-#include "../../modint/montgomery_modint.hpp"
+#include "../../modint/dynamic_montgomery_modint.hpp"
 #include "prime_factor.hpp"
 #include "../../random/utility.hpp"
 using namespace std;
 
 long long primitive_root(long long m) {
+    assert(is_prime(m));
     if (m == 2) return 1;
     if (m == 167772161) return 3;
     if (m == 469762049) return 3;
@@ -12,7 +13,7 @@ long long primitive_root(long long m) {
     if (m == 998244353) return 3;
     if (m == 1224736769) return 3;
     auto ps = prime_factor(m - 1);
-    using mint = montgomery_modint;
+    using mint = dynamic_montgomery_modint;
     mint::set_mod(m);
     mint a = rng::randint_64(1, m - 1);
     while ([&] {

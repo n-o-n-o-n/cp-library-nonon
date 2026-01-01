@@ -10,7 +10,6 @@ T floor_kth_root(T a, T k) {
     assert(0 <= a);
     if (a == 0 || a == 1 || k == 1) return a;
     if (64 <= k) return 1;
-    if (k == 2) return sqrtl(a);
     constexpr T inf = numeric_limits<T>::max();
     if (a == inf) a--;
     auto mul = [&](T x, T y) -> T {
@@ -25,7 +24,7 @@ T floor_kth_root(T a, T k) {
         }
         return r;
     };
-    T res = (k == 3 ? cbrtl(a) - 1 : pow(a, nextafter(1.0 / k, 0)));
+    T res = (k == 2 ? sqrtl(a) - 1 : k == 3 ? cbrtl(a) - 1 : pow(a, nextafter(1.0 / k, 0)));
     while (pw(res + 1, k) <= a) res++;
     return res;
 }
