@@ -1,9 +1,10 @@
 #pragma once
 #include <vector>
+#include "fps.hpp"
 using namespace std;
 
-template<typename FPS, typename mint>
-vector<mint> multipoint_evaluation_geometric(const FPS &f, int m, mint a, mint r) {
+template<typename mint>
+vector<mint> multipoint_evaluation_geometric(const fps<mint> &f, int m, mint a, mint r) {
     int n = f.size();
     if (n == 0) return vector<mint>(m);
     if (m == 0) return vector<mint>(m);
@@ -22,7 +23,7 @@ vector<mint> multipoint_evaluation_geometric(const FPS &f, int m, mint a, mint r
         powinvr[i] = invr * powinvr[i - 1];
         powinvrt[i] = powinvr[i - 1] * powinvrt[i - 1];
     }
-    FPS p(n), q(n + m);
+    fps<mint> p(n), q(n + m);
     vector<mint> powa(n, 1);
     for (int i = 0; i < n; i++) {
         if (i) powa[i] = a * powa[i - 1];
@@ -31,7 +32,7 @@ vector<mint> multipoint_evaluation_geometric(const FPS &f, int m, mint a, mint r
     for (int i = 0; i < n + m; i++) {
         q[i] = powrt[i];
     }
-    FPS pq = p * q;
+    fps<mint> pq = p * q;
     vector<mint> res(m);
     for (int i = 0; i < m; i++) {
         res[i] = pq[n - 1 + i] * powinvrt[i];
