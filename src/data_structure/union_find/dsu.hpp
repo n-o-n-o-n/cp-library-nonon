@@ -31,12 +31,12 @@ struct dsu {
     }
     vector<vector<int>> groups() const {
         int n = p.size();
-        vector<vector<int>> V(n);
+        vector<vector<int>> tmp(n);
         for (int i = 0; i < n; i++) {
-            V[leader(i)].push_back(i);
+            tmp[leader(i)].push_back(i);
         }
         vector<vector<int>> res;
-        for (auto v : V) {
+        for (auto v : tmp) {
             if (v.size()) res.push_back(v);
         }
         return res;

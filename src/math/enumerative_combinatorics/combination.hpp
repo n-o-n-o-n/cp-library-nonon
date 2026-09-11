@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <cassert>
 #include <vector>
 using namespace std;
@@ -6,12 +7,12 @@ using namespace std;
 namespace combination {
 
 template<typename mint>
-struct C {
+struct container {
     static vector<mint> fac, finv;
     static void init(int n) {
         int sz = fac.size();
         if (n < sz) return;
-        n = clamp(n, 2 * sz, min(1 << 25, mint::mod() - 1));
+        n = clamp(n, 2 * sz, min<int>(1 << 27, mint::mod() - 1));
         fac.resize(n + 1);
         finv.resize(n + 1);
         for (int i = sz; i <= n; i++) {
@@ -23,21 +24,22 @@ struct C {
         }
     }
 };
+
 template<typename mint>
-vector<mint> C<mint>::fac(1, 1);
+vector<mint> container<mint>::fac(1, 1);
 template<typename mint>
-vector<mint> C<mint>::finv(1, 1);
+vector<mint> container<mint>::finv(1, 1);
 template<typename mint>
 mint fac(int n) {
-    C<mint>::init(n);
+    container<mint>::init(n);
     if (n < 0) return 0;
-    return C<mint>::fac[n];
+    return container<mint>::fac[n];
 }
 template<typename mint>
 mint finv(int n) {
-    C<mint>::init(n);
+    container<mint>::init(n);
     if (n < 0) return 0;
-    return C<mint>::finv[n];
+    return container<mint>::finv[n];
 }
 template<typename mint>
 mint mod_inv(int n) {

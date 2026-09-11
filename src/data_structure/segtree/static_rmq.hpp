@@ -4,8 +4,7 @@
 #include "../sparse_table/sparse_table.hpp"
 using namespace std;
 
-// https://judge.yosupo.jp/submission/200540
-// 小さい部分は愚直が速いらしい(?)
+// 参考: https://judge.yosupo.jp/submission/200540
 template<typename Monoid>
 struct static_rmq {
     using M = Monoid;
@@ -31,10 +30,10 @@ private:
     sparse_table<M> st;
     void build() {
         for (int i = 1; i < n; i++) {
-            if (i & mask) pref[i] = min(pref[i - 1], v[i]);
+            if (i & mask) pref[i] = M::op(pref[i - 1], v[i]);
         }
         for (int i = n - 1; i > 0; i--) {
-            if (i & mask) suf[i - 1] = min(suf[i], v[i - 1]);
+            if (i & mask) suf[i - 1] = M::op(suf[i], v[i - 1]);
         }
         st = sparse_table<M>([&]{
             vector<S> a(n >> log);

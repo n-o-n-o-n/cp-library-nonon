@@ -108,6 +108,23 @@ struct multi_binary_trie {
         }
         return res;
     }
+    // #{ x in S | x ^ xor_val < k }
+    int lower_count(T k, T xor_val = 0) const {
+        int pos = 0, res = 0;
+        for (int i = log - 1; i >= 0; i--) {
+            if (pos == -1) break;
+            int t = k >> i & 1;
+            int c = xor_val >> i & 1;
+            if (t == 1) {
+                int nxt = child[pos][c];
+                if (nxt != -1) res += cnt[nxt];
+                pos = child[pos][1 - c];
+            } else {
+                pos = child[pos][c];
+            }
+        }
+        return res;
+    }
 private:
     int log, all;
     vector<int> sub, cnt;

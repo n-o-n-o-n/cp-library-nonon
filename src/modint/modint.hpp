@@ -5,79 +5,79 @@ using namespace std;
 
 template<int MOD>
 struct modint {
-    modint() : x(0) {}
-    modint(long long v) {
+    constexpr modint() : x(0) {}
+    constexpr modint(long long v) {
         long long y = v % m();
         if (y < 0) y += m();
         x = (unsigned int)(y);
     }
-    static modint raw(int v) {
+    static constexpr modint raw(int v) {
         modint a;
         a.x = v;
         return a;
     }
     static constexpr int mod() { return m(); }
-    unsigned int val() const { return x; }
-    modint& operator++() {
+    constexpr unsigned int val() const { return x; }
+    constexpr modint& operator++() {
         x++;
         if (x == m()) x = 0;
         return *this;
     }
-    modint& operator--() {
+    constexpr modint& operator--() {
         if (x == 0) x = m();
         x--;
         return *this;
     }
-    modint operator++(int) {
+    constexpr modint operator++(int) {
         modint res = *this;
         ++*this;
         return res;
     }
-    modint operator--(int) {
+    constexpr modint operator--(int) {
         modint res = *this;
         --*this;
         return res;
     }
-    modint& operator+=(const modint &r) {
+    constexpr modint& operator+=(const modint &r) {
         x += r.x;
         if (x >= m()) x -= m();
         return *this;
     }
-    modint& operator-=(const modint &r) {
+    constexpr modint& operator-=(const modint &r) {
         x -= r.x;
         if (x >= m()) x += m();
         return *this;
     }
-    modint& operator*=(const modint &r) {
+    constexpr modint& operator*=(const modint &r) {
         unsigned long long y = x;
         y *= r.x;
         x = (unsigned int)(y % m());
         return *this;
     }
-    modint &operator/=(const modint &r) {
+    constexpr modint &operator/=(const modint &r) {
         return *this = *this * r.inv();
     }
-    friend modint operator+(const modint &a, const modint &b) {
+    friend constexpr modint operator+(const modint &a, const modint &b) {
         return modint(a) += b;
     }
-    friend modint operator-(const modint &a, const modint &b) {
+    friend constexpr modint operator-(const modint &a, const modint &b) {
         return modint(a) -= b;
     }
-    friend modint operator*(const modint &a, const modint &b) {
+    friend constexpr modint operator*(const modint &a, const modint &b) {
         return modint(a) *= b;
     }
-    friend modint operator/(const modint &a, const modint &b) {
+    friend constexpr modint operator/(const modint &a, const modint &b) {
         return modint(a) /= b;
     }
-    friend bool operator==(const modint &a, const modint &b) {
+    friend constexpr bool operator==(const modint &a, const modint &b) {
         return a.x == b.x;
     }
-    friend bool operator!=(const modint &a, const modint &b) {
+    friend constexpr bool operator!=(const modint &a, const modint &b) {
         return a.x != b.x;
     }
-    modint operator+() const { return *this; }
-    modint operator-() const { return modint() - *this; }
-    modint pow(long long k) const {
+    constexpr modint operator+() const { return *this; }
+    constexpr modint operator-() const { return modint() - *this; }
+    constexpr modint pow(long long k) const {
         assert(k >= 0);
         modint a = *this;
         modint res = 1;
@@ -88,7 +88,7 @@ struct modint {
         }
         return res;
     }
-    modint inv() const {
+    constexpr modint inv() const {
         long long a = x, b = m(), u = 1, v = 0;
         while (b > 0) {
             long long t = a / b;

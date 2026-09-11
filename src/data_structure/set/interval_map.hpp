@@ -1,6 +1,7 @@
 #pragma once
 #include <cassert>
 #include <numeric>
+#include <iostream>
 #include <set>
 #include <vector>
 using namespace std;
@@ -117,7 +118,7 @@ private:
     struct node {
         T l, r;
         S x;
-        node() : node(-inf, -inf, e) {}
+        node(S e) : node(-inf, -inf, e) {}
         node(T _l, T _r, const S &_x) : l(_l), r(_r), x(_x) {}
         constexpr bool operator<(const node &a) const {
             return l == a.l ? r < a.r : l < a.l;

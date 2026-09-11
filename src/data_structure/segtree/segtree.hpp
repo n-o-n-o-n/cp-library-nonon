@@ -23,6 +23,10 @@ struct segtree {
         d[p] = x;
         for (int i = 1; i <= log; i++) update(p >> i);
     }
+    void apply(int p, const S &x) {
+        assert(0 <= p && p < n);
+        set(p, M::op(x, d[p + sz]));
+    }
     S get(int p) const {
         assert(0 <= p && p < n);
         return d[p + sz];

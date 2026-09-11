@@ -2,6 +2,7 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
+#include <numbers>
 #include <numeric>
 using namespace std;
 
@@ -12,14 +13,14 @@ namespace geometry {
 
 using Real = long double;
 constexpr Real eps = 1e-12;
-constexpr Real PI = acosl(-1);
+constexpr Real PI = 3.141592653589793238462643383279502884;
 constexpr Real INF_REAL = numeric_limits<Real>::max();
 
-bool equal_eps(Real a, Real b) {
+inline bool equal_eps(Real a, Real b) {
     return abs(a - b) < eps;
 }
 
-int sgn(Real a) {
+inline int sgn(Real a) {
     return equal_eps(a, 0) ? 0 : a > 0 ? 1 : -1;
 }
 
@@ -86,39 +87,26 @@ struct Point {
     }
 };
 
-Real Re(const Point &p) { return p.Re(); }
-Real Im(const Point &p) { return p.Im(); }
-Real dot(const Point &p, const Point &q) {
-    return p.x * q.x + p.y * q.y;
-}
-Real cross(const Point &p, const Point &q) {
-    return p.x * q.y - p.y * q.x;
-}
-Real norm(const Point &p) {
-    return p.norm();
-}
-Real metric(const Point &p) {
-    return p.metric();
-}
-Real metric(const Point &p, const Point &q) {
-    return metric(p - q);
-}
-Real arg(const Point &p) {
-    return p.arg();
-}
-Real angle(Point o, Point p, Point q) {
+inline Real Re(const Point &p) { return p.Re(); }
+inline Real Im(const Point &p) { return p.Im(); }
+inline Real dot(const Point &p, const Point &q) { return p.x * q.x + p.y * q.y; }
+inline Real cross(const Point &p, const Point &q) { return p.x * q.y - p.y * q.x; }
+inline Real norm(const Point &p) { return p.norm(); }
+inline Real metric(const Point &p) { return p.metric(); }
+inline Real metric(const Point &p, const Point &q) { return metric(p - q); }
+inline Real arg(const Point &p) { return p.arg(); }
+inline Real angle(Point o, Point p, Point q) {
     p -= o, q -= o;
     return atan2l(cross(p, q), dot(p, q));
 }
-
-bool equal_point(const Point &p, const Point &q) {
+inline bool equal_point(const Point &p, const Point &q) {
     return equal_eps(p.x, q.x) && equal_eps(p.y, q.y);
 }
 
 constexpr Point INF_POINT = Point(INF_REAL, INF_REAL);
 
 // a を基準にした b と c の位置関係
-int ccw(const Point &a, const Point &b, const Point &c) {
+inline int ccw(const Point &a, const Point &b, const Point &c) {
     Point p = b - a, q = c - a;
     if (cross(p, q) > eps) return 1; // a, b, c の順で反時計回り
     if (cross(p, q) < -eps) return -1; // a, b, c の順で時計回り
@@ -128,7 +116,7 @@ int ccw(const Point &a, const Point &b, const Point &c) {
     return 0; // a, c, b の順で一直線
 }
 
-istream &operator>>(istream &is, Point& p) {
+inline istream &operator>>(istream &is, Point& p) {
     Real x, y;
     is >> x >> y;
     p = Point(x, y);

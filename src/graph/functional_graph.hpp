@@ -33,6 +33,21 @@ struct functional_graph {
         }
         return g;
     }
+    template<typename C>
+    pair<int, int> binary_search(int u, const C &check) {
+        assert(0 <= u && u < n);
+        assert(check(u));
+        doubling(n + 1);
+        int k = 0;
+        while ((1 << k) <= n) k++;
+        int r = 0;
+        for (k-- ; k >= 0; k--) {
+            int v = f[k][u];
+            if (check(v)) u = v, r += 1 << k;
+        }
+        return make_pair(r, u);
+    }
+private:
     int n;
     vector<vector<int>> f;
     void doubling(long long k) {

@@ -39,16 +39,8 @@ struct Segment {
     }
 };
 
-bool has_intersection(const Segment &s, const Segment &t) {
-    return s.has_intersection(t);
-}
-
-Point crosspoint(const Segment &s, const Segment &t) {
-    return s.crosspoint(t);
-}
-
-Real dist(const Segment &s, const Segment &t) {
-    return s.dist(t);
-}
+inline bool has_intersection(const Segment &s, const Segment &t) { return s.has_intersection(t); }
+inline Point crosspoint(const Segment &s, const Segment &t) { return s.crosspoint(t); }
+inline Real dist(const Segment &s, const Segment &t) { return s.dist(t); }
 
 } // nemespace geometry

@@ -6,8 +6,7 @@ using namespace std;
 
 template<typename mint>
 vector<mint> stirling2(int n, int k) {
-    using FPS = Formal_Power_Series<mint>;
-    FPS f(n - k + 1);
+    fps<mint> f(n - k + 1);
     for (int i = 0; i <= n - k; i++) {
         f[i] = combination::finv<mint>(i + 1);
     }

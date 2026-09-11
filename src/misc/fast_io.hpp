@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <array>
+#include <concepts>
 #include <cstring>
 #include <filesystem>
 #include <iostream>
@@ -10,9 +11,9 @@ using namespace std;
 // https://judge.yosupo.jp/submission/212769
 namespace fastio {
 
-static constexpr int buf_size = 1 << 17;
+static constexpr int buf_size = 1 << 21;
 
-struct fast_read {
+inline struct fast_read {
     fast_read() : fast_read(stdin) {}
     fast_read(const filesystem::path &p) : fast_read(fopen(p.c_str(), "r")) {}
     fast_read(FILE *_stream) : stream(_stream), start(buf.data()), end(start + buf_size), ptr(end) { load(); }
@@ -119,7 +120,7 @@ private:
     }
 } Read;
 
-struct fast_write {
+inline struct fast_write {
     fast_write() : fast_write(stdout) {}
     fast_write(const filesystem::path &p) : fast_write(fopen(p.c_str(), "w")) {}
     fast_write(FILE *_stream) : stream(_stream), start(buf.data()), end(start + buf_size), ptr(start) {}
@@ -179,16 +180,16 @@ struct fast_write {
     template<typename... Ts>
     requires(sizeof...(Ts) != 1)
     void operator()(Ts &&...xs) {
-        ((*this)(forward<Ts>(xs)), ...);
+        ((*this)(std::forward<Ts>(xs)), ...);
     }
     template<char End = '\n', char Sep = ' ', typename T, typename... Ts>
     void ln(T &&x, Ts &&...xs) {
-        (*this)(forward<T>(x));
+        (*this)(std::forward<T>(x));
         if constexpr (sizeof...(Ts) == 0) {
             *ptr++ = End;
         } else {
             *ptr++ = Sep;
-            ln<End, Sep>(forward<Ts>(xs)...);
+            ln<End, Sep>(std::forward<Ts>(xs)...);
         }
     }
 private:
@@ -274,7 +275,7 @@ private:
 
 template<typename T, typename... Ts>
 void Writeln(T &&x, Ts &&... xs) {
-    Write.ln(x, forward<Ts>(xs)...);
+    Write.ln(x, std::forward<Ts>(xs)...);
 }
 
 } // namespace fast_io

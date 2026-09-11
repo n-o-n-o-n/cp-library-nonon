@@ -85,7 +85,7 @@ fps<mint> power_projection(fps<mint> f, fps<mint> g, int n, int m) {
     s.intt();
     t.intt();
     t[0]--;
-    if (t[0] == 0) return s.rev().pre(m);
-    auto F = (t + (fps<mint>{1} << k)).rev();
-    return (s.rev() * (t + (fps<mint>{1} << k)).rev().inv(m)).pre(m);
+    auto res = t[0] == 0 ? s.rev() : (s.rev() * (t + (fps<mint>{1} << k)).rev().inv(m)).pre(m);
+    res.resize(m);
+    return res;
 }

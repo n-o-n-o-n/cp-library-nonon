@@ -97,7 +97,7 @@ private:
         if (built) return;
         mat = vector<bit_vector>(LOG);
         cnt = vector<int>(LOG);
-        for (int &x : d) assert(x >= 0);
+        for (auto &x : d) assert(x >= 0);
         for (int i = LOG - 1; i >= 0; i--) {
             vector<bool> bit(n);
             for (int j = 0; j < n; j++) {

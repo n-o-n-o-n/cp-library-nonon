@@ -18,6 +18,7 @@ struct centroid_decomposition {
         g[v].push_back(u);
         if (++e == n - 1) build();
     }
+    vector<int> operator[](int u) const { return g[u]; }
     int level(int u) const { return lv[u]; }
     int sub_size(int u) const { return sub[u]; }
     int parent(int u) const { return par[u]; }

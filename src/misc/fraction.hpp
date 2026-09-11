@@ -31,7 +31,7 @@ struct fraction {
         T np = p * (nq / q) + r.p * (nq / r.q);
         return *this = fraction(np, nq);
     }
-    fraction& operator+=(const fraction &r) {
+    fraction& operator-=(const fraction &r) {
         T nq = lcm(q, r.q);
         T np = p * (nq / q) - r.p * (nq / r.q);
         return *this = fraction(np, nq);
@@ -69,16 +69,16 @@ struct fraction {
         return a.p != b.p || a.q != b.q;
     }
     friend bool operator<(const fraction &a, const fraction &b) {
-        return a.p * b.q < a.q * b.p;
+        return (__int128_t)a.p * b.q < (__int128_t)a.q * b.p;
     }
     friend bool operator>(const fraction &a, const fraction &b) {
-        return a.p * b.q < a.q * b.p;
+        return b < a;
     }
-    friend bool operator<(const fraction &a, const fraction &b) {
-        return a == b || a <= b;
+    friend bool operator<=(const fraction &a, const fraction &b) {
+        return a == b || a < b;
     }
-    friend bool operator>(const fraction &a, const fraction &b) {
-        return a == b || a >= b;
+    friend bool operator>=(const fraction &a, const fraction &b) {
+        return a == b || a > b;
     }
     fraction operator+() const { return *this; }
     fraction operator-() const { return fraction() - *this; }

@@ -1,7 +1,7 @@
 #pragma once
 #include "../../modint/dynamic_montgomery_modint.hpp"
 #include "prime_factor.hpp"
-#include "../../random/utility.hpp"
+#include "../../random/xor_shift.hpp"
 using namespace std;
 
 long long primitive_root(long long m) {
@@ -15,12 +15,13 @@ long long primitive_root(long long m) {
     auto ps = prime_factor(m - 1);
     using mint = dynamic_montgomery_modint;
     mint::set_mod(m);
-    mint a = rng::randint_64(1, m - 1);
+    xor_shift<unsigned long long> eng(m);
+    mint a = eng(1, m - 1);
     while ([&] {
         for (auto p : ps) {
             if (a.pow((m - 1) / p) == 1) return true;
         }
         return false;
-    } ()) a = rng::randint_64(1, m - 1);
+    } ()) a = eng(1, m - 1);
     return a.val();
 }

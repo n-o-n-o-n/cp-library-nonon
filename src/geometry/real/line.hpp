@@ -8,7 +8,7 @@ namespace geometry {
 struct Line {
     // Line : ax + by = c
     Real a, b, c;
-    constexpr Line() = default;
+    constexpr Line() : Line(0, 0, 0) {}
     constexpr Line(Real _a, Real _b, Real _c) : a(_a), b(_b), c(_c) {}
     constexpr Line(const Point &p, const Point &q) : a(q.y - p.y), b(p.x - q.x), c(p.x * q.y - p.y * q.x) {}
     constexpr Line(Real _a, const Point &p) : a(_a), b(-1), c(_a * p.x - p.y) {}
@@ -59,14 +59,8 @@ struct Line {
     }
 };
 
-bool is_orthogonal(const Line &l1, const Line &l2) {
-    return l1.is_orthogonal(l2);
-}
-bool is_parallel(const Line &l1, const Line &l2) {
-    return l1.is_parallel(l2);
-}
-Point crosspoint(const Line &l1, const Line &l2) {
-    return l1.crossppoint(l2);
-}
+inline bool is_orthogonal(const Line &l1, const Line &l2) { return l1.is_orthogonal(l2); }
+inline bool is_parallel(const Line &l1, const Line &l2) { return l1.is_parallel(l2); }
+inline Point crosspoint(const Line &l1, const Line &l2) { return l1.crossppoint(l2); }
 
 } // namespace geometry

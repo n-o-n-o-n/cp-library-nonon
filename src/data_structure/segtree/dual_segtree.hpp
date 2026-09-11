@@ -13,18 +13,21 @@ struct dual_segtree {
     dual_segtree(const vector<S> &v) { init(v); }
     void init(const vector<S> &v) {
         n = v.size();
-        log = 1;
+        log = 0;
         while ((1 << log) < n) log++;
         sz = 1 << log;
-        d = v;
+        d = vector<S>(sz, M::e());
+        for (int i = 0; i < n; i++) d[i] = v[i];
         lz = vector<F>(sz, M::id());
     }
     void set(int p, const S &x) {
         assert(0 <= p && p < n);
+        inner_push(p + sz);
         d[p] = x;
     }
     void apply(int l, int r, const F &f) {
         assert(0 <= l && l <= r && r <= n);
+        if (l == r) return;
         l += sz, r += sz;
         inner_push(l);
         inner_push(r - 1);

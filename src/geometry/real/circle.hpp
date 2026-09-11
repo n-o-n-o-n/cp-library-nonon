@@ -20,6 +20,9 @@ struct circle {
         if (d < abs(r - c.r) - eps) return 0;
         return 2;
     }
+    bool contain(const Point &q) const {
+        return metric(p, q) <= r + eps;
+    }
     vector<Point> crosspoints(const Line &l) const {
         Real d = l.dist(p);
         if (d > r + eps) return {};

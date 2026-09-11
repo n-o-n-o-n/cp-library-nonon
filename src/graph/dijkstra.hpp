@@ -6,7 +6,7 @@ using namespace std;
 template<typename T1, typename T2 = int>
 pair<vector<T1>, vector<int>> dijkstra(const vector<vector<pair<int, T2>>> &g, int s) {
     int n = g.size();
-    vector<T1> dist(n, numeric_limits<T1>::max());
+    vector<T1> dist(n, 1LL << 60);
     dist[s] = 0;
     priority_queue<pair<T1, int>> q;
     q.emplace(0, s);

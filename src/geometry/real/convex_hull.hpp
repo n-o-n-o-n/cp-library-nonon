@@ -9,7 +9,7 @@ namespace geometry {
 
 Polygon convex_hull(vector<Point> pts, bool exclude_collinear = true) {
     int n = pts.size(), k = 0;
-    sort(pts.begin(), pts.end(), [](const Point &p, const Point &q){
+    sort(pts.begin(), pts.end(), [] (const Point &p, const Point &q){
         return equal_eps(Re(p), Re(q)) ? Im(p) < Im(q) : Re(p) < Re(q);
     });
     vector<Point> ch(2 * n);

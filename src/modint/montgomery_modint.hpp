@@ -3,37 +3,34 @@
 #include <cassert>
 using namespace std;
 
+template<uint64_t MOD>
 struct montgomery_modint {
-    using int64 = uint64_t;
-    using int128 = __uint128_t;
+    using i64 = __uint64_t;
+    using i128 = __uint128_t;
     using modint = montgomery_modint;
     montgomery_modint() : x(0) {}
-    montgomery_modint(long long v) : x(reduce((int128(v) + MOD) * R)) {}
-    static void set_mod(long long _m) {
-        MOD = _m;
-        R = -int128(MOD) % MOD;
-        INV = get_inv_mod(); 
-    }
-    static long long mod() { return MOD; }
+    montgomery_modint(long long v) : x(reduce((i128(v) * MOD) * R)) {}
+    static i64 mod() { return m(); }
+    static modint raw(long long v) { return modint(v); }
     long long val() const {
-        int64 res = reduce(x);
-        return res >= MOD ? res - MOD : res;
+        auto res = reduce(x);
+        return res >= m() ? res - m() : res;
     }
     modint& operator+=(const modint &r) {
         x += r.x;
-        if (x >= (MOD << 1)) x -= (MOD << 1);
+        if (x >= (m() << 1)) x -= m() << 1;
         return *this;
     }
     modint& operator-=(const modint &r) {
-        x += (MOD << 1) - r.x;
-        if (x >= (MOD << 1)) x -= (MOD << 1);
+        x += (m() << 1) - r.x;
+        if (x >= (m() << 1)) x -= m() << 1;
         return *this;
     }
     modint& operator*=(const modint &r) {
-        x = reduce(int128(x) * r.x);
+        x = reduce(i128(x) * r.x);
         return *this;
     }
-    modint& operator/=(const modint &r) {
+    modint &operator/=(const modint &r) {
         *this *= r.inv();
         return *this;
     }
@@ -57,10 +54,9 @@ struct montgomery_modint {
     }
     modint operator+() const { return *this; }
     modint operator-() const { return modint() - *this; }
-    modint inv() const { return pow(MOD - 2); }
-    modint pow(int128 k) const {
-        modint a = *this;
-        modint res = 1;
+    modint inv() const { return pow(m() - 2); }
+    modint pow(long long k) const {
+        modint a = *this, res = 1;
         while (k > 0) {
             if (k & 1) res *= a;
             a *= a;
@@ -69,16 +65,17 @@ struct montgomery_modint {
         return res;
     }
 private:
-    int64 x;
-    static int64 MOD, INV, R;
-    static int64 get_inv_mod() {
-        int64 res = MOD;
+    i64 x;
+    static constexpr i64 INV = [] {
+        i64 res = MOD;
         for (int t = 0; t < 5; t++) res *= 2 - MOD * res;
         return res;
-    }
-    static int64 reduce(const int128 &v) {
-        return (v + int128(int64(v) * int64(-INV)) * MOD) >> 64;
+    } ();
+    static constexpr i64 R = -i128(MOD) % MOD;
+    static constexpr i64 m() { return MOD; }
+    static constexpr i64 i() { return INV; }
+    static constexpr i64 r() { return R; }
+    static i64 reduce(const i128 &v) {
+        return (v + i128(i64(v) * i64(-i())) * m()) >> 64;
     }
 };
-typename montgomery_modint::int64
-montgomery_modint::MOD, montgomery_modint::INV, montgomery_modint::R;

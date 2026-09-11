@@ -5,8 +5,8 @@
 #include <vector>
 using namespace std;
 
-struct low_link {
-    low_link(int _n = 0, int m = 0) : n(_n), g(_n), built(false) {
+struct lowlink {
+    lowlink(int _n = 0, int m = 0) : n(_n), g(_n), built(false) {
         edges.reserve(m);
     }
     void add_edge(int u, int v) {
@@ -24,22 +24,22 @@ struct low_link {
         return res;
     }
     vector<int> articulation_point() {
-        if (!built) build();
+        build();
         return ap;
     }
     vector<pair<int, int>> bridge() {
-        if (!built) build();
+        build();
         return bg;
     }
     bool is_bridge(int u, int v) {
         assert(0 <= u && u < n);
         assert(0 <= v && v < n);
-        if (!built) build();
+        build();
         if (ord[u] > ord[v]) swap(u, v);
         return ord[u] < low[v];
     }
     vector<vector<int>> biconnected_components() {
-        if (!built) build();
+        build();
         vector<bool> used(n, false);
         vector<int> memo;
         vector<vector<int>> bccs;
@@ -90,7 +90,7 @@ struct low_link {
         return res;
     }
     vector<vector<int>> two_edge_connected_components() {
-        if (!built) build();
+        build();
         int k = 0;
         vector<int> tecc(n, -1);
         auto decompose = [&] (const auto &decompose, int u) -> void {
@@ -142,7 +142,7 @@ private:
         return k;
     }
     void build() {
-        assert(!built);
+        if (built) return;
         int k = 0;
         ord = vector<int>(n, -1);
         low = vector<int>(n, -1);
