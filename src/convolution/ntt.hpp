@@ -5,14 +5,15 @@ using namespace std;
 
 template<typename mint>
 struct Number_Theoretic_Transform {
-    static int log, mod;
-    static mint root;
-    static vector<mint> dw, idw;
-    static vector<mint> rt2, irt2;
-    static vector<mint> rt3, irt3;
-    static void ntt(vector<mint> &f) {
+    static mint get_root() {
+        init();
+        return root;
+    }
+    template<typename Vector>
+    static void ntt(Vector &f) {
         init();
         int n = f.size();
+        assert((n & (n - 1)) == 0);
         int h = 0;
         while ((1 << h) < n) h++;
         int len = 0;
@@ -60,9 +61,11 @@ struct Number_Theoretic_Transform {
             }
         }
     }
-    static void intt(vector<mint> &f) {
+    template<typename Vector>
+    static void intt(Vector &f) {
         init();
         int n = f.size();
+        assert((n & (n - 1)) == 0);
         int h = 0;
         while ((1 << h) < n) h++;
         int len = h;
@@ -110,8 +113,28 @@ struct Number_Theoretic_Transform {
         const mint invn = mint::raw(n).inv();
         for (auto &e : f) e *= invn;
     }
+    // f must be ntt-ed
+    template<typename Vector>
+    static void doubling(Vector &f) {
+        init();
+        int n = f.size();
+        if (n == 0) return;
+        assert((n & (n - 1)) == 0);
+        auto g = f;
+        intt(g);
+        mint w = root.pow((mint::mod() - 1) / (2 * n)), pw = mint::raw(1);
+        for (int i = 0; i < n; i++) g[i] *= pw, pw *= w;
+        ntt(g);
+        f.resize(2 * n);
+        for (int i = 0; i < n; i++) f[i + n] = g[i];
+    }
 private:
     Number_Theoretic_Transform() = default;
+    static int log, mod;
+    static mint root;
+    static vector<mint> dw, idw;
+    static vector<mint> rt2, irt2;
+    static vector<mint> rt3, irt3;
     static void init() {
         if (mod != -1) return;
         mod = mint::mod();
