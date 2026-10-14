@@ -1,0 +1,7 @@
+*.out
+*.exe
+*.toml
+test/icpc/*
+docs/template.md
+pascal/*
+python/*
