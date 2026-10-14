@@ -59,11 +59,11 @@ private:
             int k = max(d + 1, 2 * sz);
             rds.resize(k);
             for (int i = sz; i < k; i++) {
-                rds[i] = rng::randint(0, mod[0] - 1);
+                rds[i] = rng::randint(0LL, mod[0] - 1);
             }
         }
         return rds[d];
     }
 };
-long long hash_on_tree::base(-1);
-vector<long long> hash_on_tree::rds(1, 1);
+inline long long hash_on_tree::base(-1);
+inline vector<long long> hash_on_tree::rds(1, 1);

@@ -1,7 +1,7 @@
 *.out
 *.exe
 *.toml
-test/*
+test/icpc/*
 docs/template.md
 pascal/*
 python/*

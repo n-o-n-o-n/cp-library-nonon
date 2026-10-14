@@ -24,15 +24,15 @@ bool miller_rabin(long long m, const array<int, size> &ps) {
     return true;
 }
 
-bool miller_rabin_small(long long m) {
+inline bool miller_rabin_small(long long m) {
     return miller_rabin(m, array<int, 3>{2, 7, 61});
 }
 
-bool miller_rabin_large(long long m) {
+inline bool miller_rabin_large(long long m) {
     return miller_rabin(m, array<int, 7>{2, 325, 9375, 28178, 450775, 9780504, 1795265022});
 }
 
-bool is_prime(long long m) {
+inline bool is_prime(long long m) {
     if (m <= 1) return false;
     if (m == 2) return true;
     if (m % 2 == 0) return false;

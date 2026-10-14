@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <cassert>
+#include <iostream>
 #include <stack>
 #include <vector>
 using namespace std;
@@ -25,6 +26,16 @@ struct static_tree {
         g[u].push_back(v);
         g[v].push_back(u);
         if (++e == n - 1) build();
+    }
+    void read_edges(bool idx = 1) {
+        for (int i = 1, u, v; i < n; i++) {
+            cin >> u >> v;
+            u -= idx;
+            v -= idx;
+            g[u].push_back(v);
+            g[v].push_back(u);
+        }
+        build();
     }
     vector<int> &operator[](int u) {
         assert(0 <= u && u < n);
