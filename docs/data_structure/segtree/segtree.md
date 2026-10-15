@@ -1,4 +1,7 @@
-# Segtree
+---
+title: segtree
+documentation_of: //src/data_structure/segtree/segtree.hpp
+---
 
 セグ木. 
 
