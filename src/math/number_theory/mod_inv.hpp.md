@@ -9,12 +9,12 @@ data:
     path: src/monoid/rolling_hash.hpp
     title: src/monoid/rolling_hash.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/mod_inv.test.cpp
     title: test/math/number_theory/mod_inv.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/number_theory/mod_inv.hpp\"\n#include <cassert>\n\
@@ -38,7 +38,7 @@ data:
   requiredBy:
   - src/monoid/rolling_hash.hpp
   timestamp: '2025-08-07 20:30:19+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/number_theory/mod_inv.test.cpp
 documentation_of: src/math/number_theory/mod_inv.hpp

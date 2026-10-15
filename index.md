@@ -120,7 +120,7 @@ data:
     - icon: ':warning:'
       path: src/data_structure/segtree/bit_segtree.hpp
       title: src/data_structure/segtree/bit_segtree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree/directed_range_query.hpp
       title: src/data_structure/segtree/directed_range_query.hpp
     - icon: ':warning:'
@@ -156,10 +156,10 @@ data:
     - icon: ':warning:'
       path: src/data_structure/segtree/reversible_segtree.hpp
       title: src/data_structure/segtree/reversible_segtree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree/segtree.hpp
       title: src/data_structure/segtree/segtree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree/static_rmq.hpp
       title: src/data_structure/segtree/static_rmq.hpp
     - icon: ':warning:'
@@ -190,7 +190,7 @@ data:
     - icon: ':warning:'
       path: src/data_structure/sparse_table/disjoint_sparse_table.hpp
       title: src/data_structure/sparse_table/disjoint_sparse_table.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/sparse_table/sparse_table.hpp
       title: src/data_structure/sparse_table/sparse_table.hpp
   - name: src/data_structure/union_find
@@ -389,7 +389,7 @@ data:
       title: src/graph/weighted_functional_graph.hpp
   - name: src/math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/affine.hpp
       title: src/math/affine.hpp
     - icon: ':warning:'
@@ -446,7 +446,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/number_theory/enumerate_divisors.hpp
       title: src/math/number_theory/enumerate_divisors.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/number_theory/enumerate_primes.hpp
       title: src/math/number_theory/enumerate_primes.hpp
     - icon: ':heavy_check_mark:'
@@ -464,7 +464,7 @@ data:
     - icon: ':question:'
       path: src/math/number_theory/garner.hpp
       title: src/math/number_theory/garner.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/number_theory/mod_inv.hpp
       title: src/math/number_theory/mod_inv.hpp
     - icon: ':heavy_check_mark:'
@@ -473,7 +473,7 @@ data:
     - icon: ':x:'
       path: src/math/number_theory/mod_pow.hpp
       title: src/math/number_theory/mod_pow.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/number_theory/primality_table.hpp
       title: src/math/number_theory/primality_table.hpp
     - icon: ':question:'
@@ -485,7 +485,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/number_theory/primitive_root.hpp
       title: src/math/number_theory/primitive_root.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/number_theory/totient_function.hpp
       title: src/math/number_theory/totient_function.hpp
   - name: src/misc
@@ -499,7 +499,7 @@ data:
     - icon: ':warning:'
       path: src/misc/enumerate_brackets.hpp
       title: src/misc/enumerate_brackets.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/misc/even_distribution_array.hpp
       title: src/misc/even_distribution_array.hpp
     - icon: ':warning:'
@@ -540,7 +540,7 @@ data:
     - icon: ':question:'
       path: src/modint/dynamic_montgomery_modint.hpp
       title: src/modint/dynamic_montgomery_modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/modint/modint.hpp
       title: src/modint/modint.hpp
     - icon: ':warning:'
@@ -554,7 +554,7 @@ data:
     - icon: ':warning:'
       path: src/monoid/Fp.hpp
       title: src/monoid/Fp.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/monoid/add.hpp
       title: src/monoid/add.hpp
     - icon: ':warning:'
@@ -595,10 +595,10 @@ data:
       title: src/monoid/rolling_hash.hpp
   - name: src/random
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/random/graph.hpp
       title: src/random/graph.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/random/sequence.hpp
       title: src/random/sequence.hpp
     - icon: ':question:'
@@ -653,31 +653,31 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/cartesian_tree.hpp
       title: src/tree/cartesian_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/centroid_decomposition.hpp
       title: src/tree/centroid_decomposition.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/diameter.hpp
       title: src/tree/diameter.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/hash_on_tree.hpp
       title: src/tree/hash_on_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/hld.hpp
       title: src/tree/hld.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/level_ancestor_offline.hpp
       title: src/tree/level_ancestor_offline.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/prufer_code.hpp
       title: src/tree/prufer_code.hpp
     - icon: ':heavy_check_mark:'
       path: src/tree/range_contour_aggregator.hpp
       title: src/tree/range_contour_aggregator.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/rerooting_dp.hpp
       title: src/tree/rerooting_dp.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/static_tree.hpp
       title: src/tree/static_tree.hpp
     - icon: ':warning:'
@@ -807,7 +807,7 @@ data:
     - icon: ':x:'
       path: test/math/number_theory/garner.test.cpp
       title: test/math/number_theory/garner.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/number_theory/mod_inv.test.cpp
       title: test/math/number_theory/mod_inv.test.cpp
     - icon: ':heavy_check_mark:'
@@ -816,19 +816,19 @@ data:
     - icon: ':x:'
       path: test/math/number_theory/mod_pow.test.cpp
       title: test/math/number_theory/mod_pow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/number_theory/primality_table.test.cpp
       title: test/math/number_theory/primality_table.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/number_theory/primality_test.test.cpp
       title: test/math/number_theory/primality_test.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/number_theory/prime_factor.test.cpp
       title: test/math/number_theory/prime_factor.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/number_theory/primitive_root.test.cpp
       title: test/math/number_theory/primitive_root.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/number_theory/totient_function.test.cpp
       title: test/math/number_theory/totient_function.test.cpp
   - name: test/monoid
@@ -841,40 +841,40 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/cartesian_tree.test.cpp
       title: test/tree/cartesian_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/centroid_decomposition.test.cpp
       title: test/tree/centroid_decomposition.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/diameter.test.cpp
       title: test/tree/diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/hash_on_tree.test.cpp
       title: test/tree/hash_on_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/hld.commutative.test.cpp
       title: test/tree/hld.commutative.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/hld.test.cpp
       title: test/tree/hld.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/level_ancestor_offline.test.cpp
       title: test/tree/level_ancestor_offline.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/prufer_code.test.cpp
       title: test/tree/prufer_code.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/range_contour_aggregator.test.cpp
       title: test/tree/range_contour_aggregator.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/rerooting_dp.test.cpp
       title: test/tree/rerooting_dp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/static_tree.auxiliary_tree.test.cpp
       title: test/tree/static_tree.auxiliary_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/static_tree.jump.test.cpp
       title: test/tree/static_tree.jump.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/static_tree.lca.test.cpp
       title: test/tree/static_tree.lca.test.cpp
 layout: toppage

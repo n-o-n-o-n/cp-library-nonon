@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: src/math/number_theory/extended_gcd.hpp
     title: src/math/number_theory/extended_gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/mod_inv.hpp
     title: src/math/number_theory/mod_inv.hpp
   _extendedRequiredBy: []

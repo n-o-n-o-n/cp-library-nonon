@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/centroid_decomposition.test.cpp
     title: test/tree/centroid_decomposition.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/tree/centroid_decomposition.hpp\"\n#include <cassert>\n\
@@ -66,7 +66,7 @@ data:
   path: src/tree/centroid_decomposition.hpp
   requiredBy: []
   timestamp: '2026-09-11 09:43:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/centroid_decomposition.test.cpp
 documentation_of: src/tree/centroid_decomposition.hpp

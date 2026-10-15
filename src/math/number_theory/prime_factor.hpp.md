@@ -107,7 +107,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primitive_root.hpp
     title: src/math/number_theory/primitive_root.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/totient_function.hpp
     title: src/math/number_theory/totient_function.hpp
   _extendedVerifiedWith:
@@ -165,13 +165,13 @@ data:
   - icon: ':x:'
     path: test/math/number_theory/garner.test.cpp
     title: test/math/number_theory/garner.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/prime_factor.test.cpp
     title: test/math/number_theory/prime_factor.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/primitive_root.test.cpp
     title: test/math/number_theory/primitive_root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/totient_function.test.cpp
     title: test/math/number_theory/totient_function.test.cpp
   _isVerificationFailed: true

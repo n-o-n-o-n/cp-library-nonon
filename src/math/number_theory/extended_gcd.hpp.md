@@ -8,7 +8,7 @@ data:
   - icon: ':question:'
     path: src/math/number_theory/garner.hpp
     title: src/math/number_theory/garner.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/mod_inv.hpp
     title: src/math/number_theory/mod_inv.hpp
   - icon: ':warning:'
@@ -24,7 +24,7 @@ data:
   - icon: ':x:'
     path: test/math/number_theory/garner.test.cpp
     title: test/math/number_theory/garner.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/mod_inv.test.cpp
     title: test/math/number_theory/mod_inv.test.cpp
   _isVerificationFailed: true

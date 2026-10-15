@@ -18,18 +18,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/monoid/add.test.cpp
     title: test/monoid/add.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/hld.commutative.test.cpp
     title: test/tree/hld.commutative.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/hld.test.cpp
     title: test/tree/hld.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/range_contour_aggregator.test.cpp
     title: test/tree/range_contour_aggregator.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/data_structure/segtree/segtree.hpp\"\n#include <vector>\n\
@@ -124,7 +124,7 @@ data:
   - src/string/numeric_rolling_hash_dynamic.hpp
   - src/string/rolling_hash_dynamic.hpp
   timestamp: '2026-09-11 09:43:03+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/monoid/add.test.cpp
   - test/tree/hld.test.cpp

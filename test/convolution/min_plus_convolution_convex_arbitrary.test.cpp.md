@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/dp/monotone_minima.hpp
     title: src/dp/monotone_minima.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/modint.hpp
     title: src/modint/modint.hpp
   _extendedRequiredBy: []

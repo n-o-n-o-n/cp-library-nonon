@@ -6,15 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/monoid/add.test.cpp
     title: test/monoid/add.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/hld.commutative.test.cpp
     title: test/tree/hld.commutative.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/range_contour_aggregator.test.cpp
     title: test/tree/range_contour_aggregator.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/monoid/add.hpp\"\nusing namespace std;\n\ntemplate <typename\
@@ -32,7 +32,7 @@ data:
   path: src/monoid/add.hpp
   requiredBy: []
   timestamp: '2025-09-04 12:06:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/monoid/add.test.cpp
   - test/tree/hld.commutative.test.cpp

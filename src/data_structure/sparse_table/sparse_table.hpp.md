@@ -2,31 +2,31 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/segtree/static_rmq.hpp
     title: src/data_structure/segtree/static_rmq.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/static_tree.hpp
     title: src/tree/static_tree.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/centroid_decomposition.test.cpp
     title: test/tree/centroid_decomposition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/level_ancestor_offline.test.cpp
     title: test/tree/level_ancestor_offline.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/static_tree.auxiliary_tree.test.cpp
     title: test/tree/static_tree.auxiliary_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/static_tree.jump.test.cpp
     title: test/tree/static_tree.jump.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/static_tree.lca.test.cpp
     title: test/tree/static_tree.lca.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/data_structure/sparse_table/sparse_table.hpp\"\n#include\
@@ -60,7 +60,7 @@ data:
   - src/data_structure/segtree/static_rmq.hpp
   - src/tree/static_tree.hpp
   timestamp: '2025-06-26 18:46:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/level_ancestor_offline.test.cpp
   - test/tree/static_tree.lca.test.cpp

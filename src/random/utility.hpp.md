@@ -5,13 +5,13 @@ data:
   - icon: ':warning:'
     path: src/data_structure/segtree/reversible_segtree.hpp
     title: src/data_structure/segtree/reversible_segtree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/random/graph.hpp
     title: src/random/graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/sequence.hpp
     title: src/random/sequence.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/hash_on_tree.hpp
     title: src/tree/hash_on_tree.hpp
   _extendedVerifiedWith:
@@ -24,31 +24,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/discrete_logarithm.test.cpp
     title: test/math/number_theory/discrete_logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/mod_inv.test.cpp
     title: test/math/number_theory/mod_inv.test.cpp
   - icon: ':x:'
     path: test/math/number_theory/mod_pow.test.cpp
     title: test/math/number_theory/mod_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/prime_factor.test.cpp
     title: test/math/number_theory/prime_factor.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/totient_function.test.cpp
     title: test/math/number_theory/totient_function.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/centroid_decomposition.test.cpp
     title: test/tree/centroid_decomposition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/hash_on_tree.test.cpp
     title: test/tree/hash_on_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/level_ancestor_offline.test.cpp
     title: test/tree/level_ancestor_offline.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/prufer_code.test.cpp
     title: test/tree/prufer_code.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/static_tree.auxiliary_tree.test.cpp
     title: test/tree/static_tree.auxiliary_tree.test.cpp
   _isVerificationFailed: true

@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/misc/even_distribution_array.hpp
     title: src/misc/even_distribution_array.hpp
   - icon: ':question:'
     path: src/random/utility.hpp
     title: src/random/utility.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/random/graph.hpp
     title: src/random/graph.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/power_projection.test.cpp
     title: test/fps/power_projection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/centroid_decomposition.test.cpp
     title: test/tree/centroid_decomposition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/level_ancestor_offline.test.cpp
     title: test/tree/level_ancestor_offline.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/prufer_code.test.cpp
     title: test/tree/prufer_code.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/static_tree.auxiliary_tree.test.cpp
     title: test/tree/static_tree.auxiliary_tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/random/sequence.hpp\"\n#include <algorithm>\n#include\
@@ -90,7 +90,7 @@ data:
   requiredBy:
   - src/random/graph.hpp
   timestamp: '2026-09-11 09:43:03+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/power_projection.test.cpp
   - test/tree/level_ancestor_offline.test.cpp

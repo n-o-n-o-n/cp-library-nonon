@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/level_ancestor_offline.test.cpp
     title: test/tree/level_ancestor_offline.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/tree/level_ancestor_offline.hpp\"\n#include <cassert>\n\
@@ -52,7 +52,7 @@ data:
   path: src/tree/level_ancestor_offline.hpp
   requiredBy: []
   timestamp: '2025-12-29 11:10:59+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/level_ancestor_offline.test.cpp
 documentation_of: src/tree/level_ancestor_offline.hpp

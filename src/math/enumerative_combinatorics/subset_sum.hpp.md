@@ -25,7 +25,7 @@ data:
   - icon: ':question:'
     path: src/modint/dynamic_montgomery_modint.hpp
     title: src/modint/dynamic_montgomery_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/modint.hpp
     title: src/modint/modint.hpp
   - icon: ':question:'

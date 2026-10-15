@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/segtree/static_rmq.hpp
     title: src/data_structure/segtree/static_rmq.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/sparse_table/sparse_table.hpp
     title: src/data_structure/sparse_table/sparse_table.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/misc/even_distribution_array.hpp
     title: src/misc/even_distribution_array.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/random/graph.hpp
     title: src/random/graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/sequence.hpp
     title: src/random/sequence.hpp
   - icon: ':question:'
     path: src/random/utility.hpp
     title: src/random/utility.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/level_ancestor_offline.hpp
     title: src/tree/level_ancestor_offline.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/prufer_code.hpp
     title: src/tree/prufer_code.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/static_tree.hpp
     title: src/tree/static_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -303,7 +303,7 @@ data:
   path: test/tree/level_ancestor_offline.test.cpp
   requiredBy: []
   timestamp: '2026-10-14 23:16:02+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/level_ancestor_offline.test.cpp
 layout: document

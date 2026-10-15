@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/hld.commutative.test.cpp
     title: test/tree/hld.commutative.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/hld.test.cpp
     title: test/tree/hld.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/tree/hld.hpp\"\n#include <algorithm>\n#include <cassert>\n\
@@ -195,7 +195,7 @@ data:
   path: src/tree/hld.hpp
   requiredBy: []
   timestamp: '2025-06-26 18:48:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/hld.test.cpp
   - test/tree/hld.commutative.test.cpp

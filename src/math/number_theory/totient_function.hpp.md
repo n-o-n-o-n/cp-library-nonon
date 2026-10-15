@@ -15,12 +15,12 @@ data:
     title: src/random/xor_shift.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/totient_function.test.cpp
     title: test/math/number_theory/totient_function.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/number_theory/prime_factor.hpp\"\n#include <numeric>\n\
@@ -107,7 +107,7 @@ data:
   path: src/math/number_theory/totient_function.hpp
   requiredBy: []
   timestamp: '2026-10-14 23:16:02+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/number_theory/totient_function.test.cpp
 documentation_of: src/math/number_theory/totient_function.hpp

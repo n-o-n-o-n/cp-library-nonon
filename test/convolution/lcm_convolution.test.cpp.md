@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/lcm_convolution.hpp
     title: src/convolution/lcm_convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/modint.hpp
     title: src/modint/modint.hpp
   _extendedRequiredBy: []

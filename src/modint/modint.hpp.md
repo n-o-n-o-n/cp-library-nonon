@@ -8,6 +8,9 @@ data:
   - icon: ':warning:'
     path: src/math/enumerative_combinatorics/subset_sum.hpp
     title: src/math/enumerative_combinatorics/subset_sum.hpp
+  - icon: ':warning:'
+    path: src/modint/Fp.hpp
+    title: src/modint/Fp.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/arbitrary_mod_convolution.test.cpp
@@ -90,18 +93,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/power_projection.test.cpp
     title: test/fps/power_projection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/hld.test.cpp
     title: test/tree/hld.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/rerooting_dp.test.cpp
     title: test/tree/rerooting_dp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/static_tree.auxiliary_tree.test.cpp
     title: test/tree/static_tree.auxiliary_tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/modint/modint.hpp\"\n#include <algorithm>\n#include\
@@ -185,9 +188,10 @@ data:
   path: src/modint/modint.hpp
   requiredBy:
   - src/convolution/arbitrary_mod_convolution.hpp
+  - src/modint/Fp.hpp
   - src/math/enumerative_combinatorics/subset_sum.hpp
   timestamp: '2026-09-11 09:43:03+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/fps_log.test.cpp
   - test/fps/fps_exp_sparse.test.cpp

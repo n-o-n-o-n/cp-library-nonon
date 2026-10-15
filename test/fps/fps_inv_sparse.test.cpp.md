@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/fps/fps_inv_sparse.hpp
     title: src/fps/fps_inv_sparse.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/modint.hpp
     title: src/modint/modint.hpp
   _extendedRequiredBy: []
