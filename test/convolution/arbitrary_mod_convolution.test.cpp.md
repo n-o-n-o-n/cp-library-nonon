@@ -10,28 +10,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/ntt.hpp
     title: src/convolution/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/extended_gcd.hpp
     title: src/math/number_theory/extended_gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/garner.hpp
     title: src/math/number_theory/garner.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primality_test.hpp
     title: src/math/number_theory/primality_test.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/prime_factor.hpp
     title: src/math/number_theory/prime_factor.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primitive_root.hpp
     title: src/math/number_theory/primitive_root.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_montgomery_modint.hpp
     title: src/modint/dynamic_montgomery_modint.hpp
   - icon: ':heavy_check_mark:'
     path: src/modint/modint.hpp
     title: src/modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy: []

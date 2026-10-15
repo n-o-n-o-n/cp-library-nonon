@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/arbitrary_mod_convolution.hpp
     title: src/convolution/arbitrary_mod_convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/garner.hpp
     title: src/math/number_theory/garner.hpp
   - icon: ':heavy_check_mark:'
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/extended_gcd.test.cpp
     title: test/math/number_theory/extended_gcd.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/garner.test.cpp
     title: test/math/number_theory/garner.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/mod_inv.test.cpp
     title: test/math/number_theory/mod_inv.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/number_theory/extended_gcd.hpp\"\n#include <utility>\n\
@@ -52,7 +52,7 @@ data:
   - src/math/number_theory/garner.hpp
   - src/math/number_theory/mod_inv.hpp
   timestamp: '2025-08-07 20:30:19+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/arbitrary_mod_convolution.test.cpp
   - test/math/number_theory/garner.test.cpp

@@ -13,19 +13,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/enumerative_combinatorics/combination.hpp
     title: src/math/enumerative_combinatorics/combination.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primality_test.hpp
     title: src/math/number_theory/primality_test.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/prime_factor.hpp
     title: src/math/number_theory/prime_factor.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primitive_root.hpp
     title: src/math/number_theory/primitive_root.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_montgomery_modint.hpp
     title: src/modint/dynamic_montgomery_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy:

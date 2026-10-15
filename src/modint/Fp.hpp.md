@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primality_test.hpp
     title: src/math/number_theory/primality_test.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_montgomery_modint.hpp
     title: src/modint/dynamic_montgomery_modint.hpp
   - icon: ':heavy_check_mark:'

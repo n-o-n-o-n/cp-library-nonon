@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primality_test.hpp
     title: src/math/number_theory/primality_test.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/prime_factor.hpp
     title: src/math/number_theory/prime_factor.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_montgomery_modint.hpp
     title: src/modint/dynamic_montgomery_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy:
@@ -24,12 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/factorise.test.cpp
     title: test/math/number_theory/factorise.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/garner.test.cpp
     title: test/math/number_theory/garner.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/number_theory/factorise.hpp\"\n#include <vector>\n\
@@ -124,7 +124,7 @@ data:
   requiredBy:
   - src/math/number_theory/enumerate_divisors.hpp
   timestamp: '2026-10-14 23:16:02+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/number_theory/factorise.test.cpp
   - test/math/number_theory/enumerate_divisors.test.cpp

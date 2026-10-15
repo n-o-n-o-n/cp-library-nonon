@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/extended_gcd.hpp
     title: src/math/number_theory/extended_gcd.hpp
   _extendedRequiredBy: []

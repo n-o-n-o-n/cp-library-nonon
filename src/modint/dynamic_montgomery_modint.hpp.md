@@ -92,13 +92,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/number_theory/enumerate_divisors.hpp
     title: src/math/number_theory/enumerate_divisors.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/factorise.hpp
     title: src/math/number_theory/factorise.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primality_test.hpp
     title: src/math/number_theory/primality_test.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/prime_factor.hpp
     title: src/math/number_theory/prime_factor.hpp
   - icon: ':heavy_check_mark:'
@@ -165,7 +165,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/factorise.test.cpp
     title: test/math/number_theory/factorise.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/garner.test.cpp
     title: test/math/number_theory/garner.test.cpp
   - icon: ':heavy_check_mark:'
@@ -180,9 +180,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/totient_function.test.cpp
     title: test/math/number_theory/totient_function.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/modint/dynamic_montgomery_modint.hpp\"\n#include <algorithm>\n\
@@ -292,7 +292,7 @@ data:
   - src/math/enumerative_combinatorics/stirling2_k_fixed.hpp
   - src/math/enumerative_combinatorics/enumerate_powers_of_sums.hpp
   timestamp: '2026-09-11 09:43:03+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/fps_log.test.cpp
   - test/fps/multipoint_evaluation.test.cpp

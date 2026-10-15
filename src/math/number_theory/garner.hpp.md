@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/extended_gcd.hpp
     title: src/math/number_theory/extended_gcd.hpp
   _extendedRequiredBy:
@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/arbitrary_mod_convolution.test.cpp
     title: test/convolution/arbitrary_mod_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/garner.test.cpp
     title: test/math/number_theory/garner.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/number_theory/garner.hpp\"\n#include <vector>\n\
@@ -55,7 +55,7 @@ data:
   requiredBy:
   - src/convolution/arbitrary_mod_convolution.hpp
   timestamp: '2026-01-02 07:57:43+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/arbitrary_mod_convolution.test.cpp
   - test/math/number_theory/garner.test.cpp

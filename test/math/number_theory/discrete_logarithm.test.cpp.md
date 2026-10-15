@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/number_theory/discrete_logarithm.hpp
     title: src/math/number_theory/discrete_logarithm.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primality_test.hpp
     title: src/math/number_theory/primality_test.hpp
   - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_modint.hpp
     title: src/modint/dynamic_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_montgomery_modint.hpp
     title: src/modint/dynamic_montgomery_modint.hpp
   - icon: ':question:'
