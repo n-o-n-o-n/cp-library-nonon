@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/segtree/segtree.hpp
-    title: src/data_structure/segtree/segtree.hpp
+    title: segtree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

@@ -6,7 +6,7 @@ data:
     title: src/data_structure/segtree/directed_range_query.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/segtree/segtree.hpp
-    title: src/data_structure/segtree/segtree.hpp
+    title: segtree
   - icon: ':heavy_check_mark:'
     path: src/math/affine.hpp
     title: src/math/affine.hpp

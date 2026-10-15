@@ -158,7 +158,7 @@ data:
       title: src/data_structure/segtree/reversible_segtree.hpp
     - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree/segtree.hpp
-      title: src/data_structure/segtree/segtree.hpp
+      title: segtree
     - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree/static_rmq.hpp
       title: src/data_structure/segtree/static_rmq.hpp
