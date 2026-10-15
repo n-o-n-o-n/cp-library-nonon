@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/number_theory/enumerate_primes.hpp
     title: src/math/number_theory/enumerate_primes.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/number_theory/primality_table.hpp
     title: src/math/number_theory/primality_table.hpp
   _extendedRequiredBy: []

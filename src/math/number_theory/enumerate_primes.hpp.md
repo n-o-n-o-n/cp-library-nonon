@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/number_theory/primality_table.hpp
     title: src/math/number_theory/primality_table.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/enumerate_primes.test.cpp
     title: test/math/number_theory/enumerate_primes.test.cpp
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: test/math/number_theory/primality_table.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/number_theory/enumerate_primes.hpp\"\n#include\
@@ -38,7 +38,7 @@ data:
   path: src/math/number_theory/enumerate_primes.hpp
   requiredBy: []
   timestamp: '2026-01-02 07:57:43+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/number_theory/enumerate_primes.test.cpp
   - test/math/number_theory/primality_table.test.cpp

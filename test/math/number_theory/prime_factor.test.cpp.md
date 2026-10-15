@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/modint/dynamic_montgomery_modint.hpp
     title: src/modint/dynamic_montgomery_modint.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/random/utility.hpp
     title: src/random/utility.hpp
   - icon: ':question:'

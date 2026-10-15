@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/superset_zmt.hpp
     title: src/convolution/superset_zmt.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/bitwise_and_convolution.test.cpp
     title: test/convolution/bitwise_and_convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/convolution/bitwise_and_convolution.hpp\"\n#include\
@@ -38,7 +38,7 @@ data:
   path: src/convolution/bitwise_and_convolution.hpp
   requiredBy: []
   timestamp: '2025-12-27 09:40:25+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/bitwise_and_convolution.test.cpp
 documentation_of: src/convolution/bitwise_and_convolution.hpp

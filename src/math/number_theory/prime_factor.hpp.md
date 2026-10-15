@@ -11,22 +11,22 @@ data:
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/arbitrary_mod_convolution.hpp
     title: src/convolution/arbitrary_mod_convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution.hpp
     title: src/convolution/convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/middle_product.hpp
     title: src/convolution/middle_product.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/ntt.hpp
     title: src/convolution/ntt.hpp
   - icon: ':heavy_check_mark:'
     path: src/convolution/relaxed_convolution.hpp
     title: src/convolution/relaxed_convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/fps.hpp
     title: src/fps/fps.hpp
   - icon: ':warning:'
@@ -35,13 +35,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/fps/fps_compositional_inverse.hpp
     title: src/fps/fps_compositional_inverse.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/fps_composotion.hpp
     title: src/fps/fps_composotion.hpp
   - icon: ':heavy_check_mark:'
     path: src/fps/fps_exp.hpp
     title: src/fps/fps_exp.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/fps_inv.hpp
     title: src/fps/fps_inv.hpp
   - icon: ':heavy_check_mark:'
@@ -53,25 +53,25 @@ data:
   - icon: ':warning:'
     path: src/fps/fps_product.hpp
     title: src/fps/fps_product.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/multipoint_evaluation.hpp
     title: src/fps/multipoint_evaluation.hpp
   - icon: ':warning:'
     path: src/fps/multipoint_evaluation_geometric.hpp
     title: src/fps/multipoint_evaluation_geometric.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/polynomial_interpolation.hpp
     title: src/fps/polynomial_interpolation.hpp
   - icon: ':heavy_check_mark:'
     path: src/fps/polynomial_taylor_shift.hpp
     title: src/fps/polynomial_taylor_shift.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/power_projection.hpp
     title: src/fps/power_projection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/rational_sum.hpp
     title: src/fps/rational_sum.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/subprod_tree.hpp
     title: src/fps/subprod_tree.hpp
   - icon: ':warning:'
@@ -104,20 +104,20 @@ data:
   - icon: ':question:'
     path: src/math/number_theory/factorise.hpp
     title: src/math/number_theory/factorise.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primitive_root.hpp
     title: src/math/number_theory/primitive_root.hpp
   - icon: ':x:'
     path: src/math/number_theory/totient_function.hpp
     title: src/math/number_theory/totient_function.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/arbitrary_mod_convolution.test.cpp
     title: test/convolution/arbitrary_mod_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/convolution.test.cpp
     title: test/convolution/convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/middle_product.test.cpp
     title: test/convolution/middle_product.test.cpp
   - icon: ':heavy_check_mark:'
@@ -126,10 +126,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/fps_compositional_inverse.test.cpp
     title: test/fps/fps_compositional_inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/fps_composotion.test.cpp
     title: test/fps/fps_composotion.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/fps_div_sparse.test.cpp
     title: test/fps/fps_div_sparse.test.cpp
   - icon: ':heavy_check_mark:'
@@ -144,16 +144,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/fps_pow.test.cpp
     title: test/fps/fps_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/multipoint_evaluation.test.cpp
     title: test/fps/multipoint_evaluation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/polynomial_interpolation.test.cpp
     title: test/fps/polynomial_interpolation.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps/polynomial_taylor_shift.test.cpp
     title: test/fps/polynomial_taylor_shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/power_projection.test.cpp
     title: test/fps/power_projection.test.cpp
   - icon: ':heavy_check_mark:'

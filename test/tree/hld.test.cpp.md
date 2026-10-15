@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: src/data_structure/segtree/segtree.hpp
     title: src/data_structure/segtree/segtree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/affine.hpp
     title: src/math/affine.hpp
   - icon: ':question:'

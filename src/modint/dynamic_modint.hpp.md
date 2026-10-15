@@ -6,15 +6,15 @@ data:
     path: src/math/number_theory/mod_log.hpp
     title: src/math/number_theory/mod_log.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/discrete_logarithm.test.cpp
     title: test/math/number_theory/discrete_logarithm.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/mod_log.test.cpp
     title: test/math/number_theory/mod_log.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/modint/dynamic_modint.hpp\"\n#include <algorithm>\n\
@@ -95,7 +95,7 @@ data:
   requiredBy:
   - src/math/number_theory/mod_log.hpp
   timestamp: '2025-04-03 14:15:12+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/number_theory/discrete_logarithm.test.cpp
   - test/math/number_theory/mod_log.test.cpp

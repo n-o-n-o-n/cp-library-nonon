@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/ntt.hpp
     title: src/convolution/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/enumerative_combinatorics/combination.hpp
     title: src/math/enumerative_combinatorics/combination.hpp
   - icon: ':question:'
@@ -13,7 +13,7 @@ data:
   - icon: ':question:'
     path: src/math/number_theory/prime_factor.hpp
     title: src/math/number_theory/prime_factor.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primitive_root.hpp
     title: src/math/number_theory/primitive_root.hpp
   - icon: ':question:'
@@ -29,13 +29,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/fps/fps_compositional_inverse.hpp
     title: src/fps/fps_compositional_inverse.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/fps_composotion.hpp
     title: src/fps/fps_composotion.hpp
   - icon: ':heavy_check_mark:'
     path: src/fps/fps_exp.hpp
     title: src/fps/fps_exp.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/fps_inv.hpp
     title: src/fps/fps_inv.hpp
   - icon: ':heavy_check_mark:'
@@ -47,25 +47,25 @@ data:
   - icon: ':warning:'
     path: src/fps/fps_product.hpp
     title: src/fps/fps_product.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/multipoint_evaluation.hpp
     title: src/fps/multipoint_evaluation.hpp
   - icon: ':warning:'
     path: src/fps/multipoint_evaluation_geometric.hpp
     title: src/fps/multipoint_evaluation_geometric.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/polynomial_interpolation.hpp
     title: src/fps/polynomial_interpolation.hpp
   - icon: ':heavy_check_mark:'
     path: src/fps/polynomial_taylor_shift.hpp
     title: src/fps/polynomial_taylor_shift.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/power_projection.hpp
     title: src/fps/power_projection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/rational_sum.hpp
     title: src/fps/rational_sum.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/subprod_tree.hpp
     title: src/fps/subprod_tree.hpp
   - icon: ':warning:'
@@ -93,10 +93,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/fps_compositional_inverse.test.cpp
     title: test/fps/fps_compositional_inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/fps_composotion.test.cpp
     title: test/fps/fps_composotion.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/fps_div_sparse.test.cpp
     title: test/fps/fps_div_sparse.test.cpp
   - icon: ':heavy_check_mark:'
@@ -111,21 +111,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/fps_pow.test.cpp
     title: test/fps/fps_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/multipoint_evaluation.test.cpp
     title: test/fps/multipoint_evaluation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/polynomial_interpolation.test.cpp
     title: test/fps/polynomial_interpolation.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps/polynomial_taylor_shift.test.cpp
     title: test/fps/polynomial_taylor_shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/power_projection.test.cpp
     title: test/fps/power_projection.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/fps/fps.hpp\"\n#include <vector>\n#line 2 \"src/math/enumerative_combinatorics/combination.hpp\"\
@@ -486,7 +486,7 @@ data:
   - src/math/enumerative_combinatorics/stirling2_k_fixed.hpp
   - src/math/enumerative_combinatorics/enumerate_powers_of_sums.hpp
   timestamp: '2026-10-14 23:16:02+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/fps_log.test.cpp
   - test/fps/multipoint_evaluation.test.cpp

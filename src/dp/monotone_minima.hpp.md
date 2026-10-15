@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/min_plus_convolution_convex_arbitrary.hpp
     title: src/convolution/min_plus_convolution_convex_arbitrary.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/min_plus_convolution_convex_arbitrary.test.cpp
     title: test/convolution/min_plus_convolution_convex_arbitrary.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/dp/monotone_minima.hpp\"\n#include <vector>\nusing namespace\
@@ -40,7 +40,7 @@ data:
   requiredBy:
   - src/convolution/min_plus_convolution_convex_arbitrary.hpp
   timestamp: '2025-04-03 14:15:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/min_plus_convolution_convex_arbitrary.test.cpp
 documentation_of: src/dp/monotone_minima.hpp

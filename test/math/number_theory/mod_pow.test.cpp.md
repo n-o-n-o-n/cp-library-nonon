@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: src/math/number_theory/mod_pow.hpp
     title: src/math/number_theory/mod_pow.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/random/utility.hpp
     title: src/random/utility.hpp
   _extendedRequiredBy: []

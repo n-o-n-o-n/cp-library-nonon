@@ -5,11 +5,11 @@ data:
   - icon: ':x:'
     path: src/random/graph.hpp
     title: src/random/graph.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/random/sequence.hpp
     title: src/random/sequence.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/power_projection.test.cpp
     title: test/fps/power_projection.test.cpp
   - icon: ':x:'
@@ -26,7 +26,7 @@ data:
     title: test/tree/static_tree.auxiliary_tree.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/misc/even_distribution_array.hpp\"\n#include <vector>\n\
@@ -47,7 +47,7 @@ data:
   - src/random/sequence.hpp
   - src/random/graph.hpp
   timestamp: '2025-04-03 14:15:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/fps/power_projection.test.cpp
   - test/tree/level_ancestor_offline.test.cpp

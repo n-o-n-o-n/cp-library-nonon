@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/segtree/dynamic_segtree.test.cpp
     title: test/data_structure/segtree/dynamic_segtree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/data_structure/segtree/dynamic_segtree.hpp\"\n#include\
@@ -73,7 +73,7 @@ data:
   path: src/data_structure/segtree/dynamic_segtree.hpp
   requiredBy: []
   timestamp: '2026-10-14 23:16:02+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/segtree/dynamic_segtree.test.cpp
 documentation_of: src/data_structure/segtree/dynamic_segtree.hpp

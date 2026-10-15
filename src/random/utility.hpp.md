@@ -8,20 +8,20 @@ data:
   - icon: ':x:'
     path: src/random/graph.hpp
     title: src/random/graph.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/random/sequence.hpp
     title: src/random/sequence.hpp
   - icon: ':x:'
     path: src/tree/hash_on_tree.hpp
     title: src/tree/hash_on_tree.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/fps_div_sparse.test.cpp
     title: test/fps/fps_div_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/power_projection.test.cpp
     title: test/fps/power_projection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/discrete_logarithm.test.cpp
     title: test/math/number_theory/discrete_logarithm.test.cpp
   - icon: ':x:'
@@ -53,7 +53,7 @@ data:
     title: test/tree/static_tree.auxiliary_tree.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/random/utility.hpp\"\n#include <cassert>\n#include <concepts>\n\
@@ -83,7 +83,7 @@ data:
   - src/random/graph.hpp
   - src/tree/hash_on_tree.hpp
   timestamp: '2026-09-11 09:43:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/fps/power_projection.test.cpp
   - test/fps/fps_div_sparse.test.cpp

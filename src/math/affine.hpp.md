@@ -3,13 +3,13 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/segtree/dynamic_lazysegtree.test.cpp
     title: test/data_structure/segtree/dynamic_lazysegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/segtree/dynamic_segtree.test.cpp
     title: test/data_structure/segtree/dynamic_segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/number_theory/discrete_logarithm.test.cpp
     title: test/math/number_theory/discrete_logarithm.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: test/tree/hld.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/affine.hpp\"\nusing namespace std;\n\ntemplate<typename\
@@ -37,7 +37,7 @@ data:
   path: src/math/affine.hpp
   requiredBy: []
   timestamp: '2025-04-03 14:15:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/segtree/dynamic_lazysegtree.test.cpp
   - test/data_structure/segtree/dynamic_segtree.test.cpp

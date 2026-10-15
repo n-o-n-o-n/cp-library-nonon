@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/ntt.hpp
     title: src/convolution/ntt.hpp
   - icon: ':question:'
@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/math/number_theory/prime_factor.hpp
     title: src/math/number_theory/prime_factor.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/number_theory/primitive_root.hpp
     title: src/math/number_theory/primitive_root.hpp
   - icon: ':question:'
@@ -20,28 +20,28 @@ data:
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/arbitrary_mod_convolution.hpp
     title: src/convolution/arbitrary_mod_convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/middle_product.hpp
     title: src/convolution/middle_product.hpp
   - icon: ':warning:'
     path: src/math/enumerative_combinatorics/stirling2_n_fixed.hpp
     title: src/math/enumerative_combinatorics/stirling2_n_fixed.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/arbitrary_mod_convolution.test.cpp
     title: test/convolution/arbitrary_mod_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/convolution.test.cpp
     title: test/convolution/convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/middle_product.test.cpp
     title: test/convolution/middle_product.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/convolution/convolution.hpp\"\n#include <vector>\n#line\
@@ -244,7 +244,7 @@ data:
   - src/convolution/middle_product.hpp
   - src/math/enumerative_combinatorics/stirling2_n_fixed.hpp
   timestamp: '2026-10-14 23:16:02+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/arbitrary_mod_convolution.test.cpp
   - test/convolution/convolution.test.cpp

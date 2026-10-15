@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/misc/even_distribution_array.hpp
     title: src/misc/even_distribution_array.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/random/sequence.hpp
     title: src/random/sequence.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/random/utility.hpp
     title: src/random/utility.hpp
   - icon: ':x:'

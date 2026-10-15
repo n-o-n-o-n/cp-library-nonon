@@ -5,11 +5,11 @@ data:
     path: src/math/number_theory/extended_gcd.hpp
     title: src/math/number_theory/extended_gcd.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/arbitrary_mod_convolution.hpp
     title: src/convolution/arbitrary_mod_convolution.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/arbitrary_mod_convolution.test.cpp
     title: test/convolution/arbitrary_mod_convolution.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: test/math/number_theory/garner.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/number_theory/garner.hpp\"\n#include <vector>\n\
@@ -55,7 +55,7 @@ data:
   requiredBy:
   - src/convolution/arbitrary_mod_convolution.hpp
   timestamp: '2026-01-02 07:57:43+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/arbitrary_mod_convolution.test.cpp
   - test/math/number_theory/garner.test.cpp

@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/arbitrary_mod_convolution.hpp
     title: src/convolution/arbitrary_mod_convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/number_theory/garner.hpp
     title: src/math/number_theory/garner.hpp
   - icon: ':x:'
@@ -15,7 +15,7 @@ data:
     path: src/monoid/rolling_hash.hpp
     title: src/monoid/rolling_hash.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/arbitrary_mod_convolution.test.cpp
     title: test/convolution/arbitrary_mod_convolution.test.cpp
   - icon: ':heavy_check_mark:'

@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: src/graph/matrix_tree_theorem.hpp
     title: src/graph/matrix_tree_theorem.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/enumerative_combinatorics/combination.hpp
     title: src/math/enumerative_combinatorics/combination.hpp
   - icon: ':warning:'

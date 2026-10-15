@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: src/math/number_theory/factorise.hpp
     title: src/math/number_theory/factorise.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/number_theory/garner.hpp
     title: src/math/number_theory/garner.hpp
   - icon: ':question:'
