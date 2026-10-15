@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/number_theory/mod_inv.hpp
     title: src/math/number_theory/mod_inv.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/utility.hpp
     title: src/random/utility.hpp
   _extendedRequiredBy: []

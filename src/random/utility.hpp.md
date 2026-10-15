@@ -27,9 +27,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/mod_inv.test.cpp
     title: test/math/number_theory/mod_inv.test.cpp
-  - icon: ':x:'
-    path: test/math/number_theory/mod_pow.test.cpp
-    title: test/math/number_theory/mod_pow.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/number_theory/prime_factor.test.cpp
     title: test/math/number_theory/prime_factor.test.cpp
@@ -51,9 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/static_tree.auxiliary_tree.test.cpp
     title: test/tree/static_tree.auxiliary_tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/random/utility.hpp\"\n#include <cassert>\n#include <concepts>\n\
@@ -83,7 +80,7 @@ data:
   - src/random/graph.hpp
   - src/tree/hash_on_tree.hpp
   timestamp: '2026-09-11 09:43:03+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/power_projection.test.cpp
   - test/fps/fps_div_sparse.test.cpp
@@ -91,7 +88,6 @@ data:
   - test/math/number_theory/prime_factor.test.cpp
   - test/math/number_theory/totient_function.test.cpp
   - test/math/number_theory/mod_inv.test.cpp
-  - test/math/number_theory/mod_pow.test.cpp
   - test/tree/hash_on_tree.test.cpp
   - test/tree/level_ancestor_offline.test.cpp
   - test/tree/prufer_code.test.cpp

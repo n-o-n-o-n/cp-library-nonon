@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/misc/even_distribution_array.hpp
     title: src/misc/even_distribution_array.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/utility.hpp
     title: src/random/utility.hpp
   _extendedRequiredBy:

@@ -470,7 +470,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/number_theory/mod_log.hpp
       title: src/math/number_theory/mod_log.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: src/math/number_theory/mod_pow.hpp
       title: src/math/number_theory/mod_pow.hpp
     - icon: ':heavy_check_mark:'
@@ -601,7 +601,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/random/sequence.hpp
       title: src/random/sequence.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/random/utility.hpp
       title: src/random/utility.hpp
     - icon: ':heavy_check_mark:'
@@ -813,9 +813,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/number_theory/mod_log.test.cpp
       title: test/math/number_theory/mod_log.test.cpp
-    - icon: ':x:'
-      path: test/math/number_theory/mod_pow.test.cpp
-      title: test/math/number_theory/mod_pow.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/number_theory/primality_table.test.cpp
       title: test/math/number_theory/primality_table.test.cpp

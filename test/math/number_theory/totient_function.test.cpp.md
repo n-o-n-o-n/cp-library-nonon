@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_montgomery_modint.hpp
     title: src/modint/dynamic_montgomery_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/utility.hpp
     title: src/random/utility.hpp
   - icon: ':heavy_check_mark:'

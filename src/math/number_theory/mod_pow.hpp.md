@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/math/number_theory/mod_pow.test.cpp
-    title: test/math/number_theory/mod_pow.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/number_theory/mod_pow.hpp\"\nusing namespace std;\n\
@@ -25,9 +22,8 @@ data:
   path: src/math/number_theory/mod_pow.hpp
   requiredBy: []
   timestamp: '2025-04-03 14:15:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/math/number_theory/mod_pow.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/math/number_theory/mod_pow.hpp
 layout: document
 redirect_from:
