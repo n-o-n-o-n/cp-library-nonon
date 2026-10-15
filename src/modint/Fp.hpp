@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 #include "../modint/modint.hpp"
-#include "../math/number_theory/constexpr_primality_test.hpp"
+#include "../math/number_theory/primality_test.hpp"
 
 // https://maspypy.com/o1-mod-inv-mod-pow 
 namespace Fp {
@@ -14,7 +14,6 @@ static constexpr int sz = 1 << 21;
 
 template<int p>
 struct container {
-    static_assert(constexpr_is_prime(p));
     static_assert((int)1e8 < p && p < (1 << 30));
     using mint = modint<p>;
     inline static array<mint, sz + 1> fac, finv;
