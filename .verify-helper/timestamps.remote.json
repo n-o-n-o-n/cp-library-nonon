@@ -34,6 +34,7 @@
 "test/math/number_theory/extended_gcd.test.cpp": "2026-10-14 23:06:06 +0900",
 "test/math/number_theory/factorise.test.cpp": "2026-10-14 23:16:02 +0900",
 "test/math/number_theory/floor_kth_root.test.cpp": "2026-10-14 23:06:06 +0900",
+"test/math/number_theory/garner.test.cpp": "2026-10-14 23:16:02 +0900",
 "test/math/number_theory/mod_inv.test.cpp": "2026-10-14 23:06:06 +0900",
 "test/math/number_theory/mod_log.test.cpp": "2026-10-14 23:06:06 +0900",
 "test/math/number_theory/primality_table.test.cpp": "2026-10-14 23:06:06 +0900",
